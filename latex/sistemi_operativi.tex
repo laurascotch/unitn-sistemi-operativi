@@ -35,7 +35,7 @@ Un sistema operativo è un programma (o meglio, un insieme di programmi) che off
 \item rendere efficiente l'uso dell'hardware;
 \item evitare conflitti nell'allocazione delle risorse software e hardware;
 \end{enumerate}
-Alcuni Sistemi Operativi si progettano per essere di uso agevole, essere agevoli o per possedere entrambe le qualità. In ragione della sua complessità, un SO deve essere costruito gradualmente.
+Alcuni Sistemi Operativi si progettano per essere di uso agevole, essere agevoli o per possedere entrambe le qualità. In ragione della sua complessità, un Sistema Operativo deve essere costruito gradualmente.
 
 \subsection{Cos'è un Sistema Operativo?}
 
@@ -46,7 +46,17 @@ Un sistema di calcolo si può suddividere in quattro elementi:
 \item Utenti: coloro che utilizzano il calcolatore
 \item SO: controlla e coordina l’uso dei dispositivi da parte dei programmi applicativi
 \end{enumerate}
-In poche parole, un sistema di calcolo si può considerare come l’insieme dei suoi elementi fisici, programmi e dati e il SO offre gli strumenti per impiegare correttamente tali risorse fornendo un ambiente nel quale i programmi possono lavorare in modo utile. Il calcolatore vede il SO come un assegnatore di risorse, infatti esso le gestisce e le assegna ai programmi e agli utenti in modo tale che il sistema di calcolo operi in modo equo ed efficiente. Un SO è il solo programma che funziona sempre nel calcolatore (kernel).
+In poche parole, un sistema di calcolo si può considerare come l’insieme dei suoi elementi fisici, programmi e dati. Il Sistema Operativo (\textit{SO}) offre gli strumenti per impiegare correttamente tali risorse fornendo un ambiente nel quale i programmi possono lavorare in modo utile, ovvero un'astrazione dei componenti dell'hardware. Il calcolatore vede il SO come un assegnatore di risorse, infatti esso le gestisce e le assegna ai programmi e agli utenti in modo tale che il sistema di calcolo operi in modo equo ed efficiente. Un SO è il solo programma che funziona sempre nel calcolatore (kernel).
+
+\subsection{Storia dei sistemi operativi}
+
+Possiamo suddividere la storia dei Sistemi Operativi in cinque generazioni. Nella prima (anni 50 circa), i calcolatori erano costituiti da enormi calcolatori a valvole senza sistema operativo. I programmi erano scritti su schede perforate e venivano azionati da \textit{operatori} tramite degli interruttori. Con l'evolversi della tecnologia, vennero sviluppate le prime "librerie" di funzioni comuni e i primi compilatori. Nella seconda generazione, vennero introdotti i transistor, riducendo enormemente le dimensioni dei calcolatori. Vennero inoltre introdotti le operazioni di batching e job sequencing, per raggruppare i programmi con esecuzione simile e delegandone il passaggio al sistema operativo. Venne inoltre introdotto un monitor residente nel "kernel" del sistema operativo, la sequenzializzazione e la sovrapposizione delle operazioni di I/O e CPU. 
+
+Nella terza generazione, viene introdotta la multiprogrammazione (ovvero la competizione di job diversi per il tempo di CPU) e la divisione tra modalità \textbf{USER} (dove i job NON possono accedere all'I/O) e \textbf{KERNEL}. Per accedere alla modalità KERNEL vengono introdotti degli opportuni interrupt software per delegare l'accesso all'I/O da parte del sistema operativo.
+
+Nelle ultime due generazioni, invece, i miglioramenti si sono focalizzati sulla progressiva specializzazione dei sistemi operativi per vari ambiti, ad esempio per i sistemi distribuiti, mobile ed embedded.
+
+
 
 \subsection{Componenti di un sistema operativo}
 Un Sistema Operativo fornisce un ambiente per l'esecuzione di programmi. Deve quindi essere in grado di gestire i processi, la memoria principale e secondaria, deve saper gestire l'I/O ed i files. 
@@ -119,33 +129,25 @@ Si distinguono le seguenti categorie di programmi di sistema:
 
 Accanto ai programmi di sistema troviamo gli application programs, utili per risolvere svariati problemi. Appartengono a questa categoria i browser web, gli editor di testi complessi, i gestori per fogli di calcolo, sistemi per databases, giochi, eccetera.
 
-
-
-
-
-
-
 \newpage
 \section{Architettura di un Sistema Operativo}
- 
- Sistemi estesi e complessi come i moderni Sistemi Operativi devono essere progettati seguendo principi di progettazione tali da rendere possibile il loro corretto ed efficiente funzionamento e la possibilità di introdurre modifiche nel tempo (ad esempio: aggiornamenti). Un principio molto importante è la separazione tra policy (cosa deve essere fatto?) e i meccanismi (come farlo?); la sua importanza risiede nella maggior flessibilità conferita al sistema, soprattutto se le policy tendono a variare nel tempo.
- Altri due principi rilevanti sono il KISS (Keep It Small and Simple) e il POLA (Principle of the Least Privileges), il quale afferma che ogni componente deve avere solo i privilegi necessari ad eseguire la sua funzione e nulla più, che fra l'altro è alla base dell'affidabilità e della sicurezza di un Sistema Operativo.
- 
- \subsection{Struttura di un Sistema Operativo}
- Le componenti di un sistema possono essere interconnesse tra loro e combinate nel kernel secondo strutture diverse. Passiamo ora in rassegna le diverse possibilità.
- 
- \subsubsection{Sistemi a struttura semplice}
- Molti Sistemi Operativi non hanno una struttura ben definita. Spesso questi sistemi sono nati per essere ``piccoli'', semplici e limitati e poi sono stati evoluti oltre il loro scopo originario (MS-DOS ne è un esempio), ma all'inizio di era badato solo a ridurre i costi di sviluppo e manutenzione. 
- 
- Sistemi come MS-DOS erano stati scritti per fornire la maggior funzionalità nel minor spazio possibile, quindi non si era troppo badato alla divisione in moduli o alla creazione secondo una ben determinata struttura, con una conseguente poco chiara definizione dei livelli di funzionalità e delle interfacce. Ovviamente, MS-DOS era anche limitato dall'hardware disponibile all'epoca della sua nascita. Poiché l'Intel 8088 per cui era stato scritto non prevedeva una dual mode, né tantomeno una protezione dell'hardware, gli sviluppatori di MS-DOS non ebbero altra scelta che lasciare che fosse possibile accedere all'hardware di base.
- 
- Anche UNIX rappresenta un esempio di sistema a struttura semplice, ancora una volta per via delle limitate funzionalità hardware. Consisteva però di due parti separate: il kernel e i programmi di sistema. Il kernel è poi ulteriormente separato in una serie di interfacce e driver di device, aggiunti e sviluppati durante gli anni durante l'evoluzione di UNIX. Tradizionalmente, il kernel forniva il file system, la scheduling della CPU, la gestione della memoria e altre funzioni di sistema tramite system calls. In sostanza, un enorme quantità di funzionalità combinata in un unico livello. Una tale struttura monolitica era difficile da implementare e mantenere.
- 
- \subsubsection{Sistema a livelli}
- Con un appropriato supporto hardware, un Sistema Operativo può essere spezzato in pezzi più piccoli e più appropriati di quelli permessi da MS-DOS e dai primi sistemi UNIX. Esistono vari metodi per modularizzare un sistema. 
- 
- In questa categoria, il Sistema Operativo è visto a livelli: il più basso (livello 0) è l'hardware, mentre il più alto (livello N) è l'interfaccia utente. 
- 
+Sistemi estesi e complessi come i moderni Sistemi Operativi devono essere progettati seguendo principi di progettazione tali darendere possibile il loro corretto ed efficiente funzionamento e la possibilità di introdurre modifiche nel tempo (ad esempio:aggiornamenti). Un principio molto importante è la separazione tra policy (cosa deve essere fatto?) e i meccanismi (come farlo?) la sua importanza risiede nella maggior flessibilità conferita al sistema, soprattutto se le policy tendono a variare nel tempo.
+Altri due principi rilevanti sono il KISS (Keep It Small and Simple) e il POLA (Principle of the Least Privileges), il qualeafferma che ogni componente deve avere solo i privilegi necessari ad eseguire la sua funzione e nulla più, che fra l'altro èalla base dell'affidabilità e della sicurezza di un Sistema Operativo.
+
+\subsection{Struttura di un Sistema Operativo}
+Le componenti di un sistema possono essere interconnesse tra loro e combinate nel kernel secondo strutture diverse. Passiamo orain rassegna le diverse possibilità.
+
+\subsubsection{Sistemi a struttura semplice}
+Molti Sistemi Operativi non hanno una struttura ben definita. Spesso questi sistemi sono nati per essere ``piccoli'', semplici elimitati e poi sono stati evoluti oltre il loro scopo originario (MS-DOS ne è un esempio), ma all'inizio di era badato solo aridurre i costi di sviluppo e manutenzione. 
+
+Sistemi come MS-DOS erano stati scritti per fornire la maggior funzionalità nel minor spazio possibile, quindi non si era troppobadato alla divisione in moduli o alla creazione secondo una ben determinata struttura, con una conseguente poco chiaradefinizione dei livelli di funzionalità e delle interfacce. Ovviamente, MS-DOS era anche limitato dall'hardware disponibileall'epoca della sua nascita. Poiché l'Intel 8088 per cui era stato scritto non prevedeva una dual mode, né tantomeno unaprotezione dell'hardware, gli sviluppatori di MS-DOS non ebbero altra scelta che lasciare che fosse possibile accedereall'hardware di base.
+
+Anche UNIX rappresenta un esempio di sistema a struttura semplice, ancora una volta per via delle limitate funzionalitàhardware. Consisteva però di due parti separate: il kernel e i programmi di sistema. Il kernel è poi ulteriormente separato inuna serie di interfacce e driver di device, aggiunti e sviluppati durante gli anni durante l'evoluzione di UNIX.Tradizionalmente, il kernel forniva il file system, la scheduling della CPU, la gestione della memoria e altre funzioni disistema tramite system calls. In sostanza, un enorme quantità di funzionalità combinata in un unico livello. Una tale strutturamonolitica era difficile da implementare e mantenere.
+
+\subsubsection{Sistema a livelli}
+Con un appropriato supporto hardware, un Sistema Operativo può essere spezzato in pezzi più piccoli e più appropriati di quellipermessi da MS-DOS e dai primi sistemi UNIX. Esistono vari metodi per modularizzare un sistema. 
+
+In questa categoria, il Sistema Operativo è visto a livelli: il più basso (livello 0) è l'hardware, mentre il più alto (livelloN) è l'interfaccia utente. 
 Il vantaggio principale risiede nella semplicità di costruzione e debugging. Ogni livello è implementato in modo da poter usare solo funzioni fornite dai livelli inferiori, mentre definisce precisamente il tipo di servizio e l'interfaccia verso il livello superiore nascondendone l'implementazione. Tale struttura semplifica il debugging poiché il primo livello può essere debuggato senza troppe preoccupazioni sul resto del sistema, essendo subito al di sopra dell'hardware. Passando al livello superiore, si può assumere che tutti i servizi forniti dal livello precedente siano corretti, quindi eventuali errori possono trovarsi solo nel livello attuale, e così via per ogni livello.
 
 La maggiore difficoltà con l'approccio a livelli consiste nel definire appropriatamente gli strati. Poiché un livello può usare solo servizi dei livelli sottostanti, è necessario pianificare tutto con attenzione. Ad esempio, il device driver per il backing store (lo spazio su disco usato da algoritmi della memoria virtuale) deve per forza essere a un livello necessariamente più basso di quello che implementa le routines di gestione della memoria, proprio perché queste richiedono di poter usare il backing store. Risulta quindi evidente che un sistema di questo tipo non è caratterizzato da una grande portabilità, dato che le funzionalità dipendenti dall'architettura sono sparse su vari livelli, che potrebbero essere necessariamente diversi per macchine costruite diversamente.
@@ -154,22 +156,22 @@ Un altro problema è la minor efficienza: ogni strato aggiunge overhead alle sys
 
 Un primo esempio di sistema a livelli è stato THE (Dijkstra 1968), sviluppato per sistemi batch per scopi accademici, era costituito da un insieme di processi cooperanti sincronizzati tramite semafori.
 
-\subsubsection{Microkernels}
-In questo approccio, tutti i componenti non essenziali vengono rimossi dal kernel e vengono implementati come programmi di sistema o addirittura programmi utente. Tipicamente, i microkernels forniscono servizi di gestione dei processi e della memoria, in aggiunta a quelli per la comunicazione. 
+\subsubsection{Microkernel}
+In questo approccio, tutti i componenti non essenziali vengono rimossi dal kernel e vengono implementati come programmi di sistema o addirittura programmi utente. Tipicamente, i microkernels forniscono servizi di gestione dei processi e della memoria, in aggiunta a quelli per la comunicazione.
 
-La funzione principale di un microkernel è quella di permettere la comunicazione tra il programma client e i vari servizi a loro volta attivi nello user space. La comunicazione inter-processo è svolta tramite il passaggio di messaggi (message passing). Il programma client e il servizio , quindi, non comunicano mai direttamentente. Piuttosto, comunicano indirettamente scambiandosi messaggi con il microkernel.
+La funzione principale di un microkernel è quella di permettere la comunicazione tra il programma client e i vari servizi a loro volta attivi nello user space. La comunicazione inter-processo è svolta tramite il passaggio di messaggi (message passing). Il programma client e il servizio, quindi, non comunicano mai direttamentente. Piuttosto, comunicano indirettamente scambiandosi messaggi con il microkernel.
 
-L'approccio con microkernel permette di sviluppare sistemi facilmente espandibili e altamente portabili, oltre che più sicuri e affidabili.
+L'approccio con microkernel permette di sviluppare sistemi facilmente espandibili e altamente portabili, oltre che più sicuri e affidabili. Tuttavia, presentano un overhead significativo dovuto alla chiamata continua di system call (con passaggio alla modalità kernel).
 
 \subsubsection{Virtual Machine}
 Questo approccio, pensato per offrire un sistema timesharing ``multiplo'', è un'estremizzazione dell'approccio a livelli. La virtualizzazione è una tecnologia che permette ai Sistemi Operativi di essere eseguiti come se fossero applicazioni, contemporaneamente. L'uso di macchina virtuali rende inoltre ogni sistema portabile poiché, anche se nativamente studiato per funzionare su un certo hardware, essendo il kernel ``appoggiato'' sulla Virtual Machine (e non direttamente sull'hardware), non ha problemi a girare su un hardware diverso. Inoltre, uuna macchina virtuale può supportare molti sistemi operativi contemporaneamente, senza che questi si disturbino l'un l'altro. Risulta quindi possibile fare su una sola macchina quello che magari fino a qualche anno fa richiedeva l'utilizzo di tante macchine diverse.
+
+Una Virtual Machine può essere implementata due modi: con un Hypervisor di livello 1 (dove abbiamo un monitor implementato direttamente sopra l'hardware che gestisce macchine virtuali multiple alla volta) e di livello 2, dove è la macchina virtuale stessa a essere gestita all'interno di un sistema operativo nativo e residente sulla macchina.
 
 Un tale sistema soffre però di problemi di prestazioni: in un qualsiasi sistema di emulazione, ogni istruzione a livello macchina che può essere nativamente eseguita nel sistema sorgente, deve essere tradotta nella funzione equivalente del sistema di destinazione, spesso rappresentata da molte più istruzioni. Inoltre è necessario gestire una dual mode virtuale: il sistema di gestione delle Virtual Machines esegue in kernel mode, mentre la VM esegue in user mode. 
 
 \subsection{Conclusioni: implementazione di un Sistema Operativo}
 Tradizionalmente i Sistemi Operativi erano scritti in linguaggio assembler. Ora, sono sviluppati in linguaggi di alto livello, quali C e C++, poiché l'implementazione risulta più rapida, il codice rimane molto più compatto, quindi più facile da capire e mantenere e sono più facilmente portabili.
-
-
 
 \newpage
 \section{Processi e Threads - Parte 1 (Processi)}
