@@ -241,7 +241,7 @@ Un processo potrebbe altrimenti essere forzatamente terminato dal padre, per una
 \begin{itemize}
    \item Per eccesso nell'uso delle risorse
    \item Il compito richiesto al figlio non è più necessario
-   \item Il padre termina e il Sistema Operativo non permette ai figli di sopravvivere al padre. Se un figlio sopravvive al padre, viene chiamato \textit{orfano}, mentre se un processo figlio ha terminato ma il padre non ha ancora invocato la \texttt{wait()}, si dice essere un processo \textit{zombie}.
+   \item Il padre termina e il Sistema Operativo non permette ai figli di sopravvivere senza il padre. Se un figlio sopravvive al padre, viene chiamato \textit{orfano}, mentre se un processo figlio ha terminato ma il padre non ha ancora invocato la \texttt{wait()}, si dice essere un processo \textit{zombie}.
 \end{itemize}
 
 \subsection{Gestione dei processi del sistema operativo}
@@ -258,7 +258,7 @@ Il Sistema Operativo è un programma a tutti gli effetti, ma può essere conside
 Uno dei vantaggi di questa soluzione è che serve solo un mode switch in occasione di interrupt o trap durante l'esecuzione di un processo utente, in pratica, si può passare da user mode a kernel mode senza context switch (che appesantisce il sistema). Dopo il completamento della sua task, il Sistema Operativo può decidere di riattivare lo stesso processo utente (mode switch) o un altro (context switch).
 
 \paragraph{Esecuzione del kernel come processo} I servizi del Sistema Operativo sono processi individuali eseguiti in modalità protetta. Una minima parte del Sistema Operativo, lo scheduler, è ancora eseguita separatamente per necessità.
-Questa soluzione è vantaggiosa per sistemi multiprocessore dove i processi del Sistema Operativo possono essere eseguiti su un processore ad hoc.
+Questa soluzione è vantaggiosa per i sistemi multiprocessore, dove i processi del Sistema Operativo possono essere eseguiti su un core del processore.
 
 \subsection{Relazione tra processi}
 I processi che eseguono concorrenzialmente su un sistema possono essere indipendenti o cooperanti. Un processo è indipendente se non influenza e non viene influenzato dagli altri processi in esecuzione. Ogni processo che non condivida dei dati con un qualsiasi altro è indipendente. Un processo è cooperante se può influenza o può essere influenzato da un qualsiasi altro processo in esecuzione.
@@ -288,8 +288,11 @@ Se due processi P e Q vogliono comunicare, devono stabilire un canale di comunic
    \item Buffering automatico o esplicito
 \end{itemize}
 
+\paragraph{Comunicazione diretta}
+Con la comunicazione diretta, i messaggi sono inviati o ricevuti da uno a più processi, nominandosi singolarmente tramite il loro PID. Si distingue in \textbf{comunicazione diretta simmetrica}, dove vi sono solo due processi $P_1, P_2$ che sono entrambi a conoscenza del PID dell'altro e si scambiano direttamente messaggi, e \textbf{comunicazione diretta asimmetrica}, dove un singolo processo rimane in attesa di messaggi da altri processi, ricevendo sia il messaggio sia il loro PID per poi procedere con l'invio di messaggi.
+
 \paragraph{Comunicazione indiretta}
-Con la comunicazione indiretta i messaggi sono mandati e ricevuti tramite mailboxes, o porte, ognuna con un id unico. Un processo può comunicare con un altro processo con un certo numero di mailbox, ma due processi possono comunicare solo se hanno una mailbox condivisa. Le primitive sono definite come \texttt{send(A, message)} e \texttt{receive(A, message)}, dove A  la mailbox utilizzata.
+Con la comunicazione indiretta i messaggi sono mandati e ricevuti tramite mailboxes, o porte, ognuna con un id unico. Un processo può comunicare con un altro processo con un certo numero di mailbox, ma due processi possono comunicare solo se hanno una mailbox condivisa. Le primitive sono definite come \texttt{send(A, message)} e \texttt{receive(A, message)}, dove A la mailbox utilizzata.
 
 In questo schema, un canale di comunicazione ha le seguenti proprietà:
 \begin{itemize}
@@ -298,7 +301,7 @@ In questo schema, un canale di comunicazione ha le seguenti proprietà:
    \item Tra ogni coppia di processi può esistere un certo numero di collegamenti, con ognuno di essi corrispondente a una mailbox
 \end{itemize}
 
-Si supponga ora che i processi P1, P2 e P3 condividano la mailbox A. Se P1 manda un messaggio ad A e P2 e P3 eseguono una receive() da A, chi riceverà il messaggio di P1? Esistono diversi punti di vista:
+Si supponga ora che i processi $P_1$, $P_2$ e $P_3$ condividano la mailbox A. Se $P_1$ manda un messaggio ad A e $P_2$ e $P_3$ eseguono una receive() da A, chi riceverà il messaggio di $P_1$? Esistono diversi punti di vista:
 \begin{itemize}
    \item Permettere a un link di essere associato con soli due processi, eliminando il problema
    \item Permettere a un solo processo per volta di effettuare la receive()
@@ -306,7 +309,7 @@ Si supponga ora che i processi P1, P2 e P3 condividano la mailbox A. Se P1 manda
 \end{itemize}
 
 \paragraph{Sincronizzazione}
-Il passaggio di messaggi può essere bloccante o non bloccante, o, rispettivamente, sincrono e asincrono. Nel primo caso, il send e il receive sono bloccanti, cioè il mittente si blocca finché il messaggio non viene ricevuo e il ricevente è bloccato finché il messaggio è disponibile (non è stato ``preso''). Nel secondo caso, il sendo e il receive sono nonbloccanti, quindi il mittente spedisce il messaggio e continua la sua esecuzione e il ricevente riceve un messaggio valido o nulla.
+Il passaggio di messaggi può essere \textbf{bloccante} o \textbf{non bloccante}, o, rispettivamente, \textbf{sincrono} e \textbf{asincrono}. Nel primo caso, il send e il receive sono bloccanti, cioè il mittente si blocca finché il messaggio non viene ricevuto e il ricevente è bloccato finché il messaggio è disponibile (non è stato ``preso''). Nel secondo caso, il sendo e il receive sono non-bloccanti, quindi il mittente spedisce il messaggio e continua la sua esecuzione e il ricevente riceve un messaggio valido o nulla, non interferendo con il flusso d'esecuzione.
 
 \subsubsection{Memoria condivisa}
 La comunicazione interprocesso che utilizza la memoria condivisa richiede che i processi condividano una regione di memoria. Tipicamente questa regione di memoria condivisa risiene nell'address space del processo che la crea e qualsiasi altro processo che volesse comunicare dovrà attaccare quel segmento di memoria al proprio. Una volta fatto, il processo può scrivere nel segmento condiviso, quindi, una volta finito, potrà staccare il segmento di memoria dal proprio spazio degli indirizzi.
@@ -367,7 +370,8 @@ Un nuovo thread viene creato con la syscall interna \texttt{pthread\_create}, ch
    \item Un puntatore alla routine che contiene il codice che verrà eseguito dal thread
    \item Un puntatore all'eventuale argomento che si vuole passare alla routine stessa
 \end{itemize}
-Un thread termina quando finisce il codice della routine specificata all'atto della creazione del thread stesso, oppure quando, nel codice della routine, si chiama la syscall di terminazione \texttt{void pthread\_exit(void *value\_ptr);}. Quando termina, il thread restituisce il valore di return specificato nella routine, oppure, se chiama la \texttt{pthread\_exit}, il valore passato a questa syscall come argomento. \newline
+Un thread termina quando finisce il codice della routine specificata all'atto della creazione del thread stesso, oppure quando, nel codice della routine, si chiama la syscall di terminazione \texttt{void pthread\_exit(void *value\_ptr);}.\newline
+Quando termina, il thread restituisce il valore di return specificato nella routine, oppure, se chiama la \texttt{pthread\_exit}, il valore passato a questa syscall come argomento. \newline
 Un thread può sospendersi, in attesa della terminazione id un altro thread, chiamando la syscall \texttt{int pthread\_join(pthread\_t thread, void **value\_ptr);} che ritorna il valore restituito dal thread che termina.
 I thread di uno stesso processo condividono lo stesso spazio di indirizzamento, quindi vedono le stesse variabili: se uno modifica una variabile, tutti gli altri lo vedono. Nel caso di processi tradizionali, una cosa simile è possibile solo utilizzando esplicitamente un segmento di memoria condivisa. Un thread può anche avere variabili proprie, invisibili agli altri, se si utilizza la classe di variabili \texttt{thread\_specific\_data}. \newline
 Sono disponibili diversi strumenti per sincronizzare tra solo i thread di un processo, fra questi anche i semafori, i quali fanno parte della penultima versione dello standard POSIX. I pthreads mettono a disposizione anche dei meccanismi di sincronizzazione strutturati, quali le variabili condizionali.
@@ -419,9 +423,9 @@ Ad esempio, in una situazione come questa:
    \label{my-label}
    \begin{tabular}{lll}
       Processo & Tempo di arrivo & CPU-Burst \\ \hline
-      P1       & 0               & 24        \\
-      P2       & 2               & 3         \\
-      P3       & 4               & 3
+      $P_1$       & 0               & 24        \\
+      $P_2$       & 2               & 3         \\
+      $P_3$       & 4               & 3
    \end{tabular}
 \end{table}
 
@@ -432,9 +436,9 @@ otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
    \label{my-label}
    \begin{tabular}{llll}
       P  & Tr & Tw & Tt \\ \hline
-      P1 & 0  & 0  & 24 \\
-      P2 & 22 & 22 & 25 \\
-      P3 & 23 & 23 & 26
+      $P_1$ & 0  & 0  & 24 \\
+      $P_2$ & 22 & 22 & 25 \\
+      $P_3$ & 23 & 23 & 26
    \end{tabular}
 \end{table}
 
@@ -447,14 +451,14 @@ Ad esempio, considerando il seguente set di processi:
    \label{my-label}
    \begin{tabular}{ll}
       Processo & Burst Time \\ \hline
-      P1       & 6          \\
-      P2       & 8          \\
-      P3       & 7          \\
-      P4       & 3
+      $P_1$       & 6          \\
+      $P_2$       & 8          \\
+      $P_3$       & 7          \\
+      $P_4$       & 3
    \end{tabular}
 \end{table}
 
-L'ordine di esecuzione dei processi, utilizzando SJF, sarebbe: P4, P1, P3, P2. I tempi di attesa per ogni processo saranno quindi: 3 millisecondi per P1, 16ms per P2, 9ms per P3 e 0ms per P4. In questo scenario, il tempo di attesa medio è pari a (3 + 16 + 9 + 0)/4 = 7 millisecondi, mentre con FCFS sarebbe stato di 10,25ms. \newline
+L'ordine di esecuzione dei processi, utilizzando SJF, sarebbe: $P_4$, $P_1$, $P_3$, $P_2$. I tempi di attesa per ogni processo saranno quindi: 3 millisecondi per $P_1$, 16ms per $P_2$, 9ms per $P_3$ e 0ms per $P_4$. In questo scenario, il tempo di attesa medio è pari a (3 + 16 + 9 + 0)/4 = 7 millisecondi, mentre con FCFS sarebbe stato di 10,25ms. \newline
 Esistono due schemi di applicazione dell'algoritmo SJF:
 \begin{itemize}
 \item Senza prelazione (non preemptive)
@@ -468,10 +472,10 @@ Data la seguente situazione
    \label{my-label}
    \begin{tabular}{lll}
       Processo & Tempo di arrivo & CPU-Burst \\ \hline
-      P1       & 0               & 7         \\
-      P2       & 2               & 4         \\
-      P3       & 4               & 1         \\
-      P4       & 5               & 4
+      $P_1$       & 0               & 7         \\
+      $P_2$       & 2               & 4         \\
+      $P_3$       & 4               & 1         \\
+      $P_4$       & 5               & 4
    \end{tabular}
 \end{table}
 
@@ -482,10 +486,10 @@ otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
    \label{my-label}
    \begin{tabular}{llll}
       P  & Tr & Tw & Tt \\ \hline
-      P1 & 0  & 9  & 16 \\
-      P2 & 0  & 1  & 5  \\
-      P3 & 0  & 0  & 1  \\
-      P4 & 2  & 2  & 6
+      $P_1$ & 0  & 9  & 16 \\
+      $P_2$ & 0  & 1  & 5  \\
+      $P_3$ & 0  & 0  & 1  \\
+      $P_4$ & 2  & 2  & 6
    \end{tabular}
 \end{table}
 
@@ -496,10 +500,10 @@ Il seguente diagramma di Gantt rappresenta la situazione:
    \begin{tabular}{|c|rlrlrrlrlllr|l|l|l|l|}
       \hline
       Tempo & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{1}                        & \multicolumn{1}{l|}{2}                        & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{7} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{9} & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & 12 & 13 & 14 & 15 \\ \hline
-      P1    & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r}{}                          & \multicolumn{5}{r|}{\cellcolor[HTML]{656565}}                                                                                                                                                                                                                                                                              \\ \hline
-      P2    & \multicolumn{2}{r}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{1}{r|}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r|}{}                                                                                                                                                                                                       \\ \hline
-      P3    & \multicolumn{4}{r}{}                         & \multicolumn{1}{r|}{\cellcolor[HTML]{656565}} & \multicolumn{11}{r|}{}                                                                                                                                                                                                                                                                                                     \\ \hline
-      P4    & \multicolumn{7}{r}{}                         & \multicolumn{4}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{5}{r|}{}                                                                                                                                                                                                                                                                                                      \\ \hline
+      $P_1$    & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r}{}                          & \multicolumn{5}{r|}{\cellcolor[HTML]{656565}}                                                                                                                                                                                                                                                                              \\ \hline
+      $P_2$    & \multicolumn{2}{r}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{1}{r|}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r|}{}                                                                                                                                                                                                       \\ \hline
+      $P_3$    & \multicolumn{4}{r}{}                         & \multicolumn{1}{r|}{\cellcolor[HTML]{656565}} & \multicolumn{11}{r|}{}                                                                                                                                                                                                                                                                                                     \\ \hline
+      $P_4$    & \multicolumn{7}{r}{}                         & \multicolumn{4}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{5}{r|}{}                                                                                                                                                                                                                                                                                                      \\ \hline
    \end{tabular}
 \end{table}
 
@@ -528,11 +532,11 @@ Esempio di Priority Scheduling:
    \begin{tabular}{|c|c|c|c|}
       \hline
       Processo & T. di arrivo & Priorità & CPU-Burst \\ \hline
-      P1       & 1            & 3        & 10        \\ \hline
-      P2       & 0            & 1        & 1         \\ \hline
-      P3       & 2            & 3        & 2         \\ \hline
-      P4       & 0            & 4        & 1         \\ \hline
-      P5       & 1            & 2        & 5         \\ \hline
+      $P_1$       & 1            & 3        & 10        \\ \hline
+      $P_2$       & 0            & 1        & 1         \\ \hline
+      $P_3$       & 2            & 3        & 2         \\ \hline
+      $P_4$       & 0            & 4        & 1         \\ \hline
+      $P_5$       & 1            & 2        & 5         \\ \hline
    \end{tabular}
 \end{table}
 
@@ -542,11 +546,11 @@ Esempio di Priority Scheduling:
    \begin{tabular}{|c|c|c|c|}
       \hline
       Processo & Tr & Tw & Tt \\ \hline
-      P1       & 5  & 5  & 15 \\ \hline
-      P2       & 0  & 0  & 1  \\ \hline
-      P3       & 14 & 14 & 16 \\ \hline
-      P4       & 18 & 18 & 19 \\ \hline
-      P5       & 0  & 0  & 5  \\ \hline
+      $P_1$       & 5  & 5  & 15 \\ \hline
+      $P_2$       & 0  & 0  & 1  \\ \hline
+      $P_3$       & 14 & 14 & 16 \\ \hline
+      $P_4$       & 18 & 18 & 19 \\ \hline
+      $P_5$       & 0  & 0  & 5  \\ \hline
    \end{tabular}
 \end{table}
 
@@ -557,11 +561,11 @@ Esempio di Priority Scheduling:
    \begin{tabular}{|c|ccccc|cccccccccc|ccc|c|}
       \hline
       0                                                 & 1                                               & 2                                                & 3                                               & 4                          & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\ \hline
-                                                        & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{\cellcolor[HTML]{656565}P1} & \multicolumn{3}{c|}{}                           &                                                                                                  \\ \hline
-      \cellcolor[HTML]{656565}{\color[HTML]{000000} P2} & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{}                           &                                                                                                  \\ \hline
-                                                        & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{\cellcolor[HTML]{656565}P3} &                                                                                                  \\ \hline
-                                                        & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{}                           & \cellcolor[HTML]{656565}P4                                                                       \\ \hline
-                                                        & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}P5} & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{}                           &                                                                                                  \\ \hline
+                                                        & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{\cellcolor[HTML]{656565}$P_1$} & \multicolumn{3}{c|}{}                           &                                                                                                  \\ \hline
+      \cellcolor[HTML]{656565}{\color[HTML]{000000} $P_2$} & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{}                           &                                                                                                  \\ \hline
+                                                        & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{\cellcolor[HTML]{656565}$P_3$} &                                                                                                  \\ \hline
+                                                        & \multicolumn{5}{c|}{}                           & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{}                           & \cellcolor[HTML]{656565}$P_4$                                                                       \\ \hline
+                                                        & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}$P_5$} & \multicolumn{10}{c|}{}                           & \multicolumn{3}{c|}{}                           &                                                                                                  \\ \hline
    \end{tabular}
 \end{table}
 
@@ -1302,7 +1306,7 @@ Sia request[i][] il vettore delle richieste del processo $P_i$. Se request[i][j]
 
 \paragraph{Esempio}
 \begin{itemize}
-   \item 5 processi: P0, P1, P2, P3, P4
+   \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
    \item 3 risorse: A (10 istanze), B (5 istanze), C (7 istanze)
 \end{itemize}
 Fotografia al tempo $T_0$
@@ -1313,14 +1317,14 @@ Fotografia al tempo $T_0$
                                         & \multicolumn{3}{c|}{\textbf{Allocation}} & \multicolumn{3}{c|}{\textbf{Max}} & \multicolumn{3}{c|}{\textbf{Available}} & \multicolumn{3}{c|}{\textbf{Need}}                                                                                                         \\ \cline{2-13}
                                         & \textbf{A}                               & \textbf{B}                        & \textbf{C}                              & \textbf{A}                         & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\ \hline
       \multicolumn{1}{|c|}{\textbf{P0}} & 0                                        & 1                                 & 0                                       & 7                                  & 5          & 3          & 3          & 3          & 2          & 7          & 4          & 3          \\
-      \multicolumn{1}{|c|}{\textbf{P1}} & 2                                        & 0                                 & 0                                       & 3                                  & 2          & 2          &            &            &            & 1          & 2          & 2          \\
-      \multicolumn{1}{|c|}{\textbf{P2}} & 3                                        & 0                                 & 2                                       & 9                                  & 0          & 2          &            &            &            & 6          & 0          & 0          \\
-      \multicolumn{1}{|c|}{\textbf{P3}} & 2                                        & 1                                 & 1                                       & 2                                  & 2          & 2          &            &            &            & 0          & 1          & 1          \\
-      \multicolumn{1}{|c|}{\textbf{P4}} & 0                                        & 0                                 & 2                                       & 4                                  & 3          & 3          &            &            &            & 4          & 3          & 1          \\ \hline
+      \multicolumn{1}{|c|}{\textbf{$P_1$}} & 2                                        & 0                                 & 0                                       & 3                                  & 2          & 2          &            &            &            & 1          & 2          & 2          \\
+      \multicolumn{1}{|c|}{\textbf{$P_2$}} & 3                                        & 0                                 & 2                                       & 9                                  & 0          & 2          &            &            &            & 6          & 0          & 0          \\
+      \multicolumn{1}{|c|}{\textbf{$P_3$}} & 2                                        & 1                                 & 1                                       & 2                                  & 2          & 2          &            &            &            & 0          & 1          & 1          \\
+      \multicolumn{1}{|c|}{\textbf{$P_4$}} & 0                                        & 0                                 & 2                                       & 4                                  & 3          & 3          &            &            &            & 4          & 3          & 1          \\ \hline
    \end{tabular}
 \end{table}
 Al tempo $T_0$ il sistema è in uno stato safe e $<P_1, P_3, P_4, P_2, P_0>$ è una sequenza safe. \newline
-Al tempo $T_1$, P1 richiede (1,0,2): Request\_1 $<=$ Available? (1,0,2) $<=$ (3,3,2) ==> OK. Abbiamo quindi una nuova situazione:
+Al tempo $T_1$, $P_1$ richiede (1,0,2): Request\_1 $<=$ Available? (1,0,2) $<=$ (3,3,2) ==> OK. Abbiamo quindi una nuova situazione:
 \begin{figure}[htb]
    \includegraphics[width=7cm]{img/bank1.JPG}
 \end{figure}
@@ -1390,7 +1394,7 @@ Le strutture dati utilizzate sono simili a quelle dell'algoritmo del banchiere:
 
 \paragraph{Esempio}
 \begin{itemize}
-   \item 5 processi: P0, P1, P2, P3, P4
+   \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
    \item 3 tipi di risorsa: A (7 istanze), B (2 istanze), C (6 istanze)
 \end{itemize}
 Fotografia al tempo $T_0$
@@ -1409,7 +1413,7 @@ Siamo in una situazione di deadlock?
    - i=3	req[3] = (1,0,0) <= work 		OK
    work = work + (2,1,1) = (5,2,4)	finish[3] = true	P_3!
    - ecc...
-   - La sequenza <P0, P2, P3, P1, P4> dà finish[i] = true per ogni i
+   - La sequenza <P0, $P_2$, $P_3$, $P_1$, $P_4$> dà finish[i] = true per ogni i
 \end{Verbatim}
 
 \subsection{Utilizzo dell'algoritmo di rilevazione-ripristino}
@@ -1591,14 +1595,14 @@ Ad esempio, dato un indirizzo: \newline
 \begin{table}[htb]
    \centering
    \begin{tabular}{ccc}
-      p1                               & p2                              & offset                            \\ \hline
+      $P_1$                               & $P_2$                              & offset                            \\ \hline
       \multicolumn{1}{|c|}{0000000001} & \multicolumn{1}{c|}{0000000011} & \multicolumn{1}{c|}{000000000100} \\ \hline
    \end{tabular}
 \end{table} \newline
 Si avrà:
 \begin{itemize}
-   \item p1=1 : recuperare la tabella di livello 2 corrispondente all'indirizzo indicato dalla prima riga
-   \item p2=3 : recuperare l'indirizzo indicato nella teza riga della tabella di livello 2
+   \item $P_1$=1 : recuperare la tabella di livello 2 corrispondente all'indirizzo indicato dalla prima riga
+   \item $P_2$=3 : recuperare l'indirizzo indicato nella teza riga della tabella di livello 2
    \item offset=4 : da sommare al valore fornito nella terza riga della tabella di livello 2
 \end{itemize}
 Così facendo, ogni livello è memorizzato come una tabella separata in memoria, quindi la conversione dell'indirizzo logico in quello fisico può richiedere n+1 accessi in memoria, per una paginazione di n livelli. Tuttavia, il TLB mantiene le prestazioni a livelli ragionevoli.
