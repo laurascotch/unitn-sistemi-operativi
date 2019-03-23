@@ -11,6 +11,7 @@
 \usepackage{wrapfig}
 \usepackage{graphicx}
 \usepackage{fancyvrb}
+\usepackage{tikz}
 
 \title{%
   Sistemi Operativi \\
@@ -497,7 +498,7 @@ Il seguente diagramma di Gantt rappresenta la situazione:
 
 \begin{table}[htb]
    \centering
-   \begin{tabular}{|c|rlrlrrlrlllr|l|l|l|l|}
+   \begin{tabular}{ |c|rlrlrrlrlllr|l|l|l|l| }
       \hline
       Tempo & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{1}                        & \multicolumn{1}{l|}{2}                        & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{7} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{9} & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & 12 & 13 & 14 & 15 \\ \hline
       $P_1$    & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r}{}                          & \multicolumn{5}{r|}{\cellcolor[HTML]{656565}}                                                                                                                                                                                                                                                                              \\ \hline
@@ -512,13 +513,16 @@ Il seguente diagramma di Gantt rappresenta la situazione:
 La vera difficoltà, per questo algoritmo, è il calcolo del prossimo CPU-burst, è infatti possibile solo farne una stima basandosi sulle lunghezze dei burst precedenti. Si utilizza quindi una media esponenziale. La formula contiene tre variabili fondamentali:
 \begin{itemize}
    \item $t_n =$ lunghezza reale dell' n-esimo burst
-   \item $t_{n+1} =$ valore stimato del prossimo burst
+   \item $\tau_{n+1} =$ valore stimato del prossimo burst
    \item $\alpha =$ coefficiente compreso tra 0 e 1 (esclusi)
 \end{itemize}
+
 Si ottiene la formula: \newline
 $$
-   t_{n+1} = \alpha t_n + (1 - \alpha)t_{n}
+   \tau_{n+1} = \alpha t_n + (1 - \alpha)t_n
 $$
+
+Al variare del coefficiente $\alpha$, la stima tende ad avvicinarsi alle ultime misurazioni se $\alpha \approx 0$, oppure usa più la storia recente se $\alpha \approx 1$.
 
 \subsubsection{Priority Scheduling}
 In questo algoritmo viene associata una priorità a ogni processo e la CPU viene allocata a quello che ha la più alta priorità. SJF è un particolare tipo di scheduling a priorità (priorità = 1/lunghezza\_burst\_successivo). \newline
@@ -573,15 +577,36 @@ Esempio di Priority Scheduling:
 \subsubsection{Higher Response Ratio Next (HRRN)}
 Un caso particolare dello scheduling a priorità e dello SJF è l'Higher Response Ratio Next. Questo algoritmo non-preemptive assegna la priorità a un processo basandosi sul tempo di attesa e sulla durata dei suoi CPU-burst. Sono quindi favoriti i processi che completano in poco tempo o che hanno atteso molto.
 
-La priorità è calcolata secondo la seguente formula: \newline
+La priorità è calcolata secondo la seguente formula:
+
 $$
    p = 1 + t_{attesa}/t_{burst}
 $$
 
+Questa priorità viene ricalcolata alla fine di ogni processo.
+
 \subsubsection{Round Robin (RR)}
-Il Round Robin è un algoritmo di scheduling basato sul time-out. Viene definita una piccola unità di tempo, chiamata quanto, di durata generalmente compresa tra i 10 e i 100 millisecondi. A ogni processo viene assegnata un quanto del tempo di CPU e al termine dell'unità di tempo, il processo è prelazionato e messo nella ready queue, che viene gestita come una coda circolare. Se un processo ha un tempo di burst minore del quanto, rilascerà la CPU volontariamente. Il Round Robin è praticamente un FCFS con prelazione.
-L'approccio RR può risultare in un gran numero di context switches, in base alla grandezza del quanto in relazione alle durate dei CPU-bursts dei processi. Per questo motivo è molto importante scegliere una dimensione ragionevole del quanto; la scelta migliore è far sì che l' 80\% dei burst di CPU siano minori del quanto.\newline
+Il Round Robin è un algoritmo di scheduling basato sul time-out. Viene definita una piccola unità di tempo, chiamata \textit{quanto}, di durata generalmente compresa tra i 10 e i 100 millisecondi. A ogni processo viene assegnata un quanto del tempo di CPU e al termine dell'unità di tempo, il processo è prelazionato e messo nella ready queue, che viene gestita come una coda circolare. Se un processo ha un tempo di burst minore del quanto, rilascerà la CPU volontariamente. Il Round Robin è praticamente un FCFS con prelazione.
+L'approccio RR può risultare in un gran numero di context switches, in base alla grandezza del quanto in relazione alle durate dei CPU-bursts dei processi. Per questo motivo è molto importante scegliere una dimensione ragionevole del quanto: infatti, quanti troppo piccoli rendono gli overhead dei context switch esagerati, quanti troppo grandi la rendono essenzialmente una FCFS senza prelazioni. La scelta migliore è far sì che l' 80\% dei burst di CPU siano minori del quanto, e che il quanto stesso sia $\gg$ del tempo del context switch.\newline
 In quanto a prestazioni, il tempo di turnaround è maggiore o almeno uguale a quello di SJF, mentre il tempo di risposta è minore o al più ugale a quello di SJF.
+
+\begin{center}
+   \begin{tabular}{ ccc }
+      Suddivisione & Quanto & Context switch \\
+      \begin{tikz}
+         \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0);
+      \end{tikz}
+      & 12 & 0 \\
+      \begin{tikz}
+         \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0) -- (2.4, 0) -- (2.4, 0.3);
+      \end{tikz}
+      & 6 & 1 \\
+      \begin{tikz}
+         \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0) -- (0.4, 0) -- (0.4, 0.3) -- (0.8, 0.3) -- (0.8, 0) -- (1.2,0) -- (1.2, 0.3) -- (1.6, 0.3) -- (1.6, 0) -- (2.0, 0) -- (2.0, 0.3) -- (2.4, 0.3) -- (2.4, 0) -- (2.8, 0) -- (2.8, 0.3) -- (3.2, 0.3) -- (3.2, 0) -- (3.6, 0) -- (3.6, 0.3);
+      \end{tikz}
+      & 1 & 9  
+   \end{tabular}
+\end{center}
 
 \subsubsection{Code multilivello}
 Una prassi molto comune è dividere i processi in foreground (interattivi) da quelli in background (batch). Un algoritmo a code multilivello partiziona la ready queue in molte code separate, ognuna con il suo algoritmo di scheduling. Ogni priorità ha priorità assoluta su quelle di livello più basso. Poiché tutti i processi di una coda potrebbero andare in starvation per via del basso livello, c'è bisogno di algoritmi per lo scheduling tra code.
