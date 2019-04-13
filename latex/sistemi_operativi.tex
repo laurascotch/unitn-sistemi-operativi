@@ -32,9 +32,9 @@
 
 Un sistema operativo è un programma (o meglio, un insieme di programmi) che offre un ambiente per controllare e coordinare l'utilizzo dell'hardware da parte dei programmi applicativi. Tra le principali funzioni di un sistema operativo troviamo:
 \begin{enumerate}
-   \item facilitare l'uso del computer per l'utente;
-   \item rendere efficiente l'uso dell'hardware;
-   \item evitare conflitti nell'allocazione delle risorse software e hardware;
+    \item facilitare l'uso del computer per l'utente;
+    \item rendere efficiente l'uso dell'hardware;
+    \item evitare conflitti nell'allocazione delle risorse software e hardware;
 \end{enumerate}
 Alcuni Sistemi Operativi si progettano per essere di uso agevole, essere agevoli o per possedere entrambe le qualità. In ragione della sua complessità, un Sistema Operativo deve essere costruito gradualmente.
 
@@ -42,10 +42,10 @@ Alcuni Sistemi Operativi si progettano per essere di uso agevole, essere agevoli
 
 Un sistema di calcolo si può suddividere in quattro elementi:
 \begin{enumerate}
-   \item Dispositivi fisici: CPU, memoria e dispositivi I/O
-   \item Programmi applicativi: definiscono il modo in cui si usano queste risorse per la risoluzione dei problemi degli utenti
-   \item Utenti: coloro che utilizzano il calcolatore
-   \item SO: controlla e coordina l’uso dei dispositivi da parte dei programmi applicativi
+    \item Dispositivi fisici: CPU, memoria e dispositivi I/O
+    \item Programmi applicativi: definiscono il modo in cui si usano queste risorse per la risoluzione dei problemi degli utenti
+    \item Utenti: coloro che utilizzano il calcolatore
+    \item SO: controlla e coordina l’uso dei dispositivi da parte dei programmi applicativi
 \end{enumerate}
 In poche parole, un sistema di calcolo si può considerare come l’insieme dei suoi elementi fisici, programmi e dati. Il Sistema Operativo (\textit{SO}) offre gli strumenti per impiegare correttamente tali risorse fornendo un ambiente nel quale i programmi possono lavorare in modo utile, ovvero un'astrazione dei componenti dell'hardware. Il calcolatore vede il SO come un assegnatore di risorse, infatti esso le gestisce e le assegna ai programmi e agli utenti in modo tale che il sistema di calcolo operi in modo equo ed efficiente. Un SO è il solo programma che funziona sempre nel calcolatore (kernel).
 
@@ -117,13 +117,13 @@ I programmi di sistema, conosciuti anche come utilità di sistema (system utilit
 
 Si distinguono le seguenti categorie di programmi di sistema:
 \begin{enumerate}
-   \item Gestione e manipolazione dei files (creare, copiare, cancellare, spostare, ecc.)
-   \item Informazioni sullo stato di sistema (data, memoria libera, ecc.)
-   \item Editor di testo
-   \item Supporto ai linguaggi di programmazione (compilatori, assemblatori, debugger, interpreti, sia integrati nel sistema che scaricabili separatamente)
-   \item Interprete dei comandi
-   \item Programmi di gestione della rete
-   \item Servizi di background e utility varie (per svariati scopi)
+    \item Gestione e manipolazione dei files (creare, copiare, cancellare, spostare, ecc.)
+    \item Informazioni sullo stato di sistema (data, memoria libera, ecc.)
+    \item Editor di testo
+    \item Supporto ai linguaggi di programmazione (compilatori, assemblatori, debugger, interpreti, sia integrati nel sistema che scaricabili separatamente)
+    \item Interprete dei comandi
+    \item Programmi di gestione della rete
+    \item Servizi di background e utility varie (per svariati scopi)
 \end{enumerate}
 
 Accanto ai programmi di sistema troviamo gli application programs, utili per risolvere svariati problemi. Appartengono a questa categoria i browser web, gli editor di testi complessi, i gestori per fogli di calcolo, sistemi per databases, giochi, eccetera.
@@ -180,21 +180,21 @@ I primi computer permettevano l'esecuzione di un solo programma alla volta. Ques
 \subsection{Cos'è un processo}
 Si è definito un processo come un programma in esecuzione, ma è molto più del semplice codice del programma. Un qualsiasi processo consiste di:
 \begin{enumerate}
-   \item Istruzioni, cioè il codice del programma
-   \item Dati, ad esempio le variabili globali
-   \item Stack, il quale contiene le variabili locali e le chiamate a procedura e i relativi parametri
-   \item Heap, ovvero la memoria allocata dinamicamente durante l'esecuzione
-   \item Attributi: id, stato, controllo, program counter (ovvero il valore che indica l'attività corrente), valori dei registri, informazioni sulla memoria, informazioni sullo stato dell'I/O, sull'utilizzo del sistema (CPU) e di scheduling (ad esempio: priorità).
+    \item Istruzioni, cioè il codice del programma
+    \item Dati, ad esempio le variabili globali
+    \item Stack, il quale contiene le variabili locali e le chiamate a procedura e i relativi parametri
+    \item Heap, ovvero la memoria allocata dinamicamente durante l'esecuzione
+    \item Attributi: id, stato, controllo, program counter (ovvero il valore che indica l'attività corrente), valori dei registri, informazioni sulla memoria, informazioni sullo stato dell'I/O, sull'utilizzo del sistema (CPU) e di scheduling (ad esempio: priorità).
 \end{enumerate}
 
 \subsection{Stato di un processo}
 Durante la sua esecuzione, un processo evolve attraverso diversi stati. Un processo potrebbe trovarsi in uno dei seguenti stati:
 \begin{enumerate}
-   \item New (Nuovo): creazione del processo
-   \item Running (In esecuzione)
-   \item Waiting (In attesa): il processo aspetta che succeda un determinato evento, ad esempio un I/O.
-   \item Ready: il processo è pronto ad essere assegnato al processore
-   \item Terminated (Finito): il processo ha terminato la sua esecuzione e ha restituito risorse
+    \item New (Nuovo): creazione del processo
+    \item Running (In esecuzione)
+    \item Waiting (In attesa): il processo aspetta che succeda un determinato evento, ad esempio un I/O.
+    \item Ready: il processo è pronto ad essere assegnato al processore
+    \item Terminated (Finito): il processo ha terminato la sua esecuzione e ha restituito risorse
 \end{enumerate}
 
 Bisogna notare che un solo processo alla volta può essere in esecuzione su un processore, ma molti processi potrebbero essere ready o waiting.
@@ -212,9 +212,9 @@ Quando un processo entra nel sistema, è inserito nella job queue, che contiene 
 \subsubsection{Operazione di dispatch}
 Un processo inizialmente è inserito nella ready queue. Esso aspetta qui finché non viene selezionato dallo short-term scheduler e il dispatcher non gli assegna il controllo della CPU. Le operazioni compiute dal dispatcher sono:
 \begin{enumerate}
-   \item Cambio di contesto: viene salvato il Process Control Block (serie di informazioni sul processo) del processo che esce e viene caricato il PCB del processo entrante
-   \item Passaggio alla modalità utente: all'inizio della fase di dispatch il processo si troca in modalità kernel
-   \item Salto all'istruzione da eseguire del processo appena arrivato nella CPU
+    \item Cambio di contesto: viene salvato il Process Control Block (serie di informazioni sul processo) del processo che esce e viene caricato il PCB del processo entrante
+    \item Passaggio alla modalità utente: all'inizio della fase di dispatch il processo si troca in modalità kernel
+    \item Salto all'istruzione da eseguire del processo appena arrivato nella CPU
 \end{enumerate}
 
 \subsubsection{Cambio di contesto}
@@ -241,17 +241,17 @@ Poiché la chiamata \texttt exec() sovrascrive l'address space di un processo co
 Un processo termina quando finisce di eseguire l'ultima istruzione e chiede al Sistema Operativo di cancellarlo utilizzando la chiamata \texttt{exit()}. A quel punto il processo potrebbe ritornare il valore dello stato al processo padre (tramite la funzione \texttt{wait()}). Tutte le risorse sono deallocate dal Sistema Operativo. \newline
 Un processo potrebbe altrimenti essere forzatamente terminato dal padre, per una varietà di ragioni:
 \begin{itemize}
-   \item Per eccesso nell'uso delle risorse
-   \item Il compito richiesto al figlio non è più necessario
-   \item Il padre termina e il Sistema Operativo non permette ai figli di sopravvivere senza il padre. Se un figlio sopravvive al padre, viene chiamato \textit{orfano}, mentre se un processo figlio ha terminato ma il padre non ha ancora invocato la \texttt{wait()}, si dice essere un processo \textit{zombie}.
+    \item Per eccesso nell'uso delle risorse
+    \item Il compito richiesto al figlio non è più necessario
+    \item Il padre termina e il Sistema Operativo non permette ai figli di sopravvivere senza il padre. Se un figlio sopravvive al padre, viene chiamato \textit{orfano}, mentre se un processo figlio ha terminato ma il padre non ha ancora invocato la \texttt{wait()}, si dice essere un processo \textit{zombie}.
 \end{itemize}
 
 \subsection{Gestione dei processi del sistema operativo}
 Il Sistema Operativo è un programma a tutti gli effetti, ma può essere considerato un processo? Esistono tre opzioni diverse per l'esecuzione del kernel:
 \begin{enumerate}
-   \item Eseguire il kernel separatamente
-   \item Eseguire il kernel all'interno di un processo utente
-   \item Eseguire il kernel come processo
+    \item Eseguire il kernel separatamente
+    \item Eseguire il kernel all'interno di un processo utente
+    \item Eseguire il kernel come processo
 \end{enumerate}
 
 \paragraph{Esecuzione separata del kernel} Il kernel esegue ``al di fuori'' di ogni processo, ovvero il Sistema Operativo possiede uno spazio riservato in memoria, prende il controllo del sistema ed è sempre in esecuzione in modo privilegiato. In questa opzione, il concetto di processo è applicato solo ai processi utente. Questa soluzione era tipica dei primi Sistemi Operativi.
@@ -267,10 +267,10 @@ I processi che eseguono concorrenzialmente su un sistema possono essere indipend
 
 Ci sono svariati motivi per permettere la cooperazione tra processi:
 \begin{itemize}
-   \item Condivisione di informazioni: uno stesso dato potrebbe servire a molti utenti
-   \item Accelerazione del calcolo: si può spezzare una task in tante subtasks che eseguiranno in parallelo le une con le altre
-   \item Modularità
-   \item Convenienza: un singolo utente potrebbe lavorare a molte task contemporaneamente
+    \item Condivisione di informazioni: uno stesso dato potrebbe servire a molti utenti
+    \item Accelerazione del calcolo: si può spezzare una task in tante subtasks che eseguiranno in parallelo le une con le altre
+    \item Modularità
+    \item Convenienza: un singolo utente potrebbe lavorare a molte task contemporaneamente
 \end{itemize}
 
 I processi cooperanti richiedono dei meccanismi di comunicazione interprocesso (interprocess communication - IPC) per scambiare dati e informazioni. Esistono due modelli fondamentali: memoria condivisa (shared memory) e passaggio di messaggi (message passing).
@@ -280,14 +280,14 @@ Il message passing fornisce un meccanismo che permette ai processi di comunicare
 
 Le IPC forniscono due operazioni:
 \begin{itemize}
-   \item \texttt{send(message)}
-   \item \texttt{receive(message)}
+    \item \texttt{send(message)}
+    \item \texttt{receive(message)}
 \end{itemize}
 Se due processi P e Q vogliono comunicare, devono stabilire un canale di comunicazione e quindi scambiarsi messaggi via send e receive. Il canale di comunicazione può essere implementato in diversi modi, sia a livello fisico che a livello logico. Di seguito sono riportati diversi metodi per l'implementazione logica del canale:
 \begin{itemize}
-   \item Comunicazione diretta o indiretta
-   \item Comunicazione sincrona o asincrona
-   \item Buffering automatico o esplicito
+    \item Comunicazione diretta o indiretta
+    \item Comunicazione sincrona o asincrona
+    \item Buffering automatico o esplicito
 \end{itemize}
 
 \paragraph{Comunicazione diretta}
@@ -298,16 +298,16 @@ Con la comunicazione indiretta i messaggi sono mandati e ricevuti tramite mailbo
 
 In questo schema, un canale di comunicazione ha le seguenti proprietà:
 \begin{itemize}
-   \item Un canale è stabilito tra una coppia di processi solo se questi hanno una mailbox in comune
-   \item Un canale può essere associato a più di due processi
-   \item Tra ogni coppia di processi può esistere un certo numero di collegamenti, con ognuno di essi corrispondente a una mailbox
+    \item Un canale è stabilito tra una coppia di processi solo se questi hanno una mailbox in comune
+    \item Un canale può essere associato a più di due processi
+    \item Tra ogni coppia di processi può esistere un certo numero di collegamenti, con ognuno di essi corrispondente a una mailbox
 \end{itemize}
 
 Si supponga ora che i processi $P_1$, $P_2$ e $P_3$ condividano la mailbox A. Se $P_1$ manda un messaggio ad A e $P_2$ e $P_3$ eseguono una receive() da A, chi riceverà il messaggio di $P_1$? Esistono diversi punti di vista:
 \begin{itemize}
-   \item Permettere a un link di essere associato con soli due processi, eliminando il problema
-   \item Permettere a un solo processo per volta di effettuare la receive()
-   \item Permettere al sistema di selezionare arbitrariamente quale processo riceverà il messaggio, magari definendo un algoritmo per farlo.
+    \item Permettere a un link di essere associato con soli due processi, eliminando il problema
+    \item Permettere a un solo processo per volta di effettuare la receive()
+    \item Permettere al sistema di selezionare arbitrariamente quale processo riceverà il messaggio, magari definendo un algoritmo per farlo.
 \end{itemize}
 
 \paragraph{Sincronizzazione}
@@ -319,10 +319,10 @@ La comunicazione interprocesso che utilizza la memoria condivisa richiede che i 
 \subsubsection{Pipe}
 Una pipe agisce come un condotto che permette a due processi di comunicare. Nell'implementare una pipe bisogna considerare i seguenti problemi:
 \begin{itemize}
-   \item La comunicazione è unidirezionale o bidirezionale?
-   \item Nel caso sia bidirezionale, è half-duplex o full-duplex?
-   \item Deve esistere una relazione tra i processi?
-   \item Possono comunicare attraverso una rete?
+    \item La comunicazione è unidirezionale o bidirezionale?
+    \item Nel caso sia bidirezionale, è half-duplex o full-duplex?
+    \item Deve esistere una relazione tra i processi?
+    \item Possono comunicare attraverso una rete?
 \end{itemize}
 \paragraph{Pipe ordinarie} Permettono la comunicazione in uno stile standard produttore-consumatore: il produttore scrive a un capo della pipe (write-end) e il consumatore legge dall'altro capo (read-end). Se è richiesta una comunicazione bidirezionale, devono essere utilizzate due pipe, poiché le pipe ordinarie sono unidirezionali (e richiedono una relazione padre-figlio tra i processi). \newline
 Nei sistemi UNIX, le pipe ordinarie si costruiscono con la funzione \texttt{pipe(int fd[])}. Questa funzione crea una pipe cui si accede atttraverso il file descriptor \texttt{fd[]}: \texttt{fd[0]} è la read-end, mentre \texttt{fd[1]} è la write-end. Si può quindi accedere alla pipe utilizzando le chiamate di sistema \texttt{read()} e \texttt{write()}. Non è possibile accedere a una pipe se si è al di fuori del processo che l'ha creata. Dato che una pipe è un tipo ``speciale'' di file, i processi figli la ereditano dal padre. In generale, il processo padre crea una pipe, poi manda una \texttt{fork()} che crea il figlio. Cosa succede dopo dipende da come i dati fluiscono nella pipe.
@@ -340,10 +340,10 @@ La maggior parte dei software eseguiti sui moderni computer sono multithreaded. 
 
 \subsection{Vantaggi}
 \begin{enumerate}
-   \item \textbf{Riduzione del tempo di risposta} Mentre una thread è bloccata nel completamento di una task, un'altra può continuare ad interagire con l'utente
-   \item \textbf{Condivisione delle risorse} I processi possono condividere le risorse solo attraverso meccanismi di shared memory e scambio di messaggi. I threads condividono la memoria e le risorse allocate al processo al quale appartengono.
-   \item \textbf{Economia} L'allocazione di risorse e memoria per la creazione di un processo è costosa. Poiché i threads condividono le risorse del processo al quale appartengono, è più economico creare e fare context-switch tra i thread.
-   \item \textbf{Scalabilità} In un'architettura a multiprocessore, i thread possono essere eseguiti in parallelo su core diversi.
+    \item \textbf{Riduzione del tempo di risposta} Mentre una thread è bloccata nel completamento di una task, un'altra può continuare ad interagire con l'utente
+    \item \textbf{Condivisione delle risorse} I processi possono condividere le risorse solo attraverso meccanismi di shared memory e scambio di messaggi. I threads condividono la memoria e le risorse allocate al processo al quale appartengono.
+    \item \textbf{Economia} L'allocazione di risorse e memoria per la creazione di un processo è costosa. Poiché i threads condividono le risorse del processo al quale appartengono, è più economico creare e fare context-switch tra i thread.
+    \item \textbf{Scalabilità} In un'architettura a multiprocessore, i thread possono essere eseguiti in parallelo su core diversi.
 \end{enumerate}
 
 \subsection{Stati di un thread}
@@ -367,10 +367,10 @@ Per usare i pthreads in un programma C, è necessario includere la libreria \tex
 Un thread ha vari attributi, che possono essere cambiati, come la sua priorità e la dimensione del suo stack. Gli attributi di un thread sono contenuti in un oggetto di tipo \texttt{pthread\_attr\_t} e possono essere inizializzati con i valori di default con la syscall \texttt{int pthread\_attr\_init(pthread\_attr\_t *attr)}. Il ``contenitore di attributi'' \texttt{*attr} potrà essere passato alla system call che crea un nuovo thread. \newline
 Un nuovo thread viene creato con la syscall interna \texttt{pthread\_create}, che accetta quattro argomenti:
 \begin{itemize}
-   \item Una variabile di tipo \texttt{pthread\_t}, contenente l'identificativo (\texttt{tid}) del thread creato
-   \item Un oggetto \texttt{*attr}, che conterrà gli attributi da dare al thread. Se si vogliono usare gli attributi di default, si può usare \texttt{NULL}
-   \item Un puntatore alla routine che contiene il codice che verrà eseguito dal thread
-   \item Un puntatore all'eventuale argomento che si vuole passare alla routine stessa
+    \item Una variabile di tipo \texttt{pthread\_t}, contenente l'identificativo (\texttt{tid}) del thread creato
+    \item Un oggetto \texttt{*attr}, che conterrà gli attributi da dare al thread. Se si vogliono usare gli attributi di default, si può usare \texttt{NULL}
+    \item Un puntatore alla routine che contiene il codice che verrà eseguito dal thread
+    \item Un puntatore all'eventuale argomento che si vuole passare alla routine stessa
 \end{itemize}
 Un thread termina quando finisce il codice della routine specificata all'atto della creazione del thread stesso, oppure quando, nel codice della routine, si chiama la syscall di terminazione \texttt{void pthread\_exit(void *value\_ptr);}.\newline
 Quando termina, il thread restituisce il valore di return specificato nella routine, oppure, se chiama la \texttt{pthread\_exit}, il valore passato a questa syscall come argomento. \newline
@@ -395,10 +395,10 @@ Ogni volta che la CPU rimane inutilizzata, il sistema operativo deve selezionare
 \subsection{Prelazione (Preemption)}
 Le decisioni di scheduling della CPU posso essere prese principalmente sotto quattro circostanze:
 \begin{enumerate}
-   \item Quando un processo cambia stato da ``in esecuzione'' a ``in attesa''
-   \item Quando un processo cambia stato da ``in esecuzione'' e ``pronto''
-   \item Quando un processo cambia stato da ``in attesa'' a ``pronto''
-   \item Quando un processo termina
+    \item Quando un processo cambia stato da ``in esecuzione'' a ``in attesa''
+    \item Quando un processo cambia stato da ``in esecuzione'' e ``pronto''
+    \item Quando un processo cambia stato da ``in attesa'' a ``pronto''
+    \item Quando un processo termina
 \end{enumerate}
 Per le situazioni 1 e 4 non si può far altro che scegliere un nuovo processo, mentre per la 2 e la 3 ci sono delle possibilità di scelta.
 Quando lo scheduling avviene sotto le circostanze 1 e 4, si dice che è non-preemptive, o senza prelazione, e ciò significa che il processo che detiene la CPU non la rilascia fino al termine del burst. \newline
@@ -407,11 +407,11 @@ Lo scheduling con prelazione, o preemptive, invece implica che il processo che d
 \subsection{Metriche di scheduling}
 Algoritmi di scheduling differenti rispondono a esigenze differenti. Di seguito sono riportati alcuni dei criteri per preferire un algoritmo piuttosto che un altro.
 \begin{itemize}
-   \item Utilizzo della CPU --- l'obiettivo è tenerla occupata il più possibile
-   \item Throughput --- si vuole avere il maggior numero di processi completati per unità di tempo
-   \item Tempo di attesa --- è la quantità totale di tempo spesa da un processo nella coda di attesa e la si vuole minimizzare
-   \item Tempo di completamento --- tempo necessario ad eseguire un particolare processo dal momento della sottomissione al momento del completamento
-   \item Tempo di risposta --- tempo trascorso da quando una richiesta è stata sottoposta al sistema fino alla prima risposta del sistema stesso
+    \item Utilizzo della CPU --- l'obiettivo è tenerla occupata il più possibile
+    \item Throughput --- si vuole avere il maggior numero di processi completati per unità di tempo
+    \item Tempo di attesa --- è la quantità totale di tempo spesa da un processo nella coda di attesa e la si vuole minimizzare
+    \item Tempo di completamento --- tempo necessario ad eseguire un particolare processo dal momento della sottomissione al momento del completamento
+    \item Tempo di risposta --- tempo trascorso da quando una richiesta è stata sottoposta al sistema fino alla prima risposta del sistema stesso
 \end{itemize}
 
 \subsection{Algoritmi di scheduling}
@@ -421,27 +421,27 @@ L'algoritmo più scheduling più semplice è senza dubbio il First Come, First S
 Ad esempio, in una situazione come questa:
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{lll}
-      Processo & Tempo di arrivo & CPU-Burst \\ \hline
-      $P_1$    & 0               & 24        \\
-      $P_2$    & 2               & 3         \\
-      $P_3$    & 4               & 3
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{lll}
+        Processo & Tempo di arrivo & CPU-Burst \\ \hline
+        $P_1$    & 0               & 24        \\
+        $P_2$    & 2               & 3         \\
+        $P_3$    & 4               & 3
+    \end{tabular}
 \end{table}
 
 otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{llll}
-      P     & Tr & Tw & Tt \\ \hline
-      $P_1$ & 0  & 0  & 24 \\
-      $P_2$ & 22 & 22 & 25 \\
-      $P_3$ & 23 & 23 & 26
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{llll}
+        P     & Tr & Tw & Tt \\ \hline
+        $P_1$ & 0  & 0  & 24 \\
+        $P_2$ & 22 & 22 & 25 \\
+        $P_3$ & 23 & 23 & 26
+    \end{tabular}
 \end{table}
 
 \subsubsection{Shortest Job First scheduling (SJF)}
@@ -449,15 +449,15 @@ Questo algoritmo associa a ogni processo la lunghezza del prossimo CPU-Burst del
 Ad esempio, considerando il seguente set di processi:
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{ll}
-      Processo & Burst Time \\ \hline
-      $P_1$    & 6          \\
-      $P_2$    & 8          \\
-      $P_3$    & 7          \\
-      $P_4$    & 3
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{ll}
+        Processo & Burst Time \\ \hline
+        $P_1$    & 6          \\
+        $P_2$    & 8          \\
+        $P_3$    & 7          \\
+        $P_4$    & 3
+    \end{tabular}
 \end{table}
 
 L'ordine di esecuzione dei processi, utilizzando SJF, sarebbe: $P_4$, $P_1$, $P_3$, $P_2$. I tempi di attesa per ogni processo saranno quindi: 3 millisecondi per $P_1$, 16ms per $P_2$, 9ms per $P_3$ e 0ms per $P_4$. In questo scenario, il tempo di attesa medio è pari a (3 + 16 + 9 + 0)/4 = 7 millisecondi, mentre con FCFS sarebbe stato di 10,25ms. \newline
@@ -470,57 +470,57 @@ Si può dimostrare che SJF è ottimo poiché permette di ottenere il minimo temp
 Esempio di SJF preemptive:\newline
 Data la seguente situazione
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{lll}
-      Processo & Tempo di arrivo & CPU-Burst \\ \hline
-      $P_1$    & 0               & 7         \\
-      $P_2$    & 2               & 4         \\
-      $P_3$    & 4               & 1         \\
-      $P_4$    & 5               & 4
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{lll}
+        Processo & Tempo di arrivo & CPU-Burst \\ \hline
+        $P_1$    & 0               & 7         \\
+        $P_2$    & 2               & 4         \\
+        $P_3$    & 4               & 1         \\
+        $P_4$    & 5               & 4
+    \end{tabular}
 \end{table}
 
 otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{llll}
-      P     & Tr & Tw & Tt \\ \hline
-      $P_1$ & 0  & 9  & 16 \\
-      $P_2$ & 0  & 1  & 5  \\
-      $P_3$ & 0  & 0  & 1  \\
-      $P_4$ & 2  & 2  & 6
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{llll}
+        P     & Tr & Tw & Tt \\ \hline
+        $P_1$ & 0  & 9  & 16 \\
+        $P_2$ & 0  & 1  & 5  \\
+        $P_3$ & 0  & 0  & 1  \\
+        $P_4$ & 2  & 2  & 6
+    \end{tabular}
 \end{table}
 
 Il seguente diagramma di Gantt rappresenta la situazione:
 
 \begin{table}[htb]
-   \centering
-   \begin{tabular}{ |c|rlrlrrlrlllr|l|l|l|l| }
-      \hline
-      Tempo & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{1}                        & \multicolumn{1}{l|}{2}                        & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{7} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{9} & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & 12 & 13 & 14 & 15 \\ \hline
-      $P_1$ & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r}{}                          & \multicolumn{5}{r|}{\cellcolor[HTML]{656565}}                                                                                                                                                                                                                                                                              \\ \hline
-      $P_2$ & \multicolumn{2}{r}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{1}{r|}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r|}{}                                                                                                                                                                                                       \\ \hline
-      $P_3$ & \multicolumn{4}{r}{}                         & \multicolumn{1}{r|}{\cellcolor[HTML]{656565}} & \multicolumn{11}{r|}{}                                                                                                                                                                                                                                                                                                     \\ \hline
-      $P_4$ & \multicolumn{7}{r}{}                         & \multicolumn{4}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{5}{r|}{}                                                                                                                                                                                                                                                                                                      \\ \hline
-   \end{tabular}
+    \centering
+    \begin{tabular}{ |c|rlrlrrlrlllr|l|l|l|l| }
+        \hline
+        Tempo & \multicolumn{1}{l|}{0}                       & \multicolumn{1}{l|}{1}                        & \multicolumn{1}{l|}{2}                        & \multicolumn{1}{l|}{3}                       & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{7} & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{9} & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & 12 & 13 & 14 & 15 \\ \hline
+        $P_1$ & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r}{}                          & \multicolumn{5}{r|}{\cellcolor[HTML]{656565}}                                                                                                                                                                                                                                                                              \\ \hline
+        $P_2$ & \multicolumn{2}{r}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{1}{r|}{}                         & \multicolumn{2}{r}{\cellcolor[HTML]{656565}} & \multicolumn{9}{r|}{}                                                                                                                                                                                                       \\ \hline
+        $P_3$ & \multicolumn{4}{r}{}                         & \multicolumn{1}{r|}{\cellcolor[HTML]{656565}} & \multicolumn{11}{r|}{}                                                                                                                                                                                                                                                                                                     \\ \hline
+        $P_4$ & \multicolumn{7}{r}{}                         & \multicolumn{4}{r}{\cellcolor[HTML]{656565}}  & \multicolumn{5}{r|}{}                                                                                                                                                                                                                                                                                                      \\ \hline
+    \end{tabular}
 \end{table}
 
 \newpage
 
 La vera difficoltà, per questo algoritmo, è il calcolo del prossimo CPU-burst, è infatti possibile solo farne una stima basandosi sulle lunghezze dei burst precedenti. Si utilizza quindi una media esponenziale. La formula contiene tre variabili fondamentali:
 \begin{itemize}
-   \item $t_n =$ lunghezza reale dell' n-esimo burst
-   \item $\tau_{n+1} =$ valore stimato del prossimo burst
-   \item $\alpha =$ coefficiente compreso tra 0 e 1 (esclusi)
+    \item $t_n =$ lunghezza reale dell' n-esimo burst
+    \item $\tau_{n+1} =$ valore stimato del prossimo burst
+    \item $\alpha =$ coefficiente compreso tra 0 e 1 (esclusi)
 \end{itemize}
 
 Si ottiene la formula: \newline
 $$
-   \tau_{n+1} = \alpha t_n + (1 - \alpha)t_n
+    \tau_{n+1} = \alpha t_n + (1 - \alpha)t_n
 $$
 
 Al variare del coefficiente $\alpha$, la stima tende ad avvicinarsi alle ultime misurazioni se $\alpha \approx 0$, oppure usa più la storia recente se $\alpha \approx 1$.
@@ -532,46 +532,46 @@ Il maggior problema di questo algoritmo è il rischio della starvation dei proce
 Esempio di Priority Scheduling:
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|c|c|c|c|}
-      \hline
-      Processo & T. di arrivo & Priorità & CPU-Burst \\ \hline
-      $P_1$    & 1            & 3        & 10        \\ \hline
-      $P_2$    & 0            & 1        & 1         \\ \hline
-      $P_3$    & 2            & 3        & 2         \\ \hline
-      $P_4$    & 0            & 4        & 1         \\ \hline
-      $P_5$    & 1            & 2        & 5         \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Processo & T. di arrivo & Priorità & CPU-Burst \\ \hline
+        $P_1$    & 1            & 3        & 10        \\ \hline
+        $P_2$    & 0            & 1        & 1         \\ \hline
+        $P_3$    & 2            & 3        & 2         \\ \hline
+        $P_4$    & 0            & 4        & 1         \\ \hline
+        $P_5$    & 1            & 2        & 5         \\ \hline
+    \end{tabular}
 \end{table}
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|c|c|c|c|}
-      \hline
-      Processo & Tr & Tw & Tt \\ \hline
-      $P_1$    & 5  & 5  & 15 \\ \hline
-      $P_2$    & 0  & 0  & 1  \\ \hline
-      $P_3$    & 14 & 14 & 16 \\ \hline
-      $P_4$    & 18 & 18 & 19 \\ \hline
-      $P_5$    & 0  & 0  & 5  \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Processo & Tr & Tw & Tt \\ \hline
+        $P_1$    & 5  & 5  & 15 \\ \hline
+        $P_2$    & 0  & 0  & 1  \\ \hline
+        $P_3$    & 14 & 14 & 16 \\ \hline
+        $P_4$    & 18 & 18 & 19 \\ \hline
+        $P_5$    & 0  & 0  & 5  \\ \hline
+    \end{tabular}
 \end{table}
 
 \begin{table}[htb]
-   \centering
-   \caption{Priority scheduling}
-   \label{my-label}
-   \begin{tabular}{|c|ccccc|cccccccccc|ccc|c|}
-      \hline
-      0                                                    & 1                                                  & 2                                                   & 3                                                  & 4                             & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\ \hline
-                                                           & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{\cellcolor[HTML]{656565}$P_1$} & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
-      \cellcolor[HTML]{656565}{\color[HTML]{000000} $P_2$} & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
-                                                           & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{\cellcolor[HTML]{656565}$P_3$} &                                                                                                     \\ \hline
-                                                           & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              & \cellcolor[HTML]{656565}$P_4$                                                                       \\ \hline
-                                                           & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}$P_5$} & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
-   \end{tabular}
+    \centering
+    \caption{Priority scheduling}
+    \label{my-label}
+    \begin{tabular}{|c|ccccc|cccccccccc|ccc|c|}
+        \hline
+        0                                                    & 1                                                  & 2                                                   & 3                                                  & 4                             & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\ \hline
+                                                             & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{\cellcolor[HTML]{656565}$P_1$} & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
+        \cellcolor[HTML]{656565}{\color[HTML]{000000} $P_2$} & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
+                                                             & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{\cellcolor[HTML]{656565}$P_3$} &                                                                                                     \\ \hline
+                                                             & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              & \cellcolor[HTML]{656565}$P_4$                                                                       \\ \hline
+                                                             & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}$P_5$} & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
+    \end{tabular}
 \end{table}
 
 \newpage
@@ -581,7 +581,7 @@ Un caso particolare dello scheduling a priorità e dello SJF è l'Higher Respons
 La priorità è calcolata secondo la seguente formula:
 
 $$
-   p = 1 + t_{attesa}/t_{burst}
+    p = 1 + t_{attesa}/t_{burst}
 $$
 
 Questa priorità viene ricalcolata alla fine di ogni processo.
@@ -592,21 +592,21 @@ L'approccio RR può risultare in un gran numero di context switches, in base all
 In quanto a prestazioni, il tempo di turnaround è maggiore o almeno uguale a quello di SJF, mentre il tempo di risposta è minore o al più ugale a quello di SJF.
 
 \begin{center}
-   \begin{tabular}{ ccc }
-      Suddivisione & Quanto & Context switch \\
-      \begin{tikz}
-         \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0);
-      \end{tikz}
-                   & 12     & 0              \\
-      \begin{tikz}
-         \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0) -- (2.4, 0) -- (2.4, 0.3);
-      \end{tikz}
-                   & 6      & 1              \\
-      \begin{tikz}
-         \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0) -- (0.4, 0) -- (0.4, 0.3) -- (0.8, 0.3) -- (0.8, 0) -- (1.2,0) -- (1.2, 0.3) -- (1.6, 0.3) -- (1.6, 0) -- (2.0, 0) -- (2.0, 0.3) -- (2.4, 0.3) -- (2.4, 0) -- (2.8, 0) -- (2.8, 0.3) -- (3.2, 0.3) -- (3.2, 0) -- (3.6, 0) -- (3.6, 0.3);
-      \end{tikz}
-                   & 1      & 9
-   \end{tabular}
+    \begin{tabular}{ ccc }
+        Suddivisione & Quanto & Context switch \\
+        \begin{tikz}
+            \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0);
+        \end{tikz}
+                     & 12     & 0              \\
+        \begin{tikz}
+            \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0) -- (2.4, 0) -- (2.4, 0.3);
+        \end{tikz}
+                     & 6      & 1              \\
+        \begin{tikz}
+            \draw (0,0) -- (4,0) -- (4,0.3) -- (0,0.3) -- (0,0) -- (0.4, 0) -- (0.4, 0.3) -- (0.8, 0.3) -- (0.8, 0) -- (1.2,0) -- (1.2, 0.3) -- (1.6, 0.3) -- (1.6, 0) -- (2.0, 0) -- (2.0, 0.3) -- (2.4, 0.3) -- (2.4, 0) -- (2.8, 0) -- (2.8, 0.3) -- (3.2, 0.3) -- (3.2, 0) -- (3.6, 0) -- (3.6, 0.3);
+        \end{tikz}
+                     & 1      & 9
+    \end{tabular}
 \end{center}
 
 \subsubsection{Code multilivello}
@@ -617,11 +617,11 @@ Normalmente, un processo assegnato a una coda resterà in quella coda fino alla 
 In generale, i processi lunghi affondano automaticamente nella coda di più basso livello e sono serviti secondo la logica First Come First Served durante i cicli di CPU lasciati liberi dalle code superiori. \newline
 Questo algoritmo di scheduling è generalmente definito da:
 \begin{itemize}
-   \item Il numero di code
-   \item L'algoritmo di scheduling per ogni coda
-   \item Il metodo usato per determinare quando promuovere un processo a una coda con priorità più alta
-   \item Il metodo usato per declassare un processo a una coda con priorità più bassa
-   \item Il metodo per determinare in quale coda entrerà un processo che ha bisogno di un certo servizio
+    \item Il numero di code
+    \item L'algoritmo di scheduling per ogni coda
+    \item Il metodo usato per determinare quando promuovere un processo a una coda con priorità più alta
+    \item Il metodo usato per declassare un processo a una coda con priorità più bassa
+    \item Il metodo per determinare in quale coda entrerà un processo che ha bisogno di un certo servizio
 \end{itemize}
 
 \subsubsection{Scheduling fair share}
@@ -639,107 +639,107 @@ Esistono vari modi di valutare la scelta di un algoritmo di scheduling su un alt
 Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF (con e senza prelazione), RR con quanto=4, RR con quanto=1 e HRRN.
 
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|c|c|c|}
-      \hline
-      \textbf{Processo} & \textbf{Tempo di arrivo} & \textbf{CPU burst} \\ \hline
-      A                 & 0                        & 3                  \\ \hline
-      B                 & 2                        & 6                  \\ \hline
-      C                 & 4                        & 4                  \\ \hline
-      D                 & 6                        & 5                  \\ \hline
-      E                 & 8                        & 2                  \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Processo} & \textbf{Tempo di arrivo} & \textbf{CPU burst} \\ \hline
+        A                 & 0                        & 3                  \\ \hline
+        B                 & 2                        & 6                  \\ \hline
+        C                 & 4                        & 4                  \\ \hline
+        D                 & 6                        & 5                  \\ \hline
+        E                 & 8                        & 2                  \\ \hline
+    \end{tabular}
 \end{table}
 \newpage
 \subsubsection{FCFS}
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|ll}
-      \hline
-      0                                                        & 1                                                       & 2                                                       & 3                                                       & 4                                                      & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & \multicolumn{1}{l|}{18} & \multicolumn{1}{l|}{19} \\ \hline
-      \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{c|}{\cellcolor[HTML]{656565}\textbf{B}} & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{D}} & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{c}{\cellcolor[HTML]{656565}\textbf{E}}                                                                                                                 \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|ll}
+        \hline
+        0                                                        & 1                                                       & 2                                                       & 3                                                       & 4                                                      & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & \multicolumn{1}{l|}{18} & \multicolumn{1}{l|}{19} \\ \hline
+        \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{c|}{\cellcolor[HTML]{656565}\textbf{B}} & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{D}} & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{c}{\cellcolor[HTML]{656565}\textbf{E}}                                                                                                                 \\ \hline
+    \end{tabular}
 \end{table}
 
 \subsubsection{SJF senza prelazione}
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|ll}
-      \hline
-      0                                                        & 1                                                       & 2                                                       & 3                                                       & 4                                                      & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & \multicolumn{1}{l|}{18} & \multicolumn{1}{l|}{19} \\ \hline
-      \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{c|}{\cellcolor[HTML]{656565}\textbf{B}} & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{D}} & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
-      \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{c}{\cellcolor[HTML]{656565}\textbf{E}}                                                                                                                 \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|ll}
+        \hline
+        0                                                        & 1                                                       & 2                                                       & 3                                                       & 4                                                      & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & \multicolumn{1}{l|}{18} & \multicolumn{1}{l|}{19} \\ \hline
+        \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{c|}{\cellcolor[HTML]{656565}\textbf{B}} & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{D}} & \multicolumn{2}{l|}{}                                                                                                                                                  \\ \hline
+        \multicolumn{3}{|l|}{}                                   & \multicolumn{6}{l|}{}                                   & \multicolumn{4}{l|}{}                                   & \multicolumn{5}{l|}{}                                   & \multicolumn{2}{c}{\cellcolor[HTML]{656565}\textbf{E}}                                                                                                                 \\ \hline
+    \end{tabular}
 \end{table}
 
 \subsubsection{SJF con prelazione}
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-      \hline
-      0                                                        & 1 & 2 & 3                                                       & 4                                                       & 5 & 6                                                      & 7 & 8                                                       & 9 & 10                                                      & 11 & 12 & 13                                                     & 14 & 15                                             & 16 & 17                                                     & 18 & 19 \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-      \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    &                                                        &    &                                                &    &                                                                  \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   & \multicolumn{1}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &                                                         &   &                                                        &   &                                                         &   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &    &    &                                                        &    &                                                                                                                        \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   &                                                         & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}  &   &                                                         &    &    &                                                        &    &                                                &                                                                       \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &    & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}D}                                                                         \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   &                                                         &                                                         &   &                                                        &   & \multicolumn{2}{c|}{\cellcolor[HTML]{656565}\textbf{E}} &   &                                                         &    &    &                                                        &    &                                                &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &         \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+        \hline
+        0                                                        & 1 & 2 & 3                                                       & 4                                                       & 5 & 6                                                      & 7 & 8                                                       & 9 & 10                                                      & 11 & 12 & 13                                                     & 14 & 15                                             & 16 & 17                                                     & 18 & 19 \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+        \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    &                                                        &    &                                                &    &                                                                  \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   & \multicolumn{1}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &                                                         &   &                                                        &   &                                                         &   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &    &    &                                                        &    &                                                                                                                        \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   &                                                         & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}  &   &                                                         &    &    &                                                        &    &                                                &                                                                       \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &    & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}D}                                                                         \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   &                                                         &                                                         &   &                                                        &   & \multicolumn{2}{c|}{\cellcolor[HTML]{656565}\textbf{E}} &   &                                                         &    &    &                                                        &    &                                                &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &         \\ \hline
+    \end{tabular}
 \end{table}
 
 \newpage
 \subsubsection{Round Robin, quanto=4}
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-      \hline
-      0                                                        & 1 & 2 & 3                                                       & 4                                                       & 5 & 6                                                      & 7 & 8                                                       & 9 & 10                                                      & 11 & 12 & 13                                                     & 14 & 15                                             & 16 & 17                                                     & 18 & 19 \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-      \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    &                                                        &    &                                                &    &                                                                  \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   & \multicolumn{1}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &                                                         &   &                                                        &   &                                                         &   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &    &    &                                                        &    &                                                                                                                        \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   &                                                         & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}  &   &                                                         &    &    &                                                        &    &                                                &                                                                       \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &    & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}D}                                                                         \\ \hline
-      \rowcolor[HTML]{FFFFFF}
-                                                               &   &   &                                                         &                                                         &   &                                                        &   & \multicolumn{2}{c|}{\cellcolor[HTML]{656565}\textbf{E}} &   &                                                         &    &    &                                                        &    &                                                &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &         \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+        \hline
+        0                                                        & 1 & 2 & 3                                                       & 4                                                       & 5 & 6                                                      & 7 & 8                                                       & 9 & 10                                                      & 11 & 12 & 13                                                     & 14 & 15                                             & 16 & 17                                                     & 18 & 19 \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+        \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    &                                                        &    &                                                &    &                                                                  \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   & \multicolumn{1}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &                                                         &   &                                                        &   &                                                         &   & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &    &    &                                                        &    &                                                                                                                        \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   &                                                         & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &   & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}}  &   &                                                         &    &    &                                                        &    &                                                &                                                                       \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   &                                                         &                                                         &   &                                                        &   &                                                         &   &                                                         &    &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &    & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}D}                                                                         \\ \hline
+        \rowcolor[HTML]{FFFFFF}
+                                                                 &   &   &                                                         &                                                         &   &                                                        &   & \multicolumn{2}{c|}{\cellcolor[HTML]{656565}\textbf{E}} &   &                                                         &    &    &                                                        &    &                                                &    & \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{}} &         \\ \hline
+    \end{tabular}
 \end{table}
 
 \subsubsection{Round Robin, quanto=1}
 Sotto sono indicati i processi in ready queue
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
-      \hline
-      0                                              & 1                        & 2                        & 3                        & 4                     & 5                        & 6                     & 7                                             & 8                     & 9                        & 10                    & 11                       & 12                    & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\ \hline
-      \multicolumn{2}{|l|}{\cellcolor[HTML]{656565}} &                          & \cellcolor[HTML]{656565} & \multicolumn{16}{l|}{}                                                                                                                                                                                                                                                                                               \\ \hline
-      \multicolumn{2}{|l|}{}                         & \cellcolor[HTML]{656565} &                          & \cellcolor[HTML]{656565} &                       & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{} & \cellcolor[HTML]{656565}                      & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{}                                    \\ \hline
-      \multicolumn{5}{|l|}{}                         & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{}    & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565}                      & \multicolumn{3}{l|}{}                                                                                                                                          \\ \hline
-      \multicolumn{7}{|l|}{}                         & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{}    & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{} & \multicolumn{2}{l|}{\cellcolor[HTML]{656565}}                                                                                                                                                                  \\ \hline
-      \multicolumn{10}{|l|}{}                        & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{}    & \cellcolor[HTML]{656565} & \multicolumn{5}{l|}{}                                                                                                                                                                                                                                                                     \\ \hline
-                                                     &                          & A                        & B                        & C                     & B                        & D                     & C                                             & B                     & E                        & D                     & C                        & B                     & E  & D  & C  & B  & D  &    &    \\ \hline
-                                                     &                          &                          &                          &                       &                          & C                     & B                                             & E                     & D                        & C                     & B                        & E                     & D  & C  & B  & D  &    &    &    \\ \hline
-                                                     &                          &                          &                          &                       &                          &                       &                                               & D                     & C                        & B                     & E                        & D                     & C  & B  &    &    &    &    &    \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+        \hline
+        0                                              & 1                        & 2                        & 3                        & 4                     & 5                        & 6                     & 7                                             & 8                     & 9                        & 10                    & 11                       & 12                    & 13 & 14 & 15 & 16 & 17 & 18 & 19 \\ \hline
+        \multicolumn{2}{|l|}{\cellcolor[HTML]{656565}} &                          & \cellcolor[HTML]{656565} & \multicolumn{16}{l|}{}                                                                                                                                                                                                                                                                                               \\ \hline
+        \multicolumn{2}{|l|}{}                         & \cellcolor[HTML]{656565} &                          & \cellcolor[HTML]{656565} &                       & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{} & \cellcolor[HTML]{656565}                      & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{}                                    \\ \hline
+        \multicolumn{5}{|l|}{}                         & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{}    & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565}                      & \multicolumn{3}{l|}{}                                                                                                                                          \\ \hline
+        \multicolumn{7}{|l|}{}                         & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{}    & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{} & \cellcolor[HTML]{656565} & \multicolumn{2}{l|}{} & \multicolumn{2}{l|}{\cellcolor[HTML]{656565}}                                                                                                                                                                  \\ \hline
+        \multicolumn{10}{|l|}{}                        & \cellcolor[HTML]{656565} & \multicolumn{3}{l|}{}    & \cellcolor[HTML]{656565} & \multicolumn{5}{l|}{}                                                                                                                                                                                                                                                                     \\ \hline
+                                                       &                          & A                        & B                        & C                     & B                        & D                     & C                                             & B                     & E                        & D                     & C                        & B                     & E  & D  & C  & B  & D  &    &    \\ \hline
+                                                       &                          &                          &                          &                       &                          & C                     & B                                             & E                     & D                        & C                     & B                        & E                     & D  & C  & B  & D  &    &    &    \\ \hline
+                                                       &                          &                          &                          &                       &                          &                       &                                               & D                     & C                        & B                     & E                        & D                     & C  & B  &    &    &    &    &    \\ \hline
+    \end{tabular}
 \end{table}
 
 \newpage
@@ -748,36 +748,36 @@ Sotto sono indicati i processi in ready queue
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|lll|llllll|llll|ll|lllll|}
-      \hline
-      \multicolumn{1}{|l|}{0}                                  & \multicolumn{1}{l|}{1} & 2 & \multicolumn{1}{l|}{3}                                  & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{7} & 8 & \multicolumn{1}{l|}{9}                                  & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & 12 & \multicolumn{1}{l|}{13}                                 & 14 & \multicolumn{1}{l|}{15}                                 & \multicolumn{1}{l|}{16} & \multicolumn{1}{l|}{17} & \multicolumn{1}{l|}{18} & 19 \\ \hline
-      \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} &                        &   &                                                         &                        &                        &                        &                        &   &                                                         &                         &                         &    &                                                         &    &                                                         &                         &                                                        \\ \hline
-                                                               &                        &   & \multicolumn{6}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &                        &                        &                        &                        &   &                                                         &                         &                         &    &                                                         &                                                                                                                                                 \\ \hline
-                                                               &                        &   &                                                         &                        &                        &                        &                        &   & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} &                         &                         &    &                                                         &    &                                                         &                                                                                  \\ \hline
-                                                               &                        &   &                                                         &                        &                        &                        &                        &   &                                                         &                         &                         &    &                                                         &    & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{D}}                                                                                    \\ \hline
-                                                               &                        &   &                                                         &                        &                        &                        &                        &   &                                                         &                         &                         &    & \multicolumn{2}{c|}{\cellcolor[HTML]{656565}\textbf{E}} &    &                                                         &                         &                         &                              \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|lll|llllll|llll|ll|lllll|}
+        \hline
+        \multicolumn{1}{|l|}{0}                                  & \multicolumn{1}{l|}{1} & 2 & \multicolumn{1}{l|}{3}                                  & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{7} & 8 & \multicolumn{1}{l|}{9}                                  & \multicolumn{1}{l|}{10} & \multicolumn{1}{l|}{11} & 12 & \multicolumn{1}{l|}{13}                                 & 14 & \multicolumn{1}{l|}{15}                                 & \multicolumn{1}{l|}{16} & \multicolumn{1}{l|}{17} & \multicolumn{1}{l|}{18} & 19 \\ \hline
+        \multicolumn{3}{|c|}{\cellcolor[HTML]{656565}\textbf{A}} &                        &   &                                                         &                        &                        &                        &                        &   &                                                         &                         &                         &    &                                                         &    &                                                         &                         &                                                        \\ \hline
+                                                                 &                        &   & \multicolumn{6}{c|}{\cellcolor[HTML]{656565}\textbf{B}} &                        &                        &                        &                        &   &                                                         &                         &                         &    &                                                         &                                                                                                                                                 \\ \hline
+                                                                 &                        &   &                                                         &                        &                        &                        &                        &   & \multicolumn{4}{c|}{\cellcolor[HTML]{656565}\textbf{C}} &                         &                         &    &                                                         &    &                                                         &                                                                                  \\ \hline
+                                                                 &                        &   &                                                         &                        &                        &                        &                        &   &                                                         &                         &                         &    &                                                         &    & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}\textbf{D}}                                                                                    \\ \hline
+                                                                 &                        &   &                                                         &                        &                        &                        &                        &   &                                                         &                         &                         &    & \multicolumn{2}{c|}{\cellcolor[HTML]{656565}\textbf{E}} &    &                                                         &                         &                         &                              \\ \hline
+    \end{tabular}
 \end{table}
 
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htb]
-   \centering
-   \label{my-label}
-   \begin{tabular}{|
-         >{\columncolor[HTML]{9B9B9B}}c |c|c|c|c|}
-      \hline
-      \multicolumn{5}{|c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Calcolo priorità R}}}                                                                               \\ \hline
-      \textbf{Processo} & \cellcolor[HTML]{9B9B9B}\textbf{t=0} & \cellcolor[HTML]{9B9B9B}\textbf{t=3} & \cellcolor[HTML]{9B9B9B}\textbf{t=9} & \cellcolor[HTML]{9B9B9B}\textbf{t=13} \\ \hline
-      \textbf{A}        & \cellcolor[HTML]{FCFF2F}1            & -                                    & -                                    & -                                     \\ \hline
-      \textbf{B}        & -                                    & \cellcolor[HTML]{FCFF2F}1+1/6        & -                                    & -                                     \\ \hline
-      \textbf{C}        & -                                    & -                                    & \cellcolor[HTML]{FCFF2F}1+5/4        & -                                     \\ \hline
-      \textbf{D}        & -                                    & -                                    & 1+3/5                                & 1+7/5                                 \\ \hline
-      \textbf{E}        & -                                    & -                                    & 1+1/2                                & \cellcolor[HTML]{FCFF2F}1+5/2         \\ \hline
-   \end{tabular}
+    \centering
+    \label{my-label}
+    \begin{tabular}{|
+            >{\columncolor[HTML]{9B9B9B}}c |c|c|c|c|}
+        \hline
+        \multicolumn{5}{|c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Calcolo priorità R}}}                                                                               \\ \hline
+        \textbf{Processo} & \cellcolor[HTML]{9B9B9B}\textbf{t=0} & \cellcolor[HTML]{9B9B9B}\textbf{t=3} & \cellcolor[HTML]{9B9B9B}\textbf{t=9} & \cellcolor[HTML]{9B9B9B}\textbf{t=13} \\ \hline
+        \textbf{A}        & \cellcolor[HTML]{FCFF2F}1            & -                                    & -                                    & -                                     \\ \hline
+        \textbf{B}        & -                                    & \cellcolor[HTML]{FCFF2F}1+1/6        & -                                    & -                                     \\ \hline
+        \textbf{C}        & -                                    & -                                    & \cellcolor[HTML]{FCFF2F}1+5/4        & -                                     \\ \hline
+        \textbf{D}        & -                                    & -                                    & 1+3/5                                & 1+7/5                                 \\ \hline
+        \textbf{E}        & -                                    & -                                    & 1+1/2                                & \cellcolor[HTML]{FCFF2F}1+5/2         \\ \hline
+    \end{tabular}
 \end{table}
 
 \newpage
@@ -790,12 +790,9 @@ Il buffer viene gestito in maniera ciclica, secondo i seguenti algoritmi:
 
 Processo produttore:
 \begin{verbatim}
-while(true) {
-    //produce an item in next_produced
-	
-    while(counter == BUFFER_SIZE)
-        ; //do nothing
-	
+while (TRUE) {
+    // produce an item in next_produced
+    while(counter == BUFFER_SIZE); // do nothing
     buffer[in] = next_produced;
     in = (in + 1) % BUFFER_SIZE;
     counter++;
@@ -804,12 +801,9 @@ while(true) {
 
 Processo consumatore:
 \begin{verbatim}
-while(true) {
-    //consume the item in next_consumed
-	
-    while(counter == 0)
-        ; //do nothing
-	
+while (TRUE) {
+    // consume the item in next_consumed
+    while(counter == 0); // do nothing
     next_consumed = buffer[out];
     out = (out + 1) % BUFFER_SIZE;
     counter--;
@@ -827,9 +821,9 @@ Ogni processo deve richiedere di accedere alla propria sezione critica. La sezio
 
 Una soluzione a questo problema deve rispettare tre criteri:
 \begin{itemize}
-   \item \textbf{Mutua esclusione}: un solo processo alla volta può accedere alla sezione critica
-   \item \textbf{Progresso}: solo i processi che stanno per entrare nella sezione critica possono decidere chi entra e la decisione non può essere rimandata all'infinito
-   \item \textbf{Attesa limitata}: deve esistere un massimo numero di volte per un processo può entrare (di seguito).
+    \item \textbf{Mutua esclusione}: un solo processo alla volta può accedere alla sezione critica
+    \item \textbf{Progresso}: solo i processi che stanno per entrare nella sezione critica possono decidere chi entra e la decisione non può essere rimandata all'infinito
+    \item \textbf{Attesa limitata}: deve esistere un massimo numero di volte per un processo può entrare (di seguito).
 \end{itemize}
 
 A un certo punto, molti processi in modalità kernel potrebbero essere attivi nel sistema. Da ciò risulta che il codice che implementa il sistema operativo potrebbe essere soggetto a molte race conditions. Esistono due approcci generali per gestire le sezioni critiche nei sistemi operativi: kernel con prelazione e kernel senza prelazione. Il primo tipo permette a un processo di essere prelazionato durante la sua esecuzione in modalità kernel.
@@ -845,9 +839,9 @@ PROCESS i
 int turn; //se turn = i allora entra il processo i
 while (1) {
     while (turn != i);   //sezione di entrata
-    sezione critica
+    // sezione critica
     turn = j;                //sezione di uscita
-    sezione non critica
+    // sezione non critica
 }
 \end{verbatim}
 Questo primo algoritmo presenta due grossi problemi. Per prima cosa, richiede una stretta alternanza tra i processi, infatti se i oppure j non sono interessati ad entrare in sezione critica, neppure l'altro potrà farlo. Inoltre, non rispetta il criterio del progresso: non c'è nessuna nozione di stato.
@@ -856,42 +850,42 @@ Si può ampliare il precedente algoritmo aggiungendo un flag per verificare che 
 \begin{verbatim}
 PROCESS i
 boolean flag[2]; //inizializzato a FALSE
-while(1){
-   flag[i]=true; //vuole entrare in sezione critica
-   while(flag[j]==true); //sezione di entrata
-   sezione critica
-   flag[i]=false;
-   sezione non critica
+while (TRUE) {
+   flag[i] = TRUE; //vuole entrare in sezione critica
+   while(flag[j] == TRUE); //sezione di entrata
+   // sezione critica
+   flag[i] = false;
+   // sezione non critica
 }
 \end{verbatim}
-Ora a decidere chi entra nella sezione critica è chi vi si trova già, la regola del processo è quindi rispettata. La sezione di entrata dà la precedenza all'altro processo, in quanto se esso ha il flag settato a true, allora il primo processo sarà fermo. L'algoritmo presenta però il problema del deadlock, ovvero una situazione in cui nessuno entra: quando entrambi vogliono il turno.
+Ora a decidere chi entra nella sezione critica è chi vi si trova già, la regola del processo è quindi rispettata. La sezione di entrata dà la precedenza all'altro processo, in quanto se esso ha il flag settato a TRUE, allora il primo processo sarà fermo. L'algoritmo presenta però il problema del deadlock, ovvero una situazione in cui nessuno entra: quando entrambi vogliono il turno.
 
 Per risolvere il problema del deadlock si possono invertire le istruzioni della sezione di entrata:
 \begin{verbatim}
 PROCESS i
 boolean flag[2]; //inizializzato a FALSE
-while(1){
-   while(flag[j]==true); //sezione di entrata
-   flag[i]=true; //vuole entrare in sezione critica
-   sezione critica
-   flag[i]=false;
-   sezione non critica
+while (TRUE) {
+   while(flag[j] == TRUE); //sezione di entrata
+   flag[i] = TRUE; //vuole entrare in sezione critica
+   // sezione critica
+   flag[i] = false;
+   // sezione non critica
 }
 \end{verbatim}
-Ma così facendo viene chiaramente violata la mutua esclusione: entrambi processi potranno trovarsi nella propria sezione critica se eseguono il ciclo while prima di impostare il proprio flag a true.
+Ma così facendo viene chiaramente violata la mutua esclusione: entrambi processi potranno trovarsi nella propria sezione critica se eseguono il ciclo while prima di impostare il proprio flag a TRUE.
 
 Si arriva dunque a una fusione dei precedenti algoritmi:
 \begin{verbatim}
 PROCESS i
 int turn;   // di chi è il turno
-boolean flag[2]; //inizializzato a FALSE
-while(1){
-   flag[i]=true; //vuole entrare in sezione critica
-   turn = j //se vuoi, tocca a te
-   while(flag[j]==true); //sezione di entrata
-   sezione critica
-   flag[i]=false;
-   sezione non critica
+boolean flag[2]; // inizializzato a FALSE
+while (TRUE) {
+   flag[i] = TRUE; // vuole entrare in sezione critica
+   turn = j // se vuoi, tocca a te
+   while(flag[j] == TRUE); // sezione di entrata
+   // sezione critica
+   flag[i] = false;
+   // sezione non critica
 }
 \end{verbatim}
 Viene espressa la volontà di prendere il turno, ma lo si offre all'altro processo. Il processo i si ferma alla barriera se il turno che vuole il processo j viene ottenuto. Una volta finita la sezione critica, il processo setta il flag a false, permettendo all'altro di entrare. Questo algoritmo rispetta, finalmente tutte e tre le regole: il turno garantisce la mutua esclusione e il settaggio a false del flag garantisce il progresso e l'attesa limitata.
@@ -903,17 +897,17 @@ La soluzione trovata, tuttavia, risolve il problema solo in presenza di due proc
 PROCESS i
 boolean choosing[N];
 int number[N];
-while(1){
-   choosing[i]=TRUE;
-   number[i]=Max(number[0],...,number[N-1]) + 1;
-   choosing[i]=FALSE;
-   for(j=0; j<N; j++){
-      while(choosing[j]==TRUE);
-      while(number[j]!=0 && number[j]<number[i] || number[j]==number[i] \&\& (j<i) );
-   }
-   sezione critica
-   number[i]=0;
-   sezione non critica
+while (TRUE) {
+    choosing[i] = TRUE;
+    number[i] = Max(number[0], ..., number[N-1]) + 1;
+    choosing[i] = FALSE;
+    for(j = 0; j < N; j++) {
+        while(choosing[j] == TRUE);
+        while(number[j] != 0 && number[j] < number[i] || number[j] == number[i] \&\& (j < i));
+    }
+    sezione critica
+    number[i] = 0;
+    sezione non critica
 }
 \end{verbatim}
 L'accesso alla sezione critica procede solo quanto tutti hanno scelto il numero e quindi finalmente è possibile determinare il turno. Inoltre, per essere servito, ogni processo deve essere diverso da 0 (che caratterizza il processo appena servito) e il processo in questione deve avere il numero minore tra tutti, All'uscita dalla sezione critica, il processo avrà numero 0. In caso di numeri uguali, si opta sul confronto dei pid (identificatore di processo univoco) e si dà priorità a quello inferiore.
@@ -923,45 +917,42 @@ Le soluzioni software costituiscono generalmente uno spreco di risorse di calcol
 \paragraph{Test and Set}
 L'istruzione \texttt{test\_and\_set()} può essere definita così:
 \begin{verbatim}
-boolean test_and_set(boolean *target) {   //il valore di terget viene modificato
-   boolean rv = *target;
-   *target = true;
-   
-   return rv;
+boolean test_and_set(boolean *target) { //il valore di target viene modificato
+    boolean rv = *target;
+    *target = TRUE;
+    return rv;
 }
 \end{verbatim}
 L'istruzione è atomica, quindi se due test\_and\_set() vengono eseguite contemporaneamente, la reale esecuzione sarà sequenziale in qualche ordine arbitrario. Se la macchina supporta questo tipo di istruzione, si può implementare la mutua esclusione dichiarando una variabile lock, inizializzata a false: passa solo il primo processo che arriva e trova lock=false.
 \begin{verbatim}
-do{
-   while(test_and_set(&lock))
-      ; //non fare nulla
-   
-   sezione critica
-   lock = false;
-   sez. non critica
-} while(true)
+do {
+    while(test_and_set(&lock)); // non fare nulla
+    // sezione critica
+    lock = false;
+    // sezione non critica
+} while(TRUE)
 \end{verbatim}
 
 \paragraph{Swap}
 Questa operazione atomica prevede lo scambio di due valori booleani. Il primo processo che riesce a fare la swap setta a false la variabile dummy, locale al processo, e riesce ad entrare nella sezione critica.
 \begin{verbatim}
 void Swap (boolean &a, boolean &b) {
-   boolean temp = a;
-   a=b;
-   b=temp;
+    boolean temp = a;
+    a = b;
+    b = temp;
 }
 \end{verbatim}
 Codice che implementa la Swap():
 \begin{verbatim}
 boolean lock;
-while(1){
-   dummy = true;
-   do
-      Swap(dummy, lock)
-   while (dummy == true);
-   sezione critica
-   lock=false;
-   sezione non critica
+while (TRUE) {
+    dummy = TRUE;
+    do {
+        Swap(dummy, lock);
+    } while (dummy);
+    // sezione critica
+    lock = false;
+    // sezione non critica
 }
 \end{verbatim}
 
@@ -977,17 +968,17 @@ while (1) {
       key = TestAndSet(lock);
    }
    waiting[i] = FALSE;
-   sezione critica
-   j = (i+1) % N;
+   // sezione critica
+   j = (i + 1) % N;
    
    while (j != i && !waiting[j])
-      j = (j+1) % N;
+      j = (j + 1) % N;
    
-   if (j == i)
+   if (j == i) 
       lock = FALSE;
    else
       waiting[j] = FALSE;
-   sezione non critica
+   // sezione non critica
 }
 \end{verbatim}
 
@@ -996,96 +987,109 @@ Le soluzioni precendemente presentate sono complesse da aggiungere ai programmi 
 
 Un semaforo S è una variabile intera cui si accede solo mediante l'utilizzo di due primitive atomiche: \texttt{wait()} e \texttt{signal()}.
 \begin{itemize}
-   \item L'operazione \texttt{wait()}, nota come P (dall'olandese Proberen, testare) tenta di decrementare il valore di S di 1, ma se il valore è già 0 non si può decrementare ed è necessario attendere.
-         \begin{verbatim}
+    \item L'operazione \texttt{wait()}, nota come P (dall'olandese Proberen, testare) tenta di decrementare il valore di S di 1, ma se il valore è già 0 non si può decrementare ed è necessario attendere.
+          \begin{verbatim}
 wait(S) {
-   while(S<=0)
-      ; //busy wait
+   while(S <= 0); //busy wait
    S--;
 }
 \end{verbatim}
-   \item L'operazione \texttt{signal()}, nota come V (dall'olandese Verhogen, incrementare), incrementa il valore di S di 1.
-         \begin{verbatim}
+    \item L'operazione \texttt{signal()}, nota come V (dall'olandese Verhogen, incrementare), incrementa il valore di S di 1.
+          \begin{verbatim}
 signal(S) {
    S++;
 }
 \end{verbatim}
 \end{itemize}
 
-Esistono due tipi di semafori: binari (S = 0 oppure 1) e generici (S assume valori interi maggiori di 0). Un'implementazione ``concettuale'' di un semaforo binario prevede che nella wait si aspetti che il semaforo diventi \texttt{true}, per poi settarlo a \texttt{false}, mentre nella signal lo si imposta a \texttt{true}. L'implementazione concettuale dei semafori a valori interi è invece ben espressa dal codice citato sopra. \newline
+Esistono due tipi di semafori: binari (S = 0 oppure 1) e generici (S assume valori interi maggiori di 0). Un'implementazione ``concettuale'' di un semaforo binario prevede che nella wait si aspetti che il semaforo diventi \texttt{TRUE}, per poi settarlo a \texttt{false}, mentre nella signal lo si imposta a \texttt{TRUE}. L'implementazione concettuale dei semafori a valori interi è invece ben espressa dal codice citato sopra. \newline
 Il problema ora risiede nel garantire l'atomicità e nell'implementare il tutto.
 
 \subsubsection{Implementazione}
 Per garantire l'atomicità, nei semafori binari si farà uso della funzione \texttt{Swap()}:
 \begin{verbatim}
-con s inizializzato a true...
-P(bool &s){                                              V(bool &s) {
-   key = false;                                            s = true;
-   do {                                                  }
-      Swap(s, key);
-   } while (key == false);
+// Il codice assume s inizializzato a TRUE
+
+V(bool &s) {
+    s = TRUE;
+} 
+
+P(bool &s){                                            
+    key = false;
+    do {                                                       Swap(s, key);
+    } while (!key);
 }
 \end{verbatim}
 Il primo processo otterrà l'accesso alla sezione critica in quanto supererà il blocco del do-while, dato che la key avrà valore TRUE. I processi successivi che vorranno accedere, si troveranno con la S settata a FALSE e quindi rimarranno bloccati nel ciclo, finché il processo in possesso della sezione critica non rilascerà il semaforo.
 
 Semafori interi:
 \begin{verbatim}
-bool mutex //semaforo binario iniz. a true
-bool delay // semaforo binario iniz. a false
+bool mutex; //semaforo binario iniz. a TRUE
+bool delay; // semaforo binario iniz. a false
 
 P(int &s) {
-   P(mutex);
-   s=s-1;
-   if(s<0) {
-      V(mutex);
-      P(delay);
-   } else V(mutex)
+    P(mutex);
+    s = s - 1;
+    if(s < 0) {
+        V(mutex);
+        P(delay);
+    } else {
+        V(mutex);
+    }
 }
 
 V(int &s) {
-   P(mutex);
-   s=s+1;
-   if(s<=0) {
-      V(delay);
-   } else V(mutex)
+    P(mutex);
+    s = s + 1;
+    if(s <= 0) {
+        V(delay);
+    } else {
+        V(mutex);
+    }
 }
 \end{verbatim}
 
-In questa implementazione sono presenti due semafori: \newline
-bool mutex; /* Sem. binario iniz. TRUE */ \newline
-bool delay; /* Sem. binario iniz. FALSE */\newline
+In questa implementazione sono presenti due semafori:
+
+\begin{verbatim}
+bool mutex; /* Sem. binario iniz. TRUE */
+bool delay; /* Sem. binario iniz. FALSE */
+\end{verbatim}
+
 Le operazioni P e V utilizzate nel codice sono le operazioni del semaforo binario. Il semaforo mutex permette di proteggere il semaforo s, condiviso tra tutti i processi. Entrambe le implementazioni hanno ancora il problema del busy waiting, a causa del do-while bloccante del semaforo binario.
-Per implementare un semaforo senza busy waiting, si usa un'ulteriore implementazione della funzione P(), cui viene passata una lista contenente i processi in attesa al semaforo. Ovvia conseguenza: se un processo deve attendere al semaforo, viene aggiunto alla lista. Definendo quindi un semaforo come una struct:
+Per implementare un semaforo senza busy waiting, si usa un'ulteriore implementazione della funzione \verb|P()|, cui viene passata una lista contenente i processi in attesa al semaforo. Ovvia conseguenza: se un processo deve attendere al semaforo, viene aggiunto alla lista. Definendo quindi un semaforo come una struct:
 \begin{verbatim}
 typedef struct {
-   int value;
-   PCB *List;
+    int value;
+    PCB *List;
 } Sem;
 \end{verbatim}
-La funzione P() sarà:
+La funzione \verb|P()| sarà:
 \begin{verbatim}
-P(Sem &s){
-   P(mutex);
-   s.value = s.value - 1;
-   if(s.value < 0) {
-      V(mutex);
-      append(process i, s.List);
-      sleep() //mette il processo in attesa
-   } else
-         V(mutex);
+P(Sem &s) {
+    P(mutex);
+    s.value = s.value - 1;
+    if(s.value < 0) {
+        V(mutex);
+        append(process i, s.List);
+        sleep() //mette il processo in attesa
+    } else {
+        V(mutex);
+    }
 }
 \end{verbatim}
-Mentre la V() sarà:
+Mentre la \verb|V()| sarà:
 \begin{verbatim}
 P(Sem &s){
-   P(mutex);
-   s.value = s.value + 1;
-   if(s.value<=0) {
-      V(mutex);
-      PCB *p = remove(s.List);
-      wakeup(p);
-   } else
-         V(mutex);
+    P(mutex);
+    s.value = s.value + 1;
+    if(s.value <= 0) {
+        V(mutex);
+        PCB *p = remove(s.List);
+        wakeup(p);
+   } else {
+        V(mutex);
+   } 
 }
 \end{verbatim}
 
@@ -1098,8 +1102,10 @@ Come già detto, i semafori non risolvono solo il problema della sezione critica
 \begin{verbatim}
 /* valore iniziale di s = 1 (mutex) */
 while (1) {
-P(s); //sezione critica
-V(s); //sezione non critica
+    P(s);
+    // sezione critica
+    V(s);
+    // sezione non critica
 }
 \end{verbatim}
 Segue un esempio di sincronizzazione per attesa di evento. Verrà eseguito l’evento B solo se l’evento A viene eseguito. Grazie ai semafori risulta tutto più semplice.
@@ -1108,7 +1114,8 @@ Segue un esempio di sincronizzazione per attesa di evento. Verrà eseguito l’e
 L'implementazione di un semaforo con una coda di attesa potrebbe portare a situazioni in cui due o più processi arrivino ad aspettare indefinitamente per un evento che potrebbe essere causato solo da uno dei processi in attesa. Quando si arriva a un simile stato, si dice che i processi sono in \textbf{deadlock}. Altri problemi legati al deadlock sono il blocco indefinito e la starvation, cioè l'attesa indefinita all'interno di un semaforo.
 
 \subsection{Problemi classici di sincronizzazione}
-Si usano i semafori per la sincronizzazione. Andiamo ad analizzare alcuni problemi classici.
+Andiamo ora ad analizzare alcuni problemi classici della sincronizzazione, risolvibili tramite semafori.
+
 \subsubsection{Problema del produttore-consumatore (anche bounded buffer problem)}
 Si presenta ora una struttura generale del problema già presentato all'inizio della sezione. Il produttore e il consumator condividono le seguenti strutture di dati:
 \begin{verbatim}
@@ -1120,11 +1127,14 @@ semaphore full = 0;
 
 Si assume che il pool consista di \texttt n buffers, ognuno capace di tenere un elemento. Il semaforo mutex garantisce la mutua esclusione per l'accesso al pool di buffers ed è inizializzato al valore 1. I semafori empty e full contano il numero di buffer vuoti e pieni.
 \begin{figure}[htb]
-   \includegraphics{img/sem_prod_cons.JPG}
+    \includegraphics{img/sem_prod_cons.JPG}
 \end{figure}
 
 \paragraph{Problema dei \textit{Dining Philosophers}}
-Si considerino N filosofi che spendono la loro vita a pensare e mangiare. I filosofi condividono un tavolo circolare circondato da N sedie, una per ogni filosofo. Al centro del tavolo c'è una ciotola di riso e sul tavolo sono presenti N bacchette. Quando un filosofo pensa, non interagisce con gli altri. Di tanto in tanto, un filosofo diviene affamato e cerca di prendere le due bacchette a lui più vicine. Ogni filosofo può prendere una sola bacchetta alla volta e ovviamente non può sfilarle dalle mani dei vicini. Quando un filosofo affamato ha entrambe le bacchette, può mangiare. Una volta finito, posa le bacchette e ricomincia a pensare.
+
+Si considerino N filosofi che spendono la loro vita a pensare e mangiare. I filosofi condividono un tavolo circolare circondato da N sedie, una per ogni filosofo. Ogni filosofo ha davanti a sè una ciotola di riso e tra ogni ciotola, una bacchetta (per un totale di $N$ bacchette e $N$ e ciotole).
+
+Quando un filosofo pensa, non interagisce con gli altri. Di tanto in tanto, un filosofo diviene affamato e cerca di prendere le due bacchette a lui più vicine. Ogni filosofo può prendere una sola bacchetta alla volta e ovviamente non può sfilarle dalle mani dei vicini. Quando un filosofo affamato ha entrambe le bacchette, può mangiare. Una volta finito, posa le bacchette e ricomincia a pensare.
 
 Il problema dei filosofi è un classico della sincronizzazione. Una semplice soluzione è quella di rappresentare ogni bacchetta con un semaforo. Un filosofo prova a prendere una bacchetta eseguendo una \texttt{wait()} su quel semaforo, quindi la rilascia eseguendo una \texttt{signal()}. I dati condivisi sono, quindi, \texttt{semaphore chopstick[N];} , con ogni elemento inizializzato a 1.
 \begin{verbatim}
@@ -1139,16 +1149,16 @@ do {
     . . .
    /* think for a while */
     . . .
-} while(true);
+} while(TRUE);
 \end{verbatim}
 
 Anche se questa soluzione garantisce che due filosofi vicini non possano mangiare contemporaneamente, è incompleta perché lascia una possibilità di deadlock, qualora tutti i filosofi dovessero tentare di prendere la bacchetta alla loro destra/sinistra contemporaneamente.
 
 Esistono svariate soluzione al problema del deadlock:
 \begin{itemize}
-   \item Permettere a non più di N-1 filosofi di sedere al tavolo
-   \item Permettere a un filosofo di prendere una bacchetta solo se entrambe quelle vicino a lui sono libere
-   \item Usare una soluzione asimmetrica: i filosofi in un posto pari prendono per prima la bacchetta a destra, mentre quelli in un posto dispari faranno lo stesso con quella alla loro sinistra.
+    \item Permettere a non più di N-1 filosofi di sedere al tavolo
+    \item Permettere a un filosofo di prendere una bacchetta solo se entrambe quelle vicino a lui sono libere
+    \item Usare una soluzione asimmetrica: i filosofi in un posto pari prendono per prima la bacchetta a destra, mentre quelli in un posto dispari faranno lo stesso con quella alla loro sinistra.
 \end{itemize}
 Basandoci sul secondo punto, si può implementare una versione deadlock-free. Per prima cosa bisogna distinguere i tre diversi stati in cui un filosofo può trovarsi, cioè: \texttt{enum \{THINKING, HUNGRY, EATING\} state[N];}.
 
@@ -1156,21 +1166,21 @@ Il filosofo \textit{i} può settare \texttt{state[i] = EATING} solo se entrambi 
 
 Una soluzione corretta è quindi rappresentabile con le seguenti funzioni/classi.
 \begin{figure}[htb]
-   \includegraphics[width=\linewidth]{img/filosofi_ok.JPG}
+    \includegraphics[width=\linewidth]{img/filosofi_ok.JPG}
 \end{figure}
 \newpage
 \paragraph{Problema dello Sleepy Barber}
 Un negozio ha una sala d'attesa con N sedie, ed una stanza con la sedia del barbiere. In assenza di clienti, il barbiere si addormenta.
 
-Quando entra un cliente, se le sedie sono occupate, se ne va. Se il barbiere è occupato o addormentato, il cliente, rispettivamente, si siede o lo sveglia.
+Quando entra un cliente, se tutte le sedie sono occupate, se ne va. Se il barbiere è occupato o addormentato, il cliente, rispettivamente, si siede o lo sveglia.
 \begin{figure}[htb]
-   \includegraphics[width=\linewidth]{img/barber.JPG}
+    \includegraphics[width=\linewidth]{img/barber.JPG}
 \end{figure}
 
 \subsection{Monitor}
 Anche se i semafori forniscono un meccanismo conveniente ed efficace per la sincronizzazione dei processi, un utilizzo sbagliato potrebbe risultare in errori sulle tempistiche difficili da scovare.
 
-Un processo potrebbe scambiare l'ordine di esecuzione della wait() e della signal(), violando la mutua esclusione. Potrebbe addirittura rimpiazzare una signal() con una wait(), creando un deadlock. Nel peggiore dei casi potrebbe omettere una delle due chiamate, generando potenzialmente tanto un deadlock, quanto una violazione della mutua esclusione.
+Un processo potrebbe scambiare l'ordine di esecuzione della wait() e della signal(), violando la mutua esclusione. Potrebbe addirittura rimpiazzare una signal() con una wait(), creando un deadlock. Nel peggiore dei casi potrebbe omettere una delle due chiamate, generando potenzialmente non tanto un deadlock, quanto una violazione della mutua esclusione.
 
 Per gestire tali errori, sono stati sviluppati costrutti di alto livello per la condivisione sicura ed efficiente di dati tra i processi, come, ad esempio, i monitor.
 
@@ -1181,16 +1191,16 @@ Per permettere ad un processo di attendere all'interno del monitor, sono necessa
 
 Si supponga che, quando un processo P invoca \texttt{x.signal()}, ci sia un processo sospeso Q associato alla condizione x. Chiaramente, se il processo Q ha il permesso di riprendere la sua esecuzione, il processo P deve aspettare. In caso contrario, sia P che Q sarebbero attivi simultaneamente nel monitor. Esistono due possibilità:
 \begin{itemize}
-   \item \textbf{Signal and wait.} P potrebbe aspettare finché Q non lascia il monitor o aspetta un'altra condizione
-   \item \textbf{Signal and continue.} Q può aspettare che P lasci il monitor o potrebbe aspettare un'altra condizione.
+    \item \textbf{Signal and wait.} P potrebbe aspettare finché Q non lascia il monitor o aspetta un'altra condizione
+    \item \textbf{Signal and continue.} Q può aspettare che P lasci il monitor o potrebbe aspettare un'altra condizione.
 \end{itemize}
 \paragraph{Produttore-consumatore con i monitor}
 Come esempio, sfruttiamo il problema del produttore e del consumatore già precedentemente discusso. Sfruttando il monitor, la funzione che conterrà la sezione critica sarà invocata chiamando l'opportuno metodo del monitor. Perciò, il processo Producer passerà l'oggetto prodotto alla procedura enter(), mentre il consumatore rimuoverà e consumerà gli oggetti prodotti.\newline
 Il monitor conterrà due variabili condizionali: full e empty, che rappresenteranno rispettivamente le code d'attesa dei processi che hanno tentato di sincronizzare le variabili condivise (gli oggetti prodotti, presenti nel buffer circolare) nel momento in cui il buffer è pieno e nel momento in cui il buffer è vuoto.
 \begin{figure}[htb]
-   \includegraphics[width=7cm]{img/prodconsm1.JPG}
-   \includegraphics[width=7cm]{img/prodconsm2.JPG}
-   \includegraphics[width=7cm]{img/prodconsm3.JPG}
+    \includegraphics[width=7cm]{img/prodconsm1.JPG}
+    \includegraphics[width=7cm]{img/prodconsm2.JPG}
+    \includegraphics[width=7cm]{img/prodconsm3.JPG}
 \end{figure}
 
 \paragraph{Limitazioni}
@@ -1204,10 +1214,10 @@ In un sistema a multiprogrammazione, diversi processi potrebbero competere per u
 
 Affinché si verifichi un deadlock, è necessario che le seguenti condizioni siano contemporaneamente valide in un sistema:
 \begin{itemize}
-   \item \textbf{Mutua esclusione}: almeno una risorsa non è condivisibile, ovvero un solo processo per volta può usufruirne
-   \item \textbf{Hold and wait}: deve esistere un processo che detiene una risorsa e che attende di acquisirne un'altra, detenuta da un altro
-   \item \textbf{No preemption}: le risorse possono essere rilasciate solo volontariamente
-   \item \textbf{Attesa circolare}: deve esistere un insieme di processi che attendono ciclicamente il liberarsi di una risorsa
+    \item \textbf{Mutua esclusione}: almeno una risorsa non è condivisibile, ovvero un solo processo per volta può usufruirne
+    \item \textbf{Hold and wait}: deve esistere un processo che detiene una risorsa e che attende di acquisirne un'altra, detenuta da un altro
+    \item \textbf{No preemption}: le risorse possono essere rilasciate solo volontariamente
+    \item \textbf{Attesa circolare}: deve esistere un insieme di processi che attendono ciclicamente il liberarsi di una risorsa
 \end{itemize}
 Da notare: la condizione di attesa circolare implica la Hold and Wait.
 
@@ -1219,9 +1229,9 @@ Data questa definizione di Grafo dell'allocazione delle risorse di sistema, è p
 \subsection{Gestione dei deadlocks}
 Generalmente, si può affrontare il problema dei deadlock in uno dei seguenti tre modi:
 \begin{itemize}
-   \item Si può usare un protocollo per prevenire o evitare i deadlocks.
-   \item Si può permettere al sistema di entrare in uno stato di deadlock, riconoscerlo e, quindi, risolverlo
-   \item Si può ignorare il problema e pretendere che non possano verificarsi deadlocks nel sistema
+    \item Si può usare un protocollo per prevenire o evitare i deadlocks.
+    \item Si può permettere al sistema di entrare in uno stato di deadlock, riconoscerlo e, quindi, risolverlo
+    \item Si può ignorare il problema e pretendere che non possano verificarsi deadlocks nel sistema
 \end{itemize}
 La terza opzione è quella utilizzata dalla maggior parte dei sistemi operativi, fra cui anche Windows e Linux.\newline
 Per far sì che un deadlock non si verifichi mai, il sistema può utilizzare tecniche per prevenire i deadlock, o per evitarli. La prevenzione fornisce un insieme di metodo per assicurare che almeno una delle condizioni necessarie non sia mai valida.
@@ -1231,11 +1241,11 @@ La deadlock avoidance, invece, richiede che il sistema abbia informazioni addizi
 \subsection{Prevenzione dei deadlocks}
 Per prevenire i deadlock è necessario impedire che si verifichi una delle quattro condizioni già citate.
 \begin{enumerate}
-   \item \textbf{Mutua esclusione}: è irrinunciabile ed implica la presenza di almeno una risorsa non condivisibile.
-   \item \textbf{Hold and Wait}: per assicurare che questa condizione non si verifichi mai, è necessario garantire che, ogni volta in cui un processo richiede una risorsa, questo non ne detenga già altre, o, addirittura, abbia rilasciato tutte quelle che detiene.
-         Questo approccio porta a un basso utilizzo delle risorse e possibilmente alla starvation di alcuni processi, per la richiesta di risorse molto ``popolari''.
-   \item \textbf{No Preemption}: se un processo richiede una risorsa momentaneamente non disponibile, deve rilasciare tutte le altre risorse che detiene. In alternativa, può cedere le risorse che detiene su richiesta di un altro processo. Una soluzione simile, tuttavia, è fattibile solo per risorse il cui stato può essere facilmente ristabilito (CPU, registri... Non stampanti, nastri, ecc.)
-   \item \textbf{Attesa circolare}: si può assegnare una priorità (un ordinamento globale) ad ogni risorsa. Ogni processo può richiedere poi le risorse solo in ordine crescente di priorità. Così facendo, l'attesa circolare diventa impossibile perché un processo detentore di una risorsa di priorità n, prima o poi dovrà richiedere una risorsa di priorità 0 per ``chiudere il cerchio''. La priorità, e quindi l'ordine di richiesta, deve ovviamente seguire un ordine sensato (ad esempio, il disco prima della stampante).
+    \item \textbf{Mutua esclusione}: è irrinunciabile ed implica la presenza di almeno una risorsa non condivisibile.
+    \item \textbf{Hold and Wait}: per assicurare che questa condizione non si verifichi mai, è necessario garantire che, ogni volta in cui un processo richiede una risorsa, questo non ne detenga già altre, o, addirittura, abbia rilasciato tutte quelle che detiene.
+          Questo approccio porta a un basso utilizzo delle risorse e possibilmente alla starvation di alcuni processi, per la richiesta di risorse molto ``popolari''.
+    \item \textbf{No Preemption}: se un processo richiede una risorsa momentaneamente non disponibile, deve rilasciare tutte le altre risorse che detiene. In alternativa, può cedere le risorse che detiene su richiesta di un altro processo. Una soluzione simile, tuttavia, è fattibile solo per risorse il cui stato può essere facilmente ristabilito (CPU, registri... Non stampanti, nastri, ecc.)
+    \item \textbf{Attesa circolare}: si può assegnare una priorità (un ordinamento globale) ad ogni risorsa. Ogni processo può richiedere poi le risorse solo in ordine crescente di priorità. Così facendo, l'attesa circolare diventa impossibile perché un processo detentore di una risorsa di priorità n, prima o poi dovrà richiedere una risorsa di priorità 0 per ``chiudere il cerchio''. La priorità, e quindi l'ordine di richiesta, deve ovviamente seguire un ordine sensato (ad esempio, il disco prima della stampante).
 \end{enumerate}
 
 \subsection{Prevenzione dinamica - Deadlock Avoidance}
@@ -1246,21 +1256,21 @@ Uno stato è detto \textit{safe} se il sistema può allocare le risorse per ogni
 
 Più formalmente, una sequenza dei processi $(P_1,...,P_N)$ è safe se, per ogni $P_i$, le risorse che $P_i$ può richiedere possono essere esaudite utilizzando:
 \begin{itemize}
-   \item le risorse disponibili
-   \item le risorse detenute da $P_j$, con $j < i$ (attendendo che $P_j$ termini)
+    \item le risorse disponibili
+    \item le risorse detenute da $P_j$, con $j < i$ (attendendo che $P_j$ termini)
 \end{itemize}
 Se non esiste una tale sequenza, si è in uno stato \textit{unsafe}: non tutti gli stati unsafe sono stati di deadlock, ma ne sono potenzialmente la fonte.
 
 \paragraph{Esempio}
 Si supponga di avere tre processi $P_0, P_1$ e $P_2$ e 12 istanze di una risorsa, di cui 3 libere. Le altre sono allocate nel seguente modo:
 \begin{table}[htb]
-   \centering
-   \begin{tabular}{c|c|c}
-            & Richieste & Possedute \\ \hline
-      $P_0$ & 10        & 5         \\
-      $P_1$ & 4         & 2         \\
-      $P_2$ & 9         & 2
-   \end{tabular}
+    \centering
+    \begin{tabular}{c|c|c}
+              & Richieste & Possedute \\ \hline
+        $P_0$ & 10        & 5         \\
+        $P_1$ & 4         & 2         \\
+        $P_2$ & 9         & 2
+    \end{tabular}
 \end{table}
 In questo caso esiste una sequenza safe $<P_1, P_0, P_2>$: $P_1$ prende le 2 risorse necessarie, quindi le rilascia. A questo punto $P_0$ potrà prendere le 5 risorse che gli mancano e completare il suo compito, quindi toccherà a $P_2$. Se $P_2$ richiedesse subito una risorsa e gli venisse assegnata, si entrerebbe in uno stato unsafe: $P_1$ potrebbe ancora eseguire, ma le 4 risorse che andrebbe poi a rilasciare non sarebbero sufficienti né per $P_0$, né per $P_2$.
 
@@ -1280,109 +1290,109 @@ Quando un processo entra nel sistema, deve dichiarare il massimo numero di istan
 
 Sono necessarie diverse strutture di dati per implementare l'algoritmo del banchiere. Detti \textit{n} il numero di processi ed \textit{m} il numero di tipi di risorse, le strutture dati saranno:
 \begin{itemize}
-   \item \textbf{available[m]}: un vettore di lunghezza m che indica il numero di risorse disponibili per ogni tipo
-   \item \textbf{max[n][m]}: matrice delle richieste massime di risorse
-   \item \textbf{alloc[n][m]}: matrice di allocazione corrente
-   \item \textbf{need[n][m]}: matrice di bisogno rimanente, ovvero la differenza tra max e alloc
+    \item \textbf{available[m]}: un vettore di lunghezza m che indica il numero di risorse disponibili per ogni tipo
+    \item \textbf{max[n][m]}: matrice delle richieste massime di risorse
+    \item \textbf{alloc[n][m]}: matrice di allocazione corrente
+    \item \textbf{need[n][m]}: matrice di bisogno rimanente, ovvero la differenza tra max e alloc
 \end{itemize}
 
 \paragraph{Algoritmo di allocazione}
 Sia request[i][] il vettore delle richieste del processo $P_i$. Se request[i][j]==j, il processo $P_i$ vuole k istanze della risorsa $R_j$. \begin{Verbatim}[tabsize=4]
-   void request(int req_vec[]) {
-   if (req_vec[] > need[i][])
-   error(); //è stato superato il limite massimo preventivato
-   if(req_vec[] > available[])
-   wait //non ci sono abbastanza risorse disponibili, quindi aspetta
-   //SIMULO L'ASSEGNAZIONE
-   available[] = available[] - req_vec[];
-   alloc[i][] = alloc[i][] + req_vec[];
-   need[i][] = need[i][] - req_vec[];
-   if(!state_safe()) { //Se non è safe, ripristino il vecchio stato
-   available[] = available[] + req_vec[];
-   alloc[i][] = alloc[i][] - req_vec[];
-   need[i][] = need[i][] + req_vec[];
-   wait();
-   }
-   }
+    void request(int req_vec[]) {
+    if (req_vec[] > need[i][])
+    error(); //è stato superato il limite massimo preventivato
+    if(req_vec[] > available[])
+    wait //non ci sono abbastanza risorse disponibili, quindi aspetta
+    //SIMULO L'ASSEGNAZIONE
+    available[] = available[] - req_vec[];
+    alloc[i][] = alloc[i][] + req_vec[];
+    need[i][] = need[i][] - req_vec[];
+    if(!state_safe()) { //Se non è safe, ripristino il vecchio stato
+    available[] = available[] + req_vec[];
+    alloc[i][] = alloc[i][] - req_vec[];
+    need[i][] = need[i][] + req_vec[];
+    wait();
+    }
+    }
 \end{Verbatim}
 \newpage
 \paragraph{Algoritmo di verifica dello stato}
 \begin{Verbatim}[tabsize=4]
-   boolean state_safe(){
-   int work[m] = available[]; // qui ho già sottratto le richieste di P_i
-   boolean finish[n] = (FALSE,. . .,FALSE);
-   int i;
-   while(finish != (TRUE,...,TRUE) ) {
-   //cerca P_i che NON abbia terminato e che possa completare
-   // con le risorse disponibili in work
-   for(i=0; (i<n)&&(finish[i]||(need[i][]>work[])); i++);
-   if (i==n) //arriva in fondo senza trovare un processo
-   //che non abbia potenzialmente finito e un array
-   //di risorse necessarie minore di quello delle disponibili
-   return FALSE; //non c'è un arco che renda lo stato unsafe
-   else {
-   work[] = work[]+alloc[i][];
-   finish[i] = TRUE;
-   }
-   } return TRUE;
-   }
-   NOTA: ritorna true e false, a un primo impatto invertiti, perché nell'algoritmo
-   di allocazione controlla con la negazione!
+    boolean state_safe(){
+    int work[m] = available[]; // qui ho già sottratto le richieste di P_i
+    boolean finish[n] = (FALSE,. . .,FALSE);
+    int i;
+    while(finish != (TRUE,...,TRUE) ) {
+    //cerca P_i che NON abbia terminato e che possa completare
+    // con le risorse disponibili in work
+    for(i=0; (i<n)&&(finish[i]||(need[i][]>work[])); i++);
+    if (i==n) //arriva in fondo senza trovare un processo
+    //che non abbia potenzialmente finito e un array
+    //di risorse necessarie minore di quello delle disponibili
+    return FALSE; //non c'è un arco che renda lo stato unsafe
+    else {
+    work[] = work[]+alloc[i][];
+    finish[i] = TRUE;
+    }
+    } return TRUE;
+    }
+    NOTA: ritorna TRUE e false, a un primo impatto invertiti, perché nell'algoritmo
+    di allocazione controlla con la negazione!
 \end{Verbatim}
 
 \paragraph{Esempio}
 \begin{itemize}
-   \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
-   \item 3 risorse: A (10 istanze), B (5 istanze), C (7 istanze)
+    \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
+    \item 3 risorse: A (10 istanze), B (5 istanze), C (7 istanze)
 \end{itemize}
 Fotografia al tempo $T_0$
 \begin{table}[htb]
-   \centering
-   \begin{tabular}{c|ccc|ccc|ccc|ccc|}
-      \cline{2-13}
-                                           & \multicolumn{3}{c|}{\textbf{Allocation}} & \multicolumn{3}{c|}{\textbf{Max}} & \multicolumn{3}{c|}{\textbf{Available}} & \multicolumn{3}{c|}{\textbf{Need}}                                                                                                         \\ \cline{2-13}
-                                           & \textbf{A}                               & \textbf{B}                        & \textbf{C}                              & \textbf{A}                         & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\ \hline
-      \multicolumn{1}{|c|}{\textbf{P0}}    & 0                                        & 1                                 & 0                                       & 7                                  & 5          & 3          & 3          & 3          & 2          & 7          & 4          & 3          \\
-      \multicolumn{1}{|c|}{\textbf{$P_1$}} & 2                                        & 0                                 & 0                                       & 3                                  & 2          & 2          &            &            &            & 1          & 2          & 2          \\
-      \multicolumn{1}{|c|}{\textbf{$P_2$}} & 3                                        & 0                                 & 2                                       & 9                                  & 0          & 2          &            &            &            & 6          & 0          & 0          \\
-      \multicolumn{1}{|c|}{\textbf{$P_3$}} & 2                                        & 1                                 & 1                                       & 2                                  & 2          & 2          &            &            &            & 0          & 1          & 1          \\
-      \multicolumn{1}{|c|}{\textbf{$P_4$}} & 0                                        & 0                                 & 2                                       & 4                                  & 3          & 3          &            &            &            & 4          & 3          & 1          \\ \hline
-   \end{tabular}
+    \centering
+    \begin{tabular}{c|ccc|ccc|ccc|ccc|}
+        \cline{2-13}
+                                             & \multicolumn{3}{c|}{\textbf{Allocation}} & \multicolumn{3}{c|}{\textbf{Max}} & \multicolumn{3}{c|}{\textbf{Available}} & \multicolumn{3}{c|}{\textbf{Need}}                                                                                                         \\ \cline{2-13}
+                                             & \textbf{A}                               & \textbf{B}                        & \textbf{C}                              & \textbf{A}                         & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} & \textbf{A} & \textbf{B} & \textbf{C} \\ \hline
+        \multicolumn{1}{|c|}{\textbf{P0}}    & 0                                        & 1                                 & 0                                       & 7                                  & 5          & 3          & 3          & 3          & 2          & 7          & 4          & 3          \\
+        \multicolumn{1}{|c|}{\textbf{$P_1$}} & 2                                        & 0                                 & 0                                       & 3                                  & 2          & 2          &            &            &            & 1          & 2          & 2          \\
+        \multicolumn{1}{|c|}{\textbf{$P_2$}} & 3                                        & 0                                 & 2                                       & 9                                  & 0          & 2          &            &            &            & 6          & 0          & 0          \\
+        \multicolumn{1}{|c|}{\textbf{$P_3$}} & 2                                        & 1                                 & 1                                       & 2                                  & 2          & 2          &            &            &            & 0          & 1          & 1          \\
+        \multicolumn{1}{|c|}{\textbf{$P_4$}} & 0                                        & 0                                 & 2                                       & 4                                  & 3          & 3          &            &            &            & 4          & 3          & 1          \\ \hline
+    \end{tabular}
 \end{table}
 Al tempo $T_0$ il sistema è in uno stato safe e $<P_1, P_3, P_4, P_2, P_0>$ è una sequenza safe. \newline
 Al tempo $T_1$, $P_1$ richiede (1,0,2): Request\_1 $<=$ Available? (1,0,2) $<=$ (3,3,2) ==> OK. Abbiamo quindi una nuova situazione:
 \begin{figure}[htb]
-   \includegraphics[width=7cm]{img/bank1.JPG}
+    \includegraphics[width=7cm]{img/bank1.JPG}
 \end{figure}
 \newpage
 Siamo ancora in uno stato safe?
 \begin{itemize}
-   \item work = (2,3,0)
-   \item i=0 finish=FALSE, need[0] = (7,4,3) > work
-   \item i=1 finish=FALSE, need[1] = (0,2,0) < work
-         \begin{itemize}
-            \item work = work + (3,0,2) = (5,3,2)
-            \item finish[1] = TRUE
-         \end{itemize}
-   \item i=2 finish=FALSE, need[2] = (6,0,0) > work
-   \item i=3 finish=FALSE, need[3] = (0,1,1) < work
-         \begin{itemize}
-            \item work = work + (2,1,1) = (7,4,3)
-            \item finish[3] = TRUE
-         \end{itemize}
-   \item Si va avanti così e l'ordine dei finish=TRUE mi determina la sequenza safe finale, che in questo caso sarà:
-   \item $<P_1, P_3, P_4, P_0, P_2>$
+    \item work = (2,3,0)
+    \item i=0 finish=FALSE, need[0] = (7,4,3) > work
+    \item i=1 finish=FALSE, need[1] = (0,2,0) < work
+          \begin{itemize}
+              \item work = work + (3,0,2) = (5,3,2)
+              \item finish[1] = TRUE
+          \end{itemize}
+    \item i=2 finish=FALSE, need[2] = (6,0,0) > work
+    \item i=3 finish=FALSE, need[3] = (0,1,1) < work
+          \begin{itemize}
+              \item work = work + (2,1,1) = (7,4,3)
+              \item finish[3] = TRUE
+          \end{itemize}
+    \item Si va avanti così e l'ordine dei finish=TRUE mi determina la sequenza safe finale, che in questo caso sarà:
+    \item $<P_1, P_3, P_4, P_0, P_2>$
 \end{itemize}
 
 Ad esempio, se si svolgesse l'algoritmo ipotizzando che al tempo $T_2$ P0 richiedesse (0,2,0), effettuando i dovuti cambiamenti (Allocation di P0: (0,3,0) e Available (2,1,0)), svolgendo l'algoritmo vedremmo che lo stato è unsafe.
 \begin{itemize}
-   \item work = (2,3,0)
-   \item i=0 finish=FALSE, need[0] = (7,2,3) > work
-   \item i=1 finish=FALSE, need[1] = (0,2,0) > work
-   \item i=2 finish=FALSE, need[2] = (6,0,0) > work
-   \item i=3 finish=FALSE, need[3] = (0,3,1) > work
-   \item i=4 finish=FALSE, need[4] = (4,3,1) > work
-   \item STATO UNSAFE!
+    \item work = (2,3,0)
+    \item i=0 finish=FALSE, need[0] = (7,2,3) > work
+    \item i=1 finish=FALSE, need[1] = (0,2,0) > work
+    \item i=2 finish=FALSE, need[2] = (6,0,0) > work
+    \item i=3 finish=FALSE, need[3] = (0,3,1) > work
+    \item i=4 finish=FALSE, need[4] = (4,3,1) > work
+    \item STATO UNSAFE!
 \end{itemize}
 
 \subsection{Rilevazione del deadlock e ripristino}
@@ -1394,52 +1404,52 @@ Tanto la prevenzione statica quanto la dinamica sono conservative e riducono ecc
 
 Le strutture dati utilizzate sono simili a quelle dell'algoritmo del banchiere:
 \begin{Verbatim}[tabsize=3]
-   int available[m]; //numero di istanze di R_i disponibili
-   int alloc[n][m]; //matrice di allocazione corrente
-   int req_vec[n][m]; // matrice delle richieste
+    int available[m]; //numero di istanze di R_i disponibili
+    int alloc[n][m]; //matrice di allocazione corrente
+    int req_vec[n][m]; // matrice delle richieste
 
-   int worl[m] = available[m];
-   bool finish[] = (FALSE,...,FALSE), found = TRUE;
-   while(found) {
-   found=FALSE;
-   for(i=0; i<n && !found; i++){
-   //cerca un P_i con richiesta soddisfacibile
-   if(!finish[i] && req_vec[i][]<=work[]) {
-         //assume ottimisticamente che P_i esegua fino
-         // al termine e che quindi restituisca le risorse
-         // Se non è così, il possibile deadlock verrà
-         // evidenziato alla prossima esecuzione
-         // dell'algoritmo
-         work[] = work[] + alloc[i][];
-         finish[i]=TRUE;
-         found=TRUE;
-      }
-   }
-   } //se finish[i]=FALSE per un qualsiasi i, P_i è in deadlock
+    int worl[m] = available[m];
+    bool finish[] = (FALSE,...,FALSE), found = TRUE;
+    while(found) {
+    found=FALSE;
+    for(i=0; i<n && !found; i++){
+    //cerca un P_i con richiesta soddisfacibile
+    if(!finish[i] && req_vec[i][]<=work[]) {
+            //assume ottimisticamente che P_i esegua fino
+            // al termine e che quindi restituisca le risorse
+            // Se non è così, il possibile deadlock verrà
+            // evidenziato alla prossima esecuzione
+            // dell'algoritmo
+            work[] = work[] + alloc[i][];
+            finish[i]=TRUE;
+            found=TRUE;
+        }
+    }
+    } //se finish[i]=FALSE per un qualsiasi i, P_i è in deadlock
 \end{Verbatim}
 
 \paragraph{Esempio}
 \begin{itemize}
-   \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
-   \item 3 tipi di risorsa: A (7 istanze), B (2 istanze), C (6 istanze)
+    \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
+    \item 3 tipi di risorsa: A (7 istanze), B (2 istanze), C (6 istanze)
 \end{itemize}
 Fotografia al tempo $T_0$
 \begin{figure}[htb]
-   \includegraphics[width=7cm]{img/ril1.JPG}
+    \includegraphics[width=7cm]{img/ril1.JPG}
 \end{figure}
 \newpage
 Siamo in una situazione di deadlock?
 \begin{Verbatim}[tabsize=3]
-   - work = (0,0,0)
-   - i=0	req[0] = (0,0,0) <= work 		OK
-   work = work + (0,1,0) = (0,1,0)	finish[0] = true	P_0!
-   - i=1	req[1] = (2,0,2) <= work		NO
-   - i=2	req[2] = (0,0,0) <= work 		OK
-   work = work + (3,0,3) = (3,1,3)	finish[2] = true	P_2!
-   - i=3	req[3] = (1,0,0) <= work 		OK
-   work = work + (2,1,1) = (5,2,4)	finish[3] = true	P_3!
-   - ecc...
-   - La sequenza <P0, $P_2$, $P_3$, $P_1$, $P_4$> dà finish[i] = true per ogni i
+    - work = (0,0,0)
+    - i=0	req[0] = (0,0,0) <= work 		OK
+    work = work + (0,1,0) = (0,1,0)	finish[0] = TRUE	P_0!
+    - i=1	req[1] = (2,0,2) <= work		NO
+    - i=2	req[2] = (0,0,0) <= work 		OK
+    work = work + (3,0,3) = (3,1,3)	finish[2] = TRUE	P_2!
+    - i=3	req[3] = (1,0,0) <= work 		OK
+    work = work + (2,1,1) = (5,2,4)	finish[3] = TRUE	P_3!
+    - ecc...
+    - La sequenza <P0, $P_2$, $P_3$, $P_1$, $P_4$> dà finish[i] = TRUE per ogni i
 \end{Verbatim}
 
 \subsection{Utilizzo dell'algoritmo di rilevazione-ripristino}
@@ -1454,8 +1464,8 @@ Quando l'algoritmo rileva un deadlock, si può agire in diversi modi.
 \subsubsection{Uccisione del processi coinvolti}
 Per eliminare i deadlocks terminando i processi, si possono utilizzare due approcci:
 \begin{itemize}
-   \item Uccisione di tutti i processi. Chiaramente rompe il ciclo del deadlock, ma è molto costoso: tutti i processi devono ripartire e perdono il lavoro svolto
-   \item Uccisione selettiva fino alla scomparsa del deadlock. Dopo ogni uccisione bisognerà chiamare l'algoritmo, inoltre bisogna rispettare delle regole precise per la selezione del processo da uccidere di volta in volta. Queste potrebbero basarsi su priorità, tipo di risorse allocate, tempo mancante  alla fine, eccetera.
+    \item Uccisione di tutti i processi. Chiaramente rompe il ciclo del deadlock, ma è molto costoso: tutti i processi devono ripartire e perdono il lavoro svolto
+    \item Uccisione selettiva fino alla scomparsa del deadlock. Dopo ogni uccisione bisognerà chiamare l'algoritmo, inoltre bisogna rispettare delle regole precise per la selezione del processo da uccidere di volta in volta. Queste potrebbero basarsi su priorità, tipo di risorse allocate, tempo mancante  alla fine, eccetera.
 \end{itemize}
 
 \subsubsection{Prelazione delle risorse}
@@ -1469,10 +1479,10 @@ Una volta prelazionata la risorsa, come ci si assicura di non andare incontro al
 
 \paragraph{In conclusione}, ognuno degli approcci visti ha vantaggi e svantaggi e nessuno dei tre è superiore all'altro. L'approccio basico può però essere combinato, permettendo di applicare il giusto metodo per ogni classe di risorse del sistema. Una possibile partizione in classi potrebbe essere:
 \begin{enumerate}
-   \item Risorse interne (usate dal sistema, es: I/O)
-   \item Memoria
-   \item Risorse di processo (es. file)
-   \item Spazio di swap (blocchi su disco)
+    \item Risorse interne (usate dal sistema, es: I/O)
+    \item Memoria
+    \item Risorse di processo (es. file)
+    \item Spazio di swap (blocchi su disco)
 \end{enumerate}
 
 \newpage
@@ -1493,9 +1503,9 @@ Gli indirizzi nel sorgente sono in genere simbolici (come una variabile \texttt{
 
 Il binding di dati e istruzioni a indirizzi di memoria può avvenire in tre momenti diversi:
 \begin{itemize}
-   \item A tempo di compilazione (compile time): se è noto a priori in quale parte della memoria risiederà il processo, è possibile generare codice assoluto. Se la locazione di partenza cambia, è necessario ricompilare.
-   \item A tempo di caricamento (load time): se non si conosce a compile time la locazione di memoria in cui il processo risiederà, il compilatore deve generare codice rilocabile. In questo caso, il binding è ritardato fino al tempo di caricamento. Se cambia l'indirizzo di riferimento, basta ricaricare il codice.
-   \item A tempo di esecuzione (run time): se il proesso può essere posticipato durante la sua esecuzione da un segmento all'altro, il binding deve essere ritardato fino al run time. Per far sì che questo schema funzioni efficientemente, è richiesto un supporto hardware specifico.
+    \item A tempo di compilazione (compile time): se è noto a priori in quale parte della memoria risiederà il processo, è possibile generare codice assoluto. Se la locazione di partenza cambia, è necessario ricompilare.
+    \item A tempo di caricamento (load time): se non si conosce a compile time la locazione di memoria in cui il processo risiederà, il compilatore deve generare codice rilocabile. In questo caso, il binding è ritardato fino al tempo di caricamento. Se cambia l'indirizzo di riferimento, basta ricaricare il codice.
+    \item A tempo di esecuzione (run time): se il proesso può essere posticipato durante la sua esecuzione da un segmento all'altro, il binding deve essere ritardato fino al run time. Per far sì che questo schema funzioni efficientemente, è richiesto un supporto hardware specifico.
 \end{itemize}
 Nei primi due casi si parla di binding statico, nel terzo di binding dinamico.
 
@@ -1536,9 +1546,9 @@ In generale, come già detto la memoria è divisa in tante partizioni, di dimens
 
 In generale, si possono adottare tre approcci alla risoluzione del problema dell'allocazione della memoria:
 \begin{itemize}
-   \item First fit. Alloca il primo hole che risulta essere grande abbastanza
-   \item Best fit. Alloca la più piccola buca sufficientemente grande, richiede che tutta la lista sia scandita ma garantisce il minimo spreco di memoria
-   \item Worst fit. Alloca la buca più grande, richiede che tutta la lista sia scansionata e lascia una buca di grandi dimensioni.
+    \item First fit. Alloca il primo hole che risulta essere grande abbastanza
+    \item Best fit. Alloca la più piccola buca sufficientemente grande, richiede che tutta la lista sia scandita ma garantisce il minimo spreco di memoria
+    \item Worst fit. Alloca la buca più grande, richiede che tutta la lista sia scansionata e lascia una buca di grandi dimensioni.
 \end{itemize}
 
 \subsubsection{Frammentazione}
@@ -1562,7 +1572,7 @@ Il mapping dall'indirizzo bidimensionale del programmatore a quello fisico viene
 
 Ad esempio, si consideri la seguente situazione:
 \begin{figure}[htb]
-   \includegraphics[width=12cm]{img/segmem.JPG}
+    \includegraphics[width=12cm]{img/segmem.JPG}
 \end{figure}
 
 \subsection{Paginazione}
@@ -1584,7 +1594,7 @@ Ogni sistema operativo ha il proprio metodo per mantenere le tabelle delle pagin
 L'uso dei registri è soddisfacente se la tabella è sufficientemente piccola, dato il limitato numero di tali dispositivi, ma al giorno d'oggi i computer supportano tabelle molto vaste. Per venire incontro a questa esigenza, è preferibile tenere la tabella delle pagine in memoria e usare uno o al più due registri: il page-table base register (PTBR), che contiene un puntatore alla tabella, e il page-table lenght register (PTLR), che è opzionale e contiene la dimensione della tabella. In questo modo, il context switch è molto più breve perché richiede solo la modifica del PTBR e, al massimo, del PTLR.
 
 \begin{wrapfigure}{r}{5.5cm}
-   \includegraphics[width=7cm]{img/tlb.JPG}
+    \includegraphics[width=7cm]{img/tlb.JPG}
 \end{wrapfigure}
 Il problema con questo approccio è che richiede due accessi in memoria: uno per andare a leggere la tabella e uno per andare alla voce indicata, quindi il tempo di accesso alla memoria è moltiplicato da un fattore 2. Per risolvere tale problema, si può utilizzare una piccola cache veloce detta translation look-aside buffer (TLB). Ogni entry nel TLB consiste di due parti: una chiave e un valore.  Quando gli viene presentato un oggetto, questo viene comparato con tutte le chiavi simultaneamente. Se viene trovato, viene ritornato il valore corrispondente.
 Il meccanismo del TLB è molto costoso, per questo al suo interno viene memorizzato solo un piccolo sottoinsieme delle entry nella tabella delle pagine e ad ogni context switch viene ripulito per evitare il mapping di indirizzi errati.
@@ -1602,7 +1612,7 @@ La protezione è realizzata associando un bit di protezione ad ogni frame. Norma
 \paragraph{Bit di validità} Un bit aggiuntivo è allegato a ogni entry della tabella delle pagine. Quando questo bit è settato a \textit{valid}, la pagina associata è nello spazio di indirizzamento logico del processo, mentre se è settato a \textit{invalid}, la pagina non si trova nello spazio di indirizzamento logico del processo. Un tentativo di accesso a una tale pagina causa una trap del sistema. Il bit di validità potrebbe non bastare, soprattutto nel caso in cui una pagina non fosse interamente utilizzata. Ad esempio, in un processo che occupa 3 pagine e mezza, la quarta sarà segnata come valida. Il precedentemente citato PTLR serve come ulteriore sicurezza per evitare che il processo possa accedere alla metà della quarta pagina fuori dal suo range.
 
 \begin{wrapfigure}{r}{5.5cm}
-   \includegraphics[width=9cm]{img/pag_cond.JPG}
+    \includegraphics[width=9cm]{img/pag_cond.JPG}
 \end{wrapfigure}
 
 \subsubsection{Pagine condivise}
@@ -1614,23 +1624,23 @@ Nelle architetture moderne con 32 o 64 bit di indirizzo, lo spazio di indirizzam
 La soluzione più semplice sta nel dividere la tabella in pezzi più piccoli.
 
 \begin{wrapfigure}{r}{5.5cm}
-   \includegraphics[width=7cm]{img/pagpag.JPG}
+    \includegraphics[width=7cm]{img/pagpag.JPG}
 \end{wrapfigure}
 \subsubsection{Paginazione multilivello}
 Questo metodo consiste nel ``paginare'' la tabella delle pagine. In pratica, solo alcune parti della tabella delle pagine sono memorizzate esplicitamente in memoria, mentre le altre sono su dischi. In generale, un indirizzo logico ha dei bit che indicato il numero di pagina e altri che indicano l'offset. Paginando la tabella delle pagine, la parte del numero di pagina verrà ulteriormente divisa in una parte che indicherà la tabella ``esterna'' e una che indica l'offset all'interno della tabella ``interna''.
 Ad esempio, dato un indirizzo: \newline
 \begin{table}[htb]
-   \centering
-   \begin{tabular}{ccc}
-      $P_1$                            & $P_2$                           & offset                            \\ \hline
-      \multicolumn{1}{|c|}{0000000001} & \multicolumn{1}{c|}{0000000011} & \multicolumn{1}{c|}{000000000100} \\ \hline
-   \end{tabular}
+    \centering
+    \begin{tabular}{ccc}
+        $P_1$                            & $P_2$                           & offset                            \\ \hline
+        \multicolumn{1}{|c|}{0000000001} & \multicolumn{1}{c|}{0000000011} & \multicolumn{1}{c|}{000000000100} \\ \hline
+    \end{tabular}
 \end{table} \newline
 Si avrà:
 \begin{itemize}
-   \item $P_1$=1 : recuperare la tabella di livello 2 corrispondente all'indirizzo indicato dalla prima riga
-   \item $P_2$=3 : recuperare l'indirizzo indicato nella teza riga della tabella di livello 2
-   \item offset=4 : da sommare al valore fornito nella terza riga della tabella di livello 2
+    \item $P_1$=1 : recuperare la tabella di livello 2 corrispondente all'indirizzo indicato dalla prima riga
+    \item $P_2$=3 : recuperare l'indirizzo indicato nella teza riga della tabella di livello 2
+    \item offset=4 : da sommare al valore fornito nella terza riga della tabella di livello 2
 \end{itemize}
 Così facendo, ogni livello è memorizzato come una tabella separata in memoria, quindi la conversione dell'indirizzo logico in quello fisico può richiedere n+1 accessi in memoria, per una paginazione di n livelli. Tuttavia, il TLB mantiene le prestazioni a livelli ragionevoli.
 
@@ -1657,7 +1667,7 @@ La memoria virtuale facilita inoltre la condivisione di files e di memoria tra i
 Tuttavia, la memoria virtuale non è di facile implementazione e può danneggiare le prestazioni se utilizzata in maniera inappropriata.
 
 \begin{wrapfigure}{r}{5.5cm}
-   \includegraphics[width=7cm]{img/virtmem.jpeg}
+    \includegraphics[width=7cm]{img/virtmem.jpeg}
 \end{wrapfigure}
 Il concetto chiave è nella possibilità di swappare pagine -- e non l'intero processo -- da e verso la memoria. La memoria virtuale è quindi composta dalla memoria fisica e dal disco.
 
@@ -1669,7 +1679,7 @@ Esistono due metodi principali per l'implementazione della memoria virtuale: la 
 Si consideri come un programma eseguibile può essere caricato dal disco alla memoria. Un'opzione è quella di caricare tutto il programma nella memoria fisica a tempo di esecuzione. Tuttavia, si potrebbe non aver bisogno dell'intero programma in memoria fin da subito; la cosa risulterebbe in uno spreco di spazio. Una strategia alternativa è quella di caricare le pagine solo se necessarie.
 
 \begin{wrapfigure}{r}{5.5cm}
-   \includegraphics[width=7cm]{img/pagefault.JPG}
+    \includegraphics[width=7cm]{img/pagefault.JPG}
 \end{wrapfigure}
 
 Con la memoria virtuale implementata tramite paginazione su domanda, le pagine sono caricate solo quando sono richieste durante l'esecuzione. Delle pagine che non sono mai richieste, magari con codice per casi particolari, non vengono mai caricate in memoria.
@@ -1679,12 +1689,12 @@ Quando un processo viene swappato in memoria, è necessario ``indovinare'' quali
 Cosa succede se un processo prova ad accedere a una pagina non caricata in memoria? L'accesso a una pagina invalida causa un \textbf{page fault}. L'hardware per la paginazione, nel tradurre l'indirizzo attraverso la tabella delle pagine, noterà che il bit di validità è settato su \textit{invalid} e causerà una trap del sistema operativo. La procedura per gestire i pagefault è la seguente:
 
 \begin{itemize}
-   \item Il Sistema Operativo verifica una tabella (associata al processo) per determinare se il riferimento alla pagina è valido o no.
-   \item Se il riferimento era invalid, il processo viene terminato. Se era valido e la pagina non era ancora stata caricata in memoria, se ne attiva il caricamento
-   \item Viene cercato un frame libero
-   \item Si swappa la pagina dal disco nel frame
-   \item Quando la lettura dal disco è completata, viene modificata la tabella interna del processo e la tabella delle pagine per indicare che una pagina è ora in memoria.
-   \item L'istruzione che aveva causato il page fault viene rispristinata.
+    \item Il Sistema Operativo verifica una tabella (associata al processo) per determinare se il riferimento alla pagina è valido o no.
+    \item Se il riferimento era invalid, il processo viene terminato. Se era valido e la pagina non era ancora stata caricata in memoria, se ne attiva il caricamento
+    \item Viene cercato un frame libero
+    \item Si swappa la pagina dal disco nel frame
+    \item Quando la lettura dal disco è completata, viene modificata la tabella interna del processo e la tabella delle pagine per indicare che una pagina è ora in memoria.
+    \item L'istruzione che aveva causato il page fault viene rispristinata.
 \end{itemize}
 In un caso estremo, si può iniziare ad eseguire un processo con nessuna pagina in memoria, dando luogo ad un page fault già al primo accesso in memoria. Con questa modalità si ha demand paging puro: non si porta mai una pagina in memoria finché non è esplicitamente richiesta.
 
@@ -1698,16 +1708,16 @@ Cosa succede se non ci sono frames liberi in memoria per caricare le pagine? Il 
 
 Con questo metodo, se nessun frame è libero, se ne cerca uno momentaneamente inutilizzato e lo si libera, cioè il suo contenuto viene messo nello spazio di swap e la tabella delle pagine viene cambiata per indicare che quella pagina non è più in memoria. La gestione dei page fault in assenza di frames liberi è, quindi, la seguente:
 \begin{itemize}
-   \item Il Sistema Operativo verifica una tabella (associata al processo) per capire se si tratta di page fault o violazione di accesso
-   \item Cerca un frame vuoto
-         \begin{itemize}
-            \item Se esiste, OK.
-            \item Se non c'è, si usa un algoritmo di rimpiazzamento delle pagine per scelgiere un frame vittima
-         \end{itemize}
-   \item Swap della vittima su disco
-   \item Swap della pagina dal disco al frame
-   \item Modifica delle tabelle
-   \item Ripristino dell'istruzione che ha causato il page fault
+    \item Il Sistema Operativo verifica una tabella (associata al processo) per capire se si tratta di page fault o violazione di accesso
+    \item Cerca un frame vuoto
+          \begin{itemize}
+              \item Se esiste, OK.
+              \item Se non c'è, si usa un algoritmo di rimpiazzamento delle pagine per scelgiere un frame vittima
+          \end{itemize}
+    \item Swap della vittima su disco
+    \item Swap della pagina dal disco al frame
+    \item Modifica delle tabelle
+    \item Ripristino dell'istruzione che ha causato il page fault
 \end{itemize}
 Si noti che, se non ci sono frames liberi, è necessario swappare due pagine, andando quindi a raddoppiare il tempo di page fault ed aumentando di conseguenza il tempo di accesso effettivo alla memoria (EAT).
 Si può ottimizzare il meccanismo utilizzando un bti di modifica (modify bit o dirty bit). Ogni pagina ha questo bit associato ed è settato a 1 se la pagina è stata modificata (scrittura) dal momento del suo accesso in memoria. Solo le pagine che risultano modificate (bit=1) vengono scritte su disco quando sono scelte come vittime. Non è necessario scrivere su disco una pagina con bit=0 perché, ovviamente, non ha ancora subito modifiche da salvare.
@@ -1777,15 +1787,15 @@ Un altro tassello importante è la selezione della dimensione della pagina, rico
 
 La stessa struttura di un programma influisce sul numero di page fault. Ad esempio, dato un array A[1024][1024] di interi, in cui ogni riga è memorizzata in una pagina, se si scrive:
 \begin{Verbatim}
-   for j:= 1 to 1024 do
-   for i := 1 to 1024 do
-   A[i][j] := 0;
+    for j:= 1 to 1024 do
+    for i := 1 to 1024 do
+    A[i][j] := 0;
 \end{Verbatim}
 si avranno 1024*1024 page fault, mentre scrivendo:
 \begin{Verbatim}
-   for i:= 1 to 1024 do
-   for j := 1 to 1024 do
-   A[i][j] := 0;
+    for i:= 1 to 1024 do
+    for j := 1 to 1024 do
+    A[i][j] := 0;
 \end{Verbatim}
 si avranno solo 1024 page fault.
 
@@ -1804,7 +1814,7 @@ Non sono altro che una sottile striscia in materiale plastico, rivestita di un m
 I dischi magnetici sono il cuore (per ora) della memoria secondaria di un computer. Concettualmente, sono piuttosto semplici: ogni \textit{piatto} del disco ha una forma circolare, come un CD, e un diametro che può variare tra i 3.5 e gli 1.8 pollici. Le superfici del piatto, che generalmente è fatto di alluminio, sono ricoperte con un materiale magnetizzabile.
 
 \begin{wrapfigure}{r}{5.5cm}
-   \includegraphics[width=7cm]{img/disk.JPG}
+    \includegraphics[width=7cm]{img/disk.JPG}
 \end{wrapfigure}
 Le operazioni di lettura e scrittura sono rese possibili da una testina sospesa sulla superficie magnetica. Per scrivere, viene fatta passare corrente attraverso la testina per magnetizzare la superficie. Per la lettura, il passaggio sopra un'area magnetizzata induce una corrente positiva o negativa nella testina.
 
@@ -1816,14 +1826,14 @@ $ T_{accesso} = T_{seek} + T_{latency} + T_{transfer} $
 
 \paragraph{Esempio}
 \begin{itemize}
-   \item velocità di traferimento = 40MB/s
-   \item Velocità di rotazione = 10000rpm = 166 rps
-   \item Rotazione media = 1/2 traccia
-   \item Dimensione blocco = 512 bytes
-   \item Seek time = 5ms
+    \item velocità di traferimento = 40MB/s
+    \item Velocità di rotazione = 10000rpm = 166 rps
+    \item Rotazione media = 1/2 traccia
+    \item Dimensione blocco = 512 bytes
+    \item Seek time = 5ms
 \end{itemize}
-$ T_{accesso} = 5 ms + 0.5/166 + 0.5 KB/40 MB = 5 ms + 3 ms + 0.0000125 = 8.0000125 ms $
-\newline
+
+$$ T_{accesso} = 5 ms + 0.5/166 + 0.5 KB/40 MB = 5 ms + 3 ms + 0.0000125 = 8.0000125 ms $$
 
 Il seek time è dominante, quindi, dato il grande numero di processi nel sistema che accedono al disco, è necessario minimizzarlo tramite algoritmi di scheduling atti a minimizzare il tempo di accesso totale e massimizzare la banda (cioè il numero di byte trasferiti per unità di tempo).
 
@@ -1839,10 +1849,10 @@ Il Sistema Operativo deve utilizzare l'hardware a disposizione nella maniera pi�
 
 Quando un processo richiede un'operazione di I/O da o verso il disco, effettua una chiamata di sistema. La richiesta specifica diverse informazioni:
 \begin{itemize}
-   \item Tipo di accesso (lettura o scrittura)
-   \item L'indirizzo sul disco
-   \item L'indirizzo in memoria
-   \item Il numero di settori da trasferire
+    \item Tipo di accesso (lettura o scrittura)
+    \item L'indirizzo sul disco
+    \item L'indirizzo in memoria
+    \item Il numero di settori da trasferire
 \end{itemize}
 
 Per i seguenti algoritmi si considerano i seguenti accessi (espressi come numero di cilindro/traccia): \newline
@@ -1866,17 +1876,17 @@ In questo algoritmo, la testina parte da un'estremità del disco e si sposta ver
 
 Alla pagina seguente si trovano gli schemi di funzionamento degli algoritmi appena esposti.
 \begin{figure}
-   \centering
-   \includegraphics[width=5cm]{img/fcfs.JPG}
-   \caption{Scheduling FCFS}
-   \includegraphics[width=5cm]{img/sstf.JPG}
-   \caption{Scheduling SSTF}
-   \includegraphics[width=5cm]{img/scan.JPG}
-   \caption{Scheduling SCAN}
-   \includegraphics[width=5cm]{img/cscan.JPG}
-   \caption{Scheduling C-SCAN}
-   \includegraphics[width=5cm]{img/clook.JPG}
-   \caption{Scheduling C-LOOK}
+    \centering
+    \includegraphics[width=5cm]{img/fcfs.JPG}
+    \caption{Scheduling FCFS}
+    \includegraphics[width=5cm]{img/sstf.JPG}
+    \caption{Scheduling SSTF}
+    \includegraphics[width=5cm]{img/scan.JPG}
+    \caption{Scheduling SCAN}
+    \includegraphics[width=5cm]{img/cscan.JPG}
+    \caption{Scheduling C-SCAN}
+    \includegraphics[width=5cm]{img/clook.JPG}
+    \caption{Scheduling C-LOOK}
 \end{figure}
 \newline
 
@@ -1922,8 +1932,8 @@ Lo spazio di swap viene poi allocato quando un processo viene creato o quando un
 \section{Livelli RAID}
 
 \begin{figure}[htb]
-   \centering
-   \includegraphics[width=8cm]{img/raid.JPG}
+    \centering
+    \includegraphics[width=8cm]{img/raid.JPG}
 \end{figure}
 
 Dato il progressivo decremento del costo dei dischi, è ora possibile aggiungerne diversi a un qualsiasi computer. Avere un gran numero di dischi in un sistema presenta numerose opportunità per migliorare la velocità di lettura/scrittura, se i dischi lavorano in parallelo. Inoltre, permettono una maggiore affidabilità, poiché è possibile registrare informazioni ridondanti in più dischi.
@@ -1941,16 +1951,16 @@ Il bilanciamento del carico aumenta la produttività per accessi multipli a picc
 In somma, il mirroring fornisce alta affidabilità, ma è costoso (in tutti i sensi). Il data striping assicura invece unìalta capacità di trasferimento dei dati, ma non migliora l'affidabilità. Sono state proposte numerose tecniche per fornisce la ridondanza a un basso costo utilizzando il data striping in combinazione con dei bit di parità. Queste tecniche sono classificate nei livelli di RAID.
 
 \begin{itemize}
-   \item \textbf{RAID Livello 0} -- Il sezionamento viene fatto a livello del blocco e non vi è ridondanza. Risulta economico e con alte prestazioni, date dal parallelismo, ma non ha ridondanza e l'affidabilità cala all'aumentare del numero di dischi impiegati.
-   \item \textbf{RAID Livello 1} -- In questo caso c'è mirroring, ma manca il sezionamento. Questa soluzione è costosa, garantisce una maggiore affidabilità e maggiori prestazioni in lettura.
-   \item \textbf{RAID Livello 2} -- Ad ogni byte è associato un bit che indica se gli 1 presenti nel byte sono in numero pari (parità 0) o dispari (parità 1), quindi identifica tutti gli errori sul singolo bit. Si possono correggere più bit, utilizzando bit di parità supplementari. L'idea dell'ECC può essere utilizzata direttamente in array di dischi tramite lo striping dei bytes. Ad esempio, il primo bit di ogni byte può trovarsi nel disco 1, il secondo nel disco 2 e così via fino all'ottavo. I bit di correzione dell'errore sono memorizzati in un altro disco. Un RAID di livello 2 è quindi un RAID 0 con maggiore affidabilità.
-   \item \textbf{RAID Livello 3} -- In questo livello il sezionamento è fatto a livello di byte con un disco dedicato al bit di parità. I controllori dei dischi sono in grado di rilevare se un settore è stato letto correttamente: se un settore è danneggiato, per ogni bit del settore è possibile determinare se deve valere 0 o 1 calcolando la parità dei bit corrispondenti dai settori degli altri dischi. Se la parità dei rimanenti bit è uguale a quella memorizzata, allora il bit mancante è 0, altrimenti è 1. Questo livello ha la stessa efficienza di RAID 2, ma usa un solo disco per i bit di parità, mentre la velocità di trasferimento è pari a n volte quella di RAID 1, grazie al data striping. Rispetto al RAID 1, tuttavia, può effettuare meno operazioni di I/O al secondo perché ogni disco è coninvolto in tutte le richieste ed il tempo per le scritture è più lungo perché è necessario calcolare il bit di parità (anche se di questo può occuparsi il controllore RAID, al posto della CPU).
-   \item \textbf{RAID Livello 4} -- Utilizza il sezionamento a livello di blocco, con un disco dedicato alla parità. Se un disco viene corrotto, il blocco di parit può essere utilizzato per recuperarne i blocchi. Come nel livello 3, il calcolo della parità influisce sulla velocità di lettura e anzi, il disco riservato per i bit di parità può fare da collo di bottiglia.
-   \item \textbf{RAID Livello 5} -- Il sezionamento viene fatto a livello di blocco, con i bit di parità distribuiti tra tutti i dischi. Un blocco di parità non può contenere informazioni di parità per blocchi che risiedono nello stesso disco, altrimenti un guasto al disco farebbe perdere i dati. Questa soluione va quindi ad eliminare il problema del collo di bottiglia del RAID 4, ma persiste il problema della scrittura lenta.
-   \item \textbf{RAID Livello 6} -- Simile al RAID 5, ma con maggiori informazioni di ridondanza per gestire guasti contemporanei su più dischi. Al posto della parità, utilizza altri codici per la correzione dell'errore (Reed-Solomon). Garantisce un'altissima ridondanza, ma va ad aumentare il costo. Inoltre, la gestione dei codici per la correzione degli errori va a rallentare ancora di più la scrittura.
-   \item \textbf{RAID Livello 0+1 e 1+0} -- Il RAID 0+1 combina RAID 0 e RAID 1 per fornire affidabilità e alte prestazioni. Una tale configurazione, tuttavia, richiede il raddoppio del numero di dishci necessari per memorizzare i dati e non supporta la rottura simultanea di due dischi se non appartengono allo stesso stripe.
+    \item \textbf{RAID Livello 0} -- Il sezionamento viene fatto a livello del blocco e non vi è ridondanza. Risulta economico e con alte prestazioni, date dal parallelismo, ma non ha ridondanza e l'affidabilità cala all'aumentare del numero di dischi impiegati.
+    \item \textbf{RAID Livello 1} -- In questo caso c'è mirroring, ma manca il sezionamento. Questa soluzione è costosa, garantisce una maggiore affidabilità e maggiori prestazioni in lettura.
+    \item \textbf{RAID Livello 2} -- Ad ogni byte è associato un bit che indica se gli 1 presenti nel byte sono in numero pari (parità 0) o dispari (parità 1), quindi identifica tutti gli errori sul singolo bit. Si possono correggere più bit, utilizzando bit di parità supplementari. L'idea dell'ECC può essere utilizzata direttamente in array di dischi tramite lo striping dei bytes. Ad esempio, il primo bit di ogni byte può trovarsi nel disco 1, il secondo nel disco 2 e così via fino all'ottavo. I bit di correzione dell'errore sono memorizzati in un altro disco. Un RAID di livello 2 è quindi un RAID 0 con maggiore affidabilità.
+    \item \textbf{RAID Livello 3} -- In questo livello il sezionamento è fatto a livello di byte con un disco dedicato al bit di parità. I controllori dei dischi sono in grado di rilevare se un settore è stato letto correttamente: se un settore è danneggiato, per ogni bit del settore è possibile determinare se deve valere 0 o 1 calcolando la parità dei bit corrispondenti dai settori degli altri dischi. Se la parità dei rimanenti bit è uguale a quella memorizzata, allora il bit mancante è 0, altrimenti è 1. Questo livello ha la stessa efficienza di RAID 2, ma usa un solo disco per i bit di parità, mentre la velocità di trasferimento è pari a n volte quella di RAID 1, grazie al data striping. Rispetto al RAID 1, tuttavia, può effettuare meno operazioni di I/O al secondo perché ogni disco è coninvolto in tutte le richieste ed il tempo per le scritture è più lungo perché è necessario calcolare il bit di parità (anche se di questo può occuparsi il controllore RAID, al posto della CPU).
+    \item \textbf{RAID Livello 4} -- Utilizza il sezionamento a livello di blocco, con un disco dedicato alla parità. Se un disco viene corrotto, il blocco di parit può essere utilizzato per recuperarne i blocchi. Come nel livello 3, il calcolo della parità influisce sulla velocità di lettura e anzi, il disco riservato per i bit di parità può fare da collo di bottiglia.
+    \item \textbf{RAID Livello 5} -- Il sezionamento viene fatto a livello di blocco, con i bit di parità distribuiti tra tutti i dischi. Un blocco di parità non può contenere informazioni di parità per blocchi che risiedono nello stesso disco, altrimenti un guasto al disco farebbe perdere i dati. Questa soluione va quindi ad eliminare il problema del collo di bottiglia del RAID 4, ma persiste il problema della scrittura lenta.
+    \item \textbf{RAID Livello 6} -- Simile al RAID 5, ma con maggiori informazioni di ridondanza per gestire guasti contemporanei su più dischi. Al posto della parità, utilizza altri codici per la correzione dell'errore (Reed-Solomon). Garantisce un'altissima ridondanza, ma va ad aumentare il costo. Inoltre, la gestione dei codici per la correzione degli errori va a rallentare ancora di più la scrittura.
+    \item \textbf{RAID Livello 0+1 e 1+0} -- Il RAID 0+1 combina RAID 0 e RAID 1 per fornire affidabilità e alte prestazioni. Una tale configurazione, tuttavia, richiede il raddoppio del numero di dishci necessari per memorizzare i dati e non supporta la rottura simultanea di due dischi se non appartengono allo stesso stripe.
 
-         Il RAID 1+0 combina RAID 1 e RAID 0, risultando più robusto di RAID 0+1, infatti ogni disco di ogni stripe può guastarsi senza far perdere dati al sistema.
+          Il RAID 1+0 combina RAID 1 e RAID 0, risultando più robusto di RAID 0+1, infatti ogni disco di ogni stripe può guastarsi senza far perdere dati al sistema.
 \end{itemize}
 
 \newpage
@@ -1971,23 +1981,23 @@ Quando a un file viene assegnato un nome, esso diventa indipendente dal processo
 
 Gli attributi di un file variano in base al sistema operativo, ma è corretto pensare che questi siano validi per ognuno:
 \begin{itemize}
-   \item \textbf{Nome}: è l'unica informazione in formato ``leggibile'' dall'utente
-   \item \textbf{Tipo}
-   \item \textbf{Posizione}: un puntatore allo spazio fisico sul dispositivo
-   \item \textbf{Dimensione}
-   \item \textbf{Protezione}: informazioni per il controllo degli accessi (permessi di lettura/scrittura)
-   \item \textbf{Tempo, data e identeificazione dell'utente}
+    \item \textbf{Nome}: è l'unica informazione in formato ``leggibile'' dall'utente
+    \item \textbf{Tipo}
+    \item \textbf{Posizione}: un puntatore allo spazio fisico sul dispositivo
+    \item \textbf{Dimensione}
+    \item \textbf{Protezione}: informazioni per il controllo degli accessi (permessi di lettura/scrittura)
+    \item \textbf{Tempo, data e identeificazione dell'utente}
 \end{itemize}
 
 \paragraph{Operazioni su file}
 Un file è un tipo di dato astratto. Il sistema operativo può fornire delle chiamate di sistema per creare, scrivere, leggere, riposizionare, cancellare e troncare files.
 \begin{itemize}
-   \item \textbf{Creazione}. Si ricerca dello spazio su disco, quindi viene creato un nuovo elemento nella directory
-   \item \textbf{Scrittura}. La sysem call apposita specifica sia il nome del file che le informazioni che devono esservi scritte. Il sistema deve mantenere un puntatore di scrittura alla posizione nel file in cui deve avvenire la struttura successiva.
-   \item \textbf{Lettura}. La chiamata di sistema specifica il nome del file e dove mettere i dati letti in memoria. Il sistema deve mantenere un puntatore alla locazione della prossima lettura, come per la scrittura. Poiché in genere un file non viene letto e scritto contemporaneamente, la posizione dell'operazione corrente può essere mantenuta con un solo puntatore per processo (anziché uno per la lettura e uno per la scrittura).
-   \item \textbf{Riposizionamento all'interno di un file}. Operazione nota anche come \textit{seek}, consiste nell'aggiornare il puntatore alla posizione corrente.
-   \item \textbf{Cancellazione}. Libera lo spazio associato al file e l'elemento corrispondente nella directory.
-   \item \textbf{Troncamento}. Mantiene inalterati gli attributi, tuttavia cancella il contenuto del file.
+    \item \textbf{Creazione}. Si ricerca dello spazio su disco, quindi viene creato un nuovo elemento nella directory
+    \item \textbf{Scrittura}. La sysem call apposita specifica sia il nome del file che le informazioni che devono esservi scritte. Il sistema deve mantenere un puntatore di scrittura alla posizione nel file in cui deve avvenire la struttura successiva.
+    \item \textbf{Lettura}. La chiamata di sistema specifica il nome del file e dove mettere i dati letti in memoria. Il sistema deve mantenere un puntatore alla locazione della prossima lettura, come per la scrittura. Poiché in genere un file non viene letto e scritto contemporaneamente, la posizione dell'operazione corrente può essere mantenuta con un solo puntatore per processo (anziché uno per la lettura e uno per la scrittura).
+    \item \textbf{Riposizionamento all'interno di un file}. Operazione nota anche come \textit{seek}, consiste nell'aggiornare il puntatore alla posizione corrente.
+    \item \textbf{Cancellazione}. Libera lo spazio associato al file e l'elemento corrispondente nella directory.
+    \item \textbf{Troncamento}. Mantiene inalterati gli attributi, tuttavia cancella il contenuto del file.
 \end{itemize}
 
 Altre comuni operazioni sono la concatenazione a fine file e la rinominazione di un file. Si possono inoltre creare copie di un file, o addirittura copiarlo verso un altro dispositivo (stampanti, display, ecc.).
@@ -2003,9 +2013,9 @@ Quando un file viene chiuso, esso viene copiato dalla memoria al disco.
 \paragraph{Struttura di un file}
 I tipi di file possono essere adoperati per indicare la struttura interna del file. Le strutture possibili sono le seguenti:
 \begin{enumerate}
-   \item Nessuna, cioè un file è una sequenza parole, bytes, ecc... Unix usa questa struttura.
-   \item Struttura a ``record'' semplice, dove record è un sinonimo per riga e può essere di lunghezza fissa o variabile
-   \item Strutture complesse. Ad esempio, documenti formattati e formati ricaricabili.
+    \item Nessuna, cioè un file è una sequenza parole, bytes, ecc... Unix usa questa struttura.
+    \item Struttura a ``record'' semplice, dove record è un sinonimo per riga e può essere di lunghezza fissa o variabile
+    \item Strutture complesse. Ad esempio, documenti formattati e formati ricaricabili.
 \end{enumerate}
 Spesso è possibile emulare le strutture 2 e 3 utilizzando la 1, servendosi di specifici caratteri di controllo.
 
@@ -2047,8 +2057,8 @@ Una naturale generalizzazione della struttura a due livelli è quella ad albero.
 \textbf{Directory a grafo aciclico}
 Una normale struttura ad albero non permette la condivisione di file e directory. Per questo motivo l'albero viene esteso a un grafo aciclico. L'implementazione della condivisione è fatta in diversi modi a seconda del sistema operativo utilizzato:
 \begin{itemize}
-   \item Link simbolico (Windows): contiene il pathname del file/directory reale. Se l'originale viene cancellato, il link rimane pendente.
-   \item Hard link (Unix): un contatore mantiene il numero di riferimenti e il file può essere cancellato solo se il valore è 0 (quindi non lascia link pendenti).
+    \item Link simbolico (Windows): contiene il pathname del file/directory reale. Se l'originale viene cancellato, il link rimane pendente.
+    \item Hard link (Unix): un contatore mantiene il numero di riferimenti e il file può essere cancellato solo se il valore è 0 (quindi non lascia link pendenti).
 \end{itemize}
 
 \textbf{Directory a grafo generico}
@@ -2075,20 +2085,20 @@ Il desiderio di protezione è strettamente legato all'abilità di accedere ai fi
 
 I meccanismi di protezione forniscono degli accessi controllati limitando il tipo di accessi possibili. In particolare, è possibile controllare le seguenti operazioni:
 \begin{itemize}
-   \item Lettura
-   \item Scrittura
-   \item Esecuzione
-   \item Append (aggiunta in coda)
-   \item Cancellazione
+    \item Lettura
+    \item Scrittura
+    \item Esecuzione
+    \item Append (aggiunta in coda)
+    \item Cancellazione
 \end{itemize}
 
 L'approccio più comune per la protezione è rendere l'accesso possibile in base all'identità dell'utente. Per implemetare tale soluzione, a ogni file viene associata una lista d'accesso (ACL -- Access Control List), in cui sono specificati gli utenti e i loro relativi permessi di accesso. Quando un utente richiede di accedere a un particolare file, il sistema operativo controlla la ACL associata ed eventualmente permette (o nega) l'accesso.
 
 Il problema principale delle ACLs è la loro lunghezza. Per condensare la lista, si possono dividere gli utenti nella seguente classificazione:
 \begin{itemize}
-   \item Proprietario
-   \item Gruppo
-   \item Universo
+    \item Proprietario
+    \item Gruppo
+    \item Universo
 \end{itemize}
 
 Si può quindi associare ogni categoria alle operazioni ad essa possibile. Ad esempio, nei sistemi Unix le operazioni possibili sono: r (read), w (write), x (execute); eseguendo a terminale il comando: \texttt{chmod 754 nome\_file rwx r-x r-{}-}, il proprietario ha il permesso di fare tutto, il gruppo non può scrivere e l'universo può solo leggere.
@@ -2096,8 +2106,8 @@ Si può quindi associare ogni categoria alle operazioni ad essa possibile. Ad es
 \subsection{Implementazione del file system}
 
 \begin{figure}[htb]
-   \centering
-   \includegraphics[width=8cm]{img/filesys.JPG}
+    \centering
+    \includegraphics[width=8cm]{img/filesys.JPG}
 \end{figure}
 
 Per migliorare l'efficienza dell'I/O, le transazioni tra la memoria e il disco sono fatte in unità chiamate blocchi. Ogni blocco ha uno o più settori (la cui grandezza, comunemente, è di 512 bytes).
@@ -2119,18 +2129,18 @@ Per gestire un file system si utilizzano diverse strutture dati, sia su disco ch
 
 Sul disco, il file system potrebbe contenere informazioni circa il boot del sistema operativo, il numero totale di blocchi, il numero e la posizione dei blocchi liberi, la struttura delle directories e i file individuali. In breve:
 \begin{itemize}
-   \item Blocco di boot: contiene le informazioni necessarie per l'avviamento del S.O.
-   \item Blocco di controllo delle partizioni: contiene i dettagli del volume, quali il numero e la dimensione dei blocchi, la lista dei blocchi liberi, la lista dei descrittori liberi, eccetera.
-   \item Struttura delle directories (per ogni file system): descrive l'organizzazione dei files.
-   \item Descrittori di file: contengono dettagli sui file e puntatori ai blocchi di dati.
+    \item Blocco di boot: contiene le informazioni necessarie per l'avviamento del S.O.
+    \item Blocco di controllo delle partizioni: contiene i dettagli del volume, quali il numero e la dimensione dei blocchi, la lista dei blocchi liberi, la lista dei descrittori liberi, eccetera.
+    \item Struttura delle directories (per ogni file system): descrive l'organizzazione dei files.
+    \item Descrittori di file: contengono dettagli sui file e puntatori ai blocchi di dati.
 \end{itemize}
 
 Le informazioni in memoria sono utilizzate sia per la gestione del file system che per il miglioramento delle prestazioni tramite cache. I dati sono caricati a tempo di mount, aggiornati durante le operazioni del file system e scartati al dismount.
 \begin{itemize}
-   \item Tabella delle partizioni: contiene informazioni sulle partizioni montate
-   \item Struttura delle directories: una copia in memoria delle directory cui si è acceduto recentemente
-   \item Tabella globale dei file aperti
-   \item Tabella dei file aperti per ogni processo
+    \item Tabella delle partizioni: contiene informazioni sulle partizioni montate
+    \item Struttura delle directories: una copia in memoria delle directory cui si è acceduto recentemente
+    \item Tabella globale dei file aperti
+    \item Tabella dei file aperti per ogni processo
 \end{itemize}
 
 \subsubsection{Allocazione dello spazio su disco}
@@ -2162,8 +2172,8 @@ L'allocazione con FAT ha come effetto collaterale l'elevato numero di seek, a me
 
 \paragraph{Allocazione indicizzata}
 \begin{wrapfigure}{r}{5,5cm}
-   \centering
-   \includegraphics[width=7cm]{img/allocind.JPG}
+    \centering
+    \includegraphics[width=7cm]{img/allocind.JPG}
 \end{wrapfigure}
 In questo tipo di allocazione, ogni file ha un blocco indice (index block) contenente la tabella degli indirizzi (index table) dei blocchi fisici. Ogni file ha il proprio blocco indice, contenuto come entry nella directory.
 
@@ -2171,16 +2181,16 @@ Supporta l'accesso dinamico e casuale, senza soffrire di frammentazione esterna 
 
 La dimensione del blocco indice limita la dimensione del file: se il blocco può contenere 512 parole, la dimensione massima del file sarà 512*512 parole = 256K parole. Esistono delle soluzioni per permettere di memorizzare file più grandi.
 \begin{itemize}
-   \item \textbf{Indici multilivello}: un blocco indice di primo livello rimanda ad altri blocchi indice di secondo livello, i quali rimandano quindi ai blocchi del file.
-   \item \textbf{Schema concatenato}: Consiste nel fare una lista linkata di blocchi indice, cioè l'ultimo degli indici di un blocco punta a un altro blocco indice.
-   \item \textbf{Schema combinato}: ne sono un esempio gli i-node Unix. Per indirizzare i blocchi di dati del file, ogni i-node contiene 10 puntatori diretti a blocchi di dati di file, un puntatore single direct che punta ad un blocco indice che contiene puntatori a blocchi di dati, un puntatore double indirect che punterà a un blocco indice, il quale punterà a un altro blocco indice i cui puntatori punteranno ai dati, e un puntatore triple indirect, dal funzionamento deducibile.
+    \item \textbf{Indici multilivello}: un blocco indice di primo livello rimanda ad altri blocchi indice di secondo livello, i quali rimandano quindi ai blocchi del file.
+    \item \textbf{Schema concatenato}: Consiste nel fare una lista linkata di blocchi indice, cioè l'ultimo degli indici di un blocco punta a un altro blocco indice.
+    \item \textbf{Schema combinato}: ne sono un esempio gli i-node Unix. Per indirizzare i blocchi di dati del file, ogni i-node contiene 10 puntatori diretti a blocchi di dati di file, un puntatore single direct che punta ad un blocco indice che contiene puntatori a blocchi di dati, un puntatore double indirect che punterà a un blocco indice, il quale punterà a un altro blocco indice i cui puntatori punteranno ai dati, e un puntatore triple indirect, dal funzionamento deducibile.
 \end{itemize}
 
 \subsubsection{Implementazione delle directory}
 Lo stesso meccanismo utilizzato per memorizzare i files, viene applicato alle directories. Le directory non contengono dati, bensì la lista dei file e delle directories contenute. Come viene memorizzato il contenuto e come vi si accede?
 \begin{itemize}
-   \item \textbf{Lista lineare} di nomi con puntatori ai blocchi di dati. L'implementazione è facile, ma la soluzione è poco efficiente: per intervenire su un file bisogna ricercarlo scansionando la lista (O(n) se non è ordinata, O(log n) se è ordinata).
-   \item \textbf{Tabella hash}. Il tempo di ricerca è migliore ma possono esserci collisioni.
+    \item \textbf{Lista lineare} di nomi con puntatori ai blocchi di dati. L'implementazione è facile, ma la soluzione è poco efficiente: per intervenire su un file bisogna ricercarlo scansionando la lista (O(n) se non è ordinata, O(log n) se è ordinata).
+    \item \textbf{Tabella hash}. Il tempo di ricerca è migliore ma possono esserci collisioni.
 \end{itemize}
 
 \subsection{Gestione dello spazio libero}
@@ -2251,9 +2261,9 @@ Finora di è parlato dei dispositivi intesi come parte non elettronica. La parte
 
 Il controllore è connesso al resto del sistema tramite bus e contiene i seguenti registri per comandare il dispositivo:
 \begin{itemize}
-   \item Registro(i) di stato: per capire se il comando è stato eseguito, se c'è stato un errore, se i dati sono pronti per essere letti, ecc.
-   \item Registro di controllo: per inviare comandi al dispositivo
-   \item Buffer (uno o più) per la ``conversione'' dei dati
+    \item Registro(i) di stato: per capire se il comando è stato eseguito, se c'è stato un errore, se i dati sono pronti per essere letti, ecc.
+    \item Registro di controllo: per inviare comandi al dispositivo
+    \item Buffer (uno o più) per la ``conversione'' dei dati
 \end{itemize}
 
 Come può il processore dare comandi e dati a un controllore per completare un trasferimento I/O? In breve, il controllore ha uno o più registri per dati e segnali di controlli. Il processore comunica con il controllore leggendo e scrivendo patterns di bit in questi registri. Un modo in cui questa comunicazione può avere luogo è tramite l'uso di speciali istruzioni di I/O, le quali specificano il trasferimento di un byte o di una parola su un indirizzo di porta I/O. L'istruzione I/O \textit{triggera} il bus affinché questo selezioni il device adatto e faccia passare i bit da e verso il registro del dispositivo.
@@ -2264,10 +2274,10 @@ La soluzione è piuttosto comoda: dal punto di vista della protezione, non c'è 
 
 \paragraph {Esempio -- Controllore del display}
 \begin{enumerate}
-   \item L'hardware mappa i registri e la memoria del display nello spazio di indirizzi fisico.
-   \item Scrive nella memoria (frame buffer) i cambi che avvengono sullo schermo. Indirizzi: 0x80001000 - 0x8000F000
-   \item Scrive le descrizioni grafiche nell'area della coda di comandi. Ad esempio, un set di triangoli di una scena (indirizzi: 0x80002000 - 0x8001FFFF )
-   \item Scrivere nel registro dei comandi potrebbe causare all'hardware grafico del display di fare qualcosa, ad esempio renderizzare la scena appena scritta (indirizzo: 0x007F004).
+    \item L'hardware mappa i registri e la memoria del display nello spazio di indirizzi fisico.
+    \item Scrive nella memoria (frame buffer) i cambi che avvengono sullo schermo. Indirizzi: 0x80001000 - 0x8000F000
+    \item Scrive le descrizioni grafiche nell'area della coda di comandi. Ad esempio, un set di triangoli di una scena (indirizzi: 0x80002000 - 0x8001FFFF )
+    \item Scrivere nel registro dei comandi potrebbe causare all'hardware grafico del display di fare qualcosa, ad esempio renderizzare la scena appena scritta (indirizzo: 0x007F004).
 \end{enumerate}
 
 \subsubsection{Accesso ai dispositivi}
@@ -2278,12 +2288,12 @@ Il polling si basa sul concetto di handshake. Lo stato del dispositivo viene det
 
 Si consideri il seguente esempio: l'host scrive l'output tramite una porta, coordinandosi con il controller nel seguente modo.
 \begin{enumerate}
-   \item L'host legge ripetutamente il busy bit finché non diventa \textit{clear}.
-   \item L'host imposta il bit di scrittura nel command register e scrite un byte nel data-out register del controller.
-   \item L'host setta quindi il \texttt{command-ready} bit.
-   \item Quando il controller vede che il command-ready bit è impostato, imposta il busy bit di conseguenza.
-   \item Il controllore legge i registri dei comandi e vede il comando di scrittura. Legge quindi il registro data-out per ottenere il byte ed esegue l'I/O verso il device.
-   \item Il controller azzera il command-ready bit, il bit di errore nel registro di stato (per indicare che l'I/O ha avuto successo) e il busy bit (per indicare che l'operazione è finita).
+    \item L'host legge ripetutamente il busy bit finché non diventa \textit{clear}.
+    \item L'host imposta il bit di scrittura nel command register e scrite un byte nel data-out register del controller.
+    \item L'host setta quindi il \texttt{command-ready} bit.
+    \item Quando il controller vede che il command-ready bit è impostato, imposta il busy bit di conseguenza.
+    \item Il controllore legge i registri dei comandi e vede il comando di scrittura. Legge quindi il registro data-out per ottenere il byte ed esegue l'I/O verso il device.
+    \item Il controller azzera il command-ready bit, il bit di errore nel registro di stato (per indicare che l'I/O ha avuto successo) e il busy bit (per indicare che l'operazione è finita).
 \end{enumerate}
 
 Nello step 1, l'host è in attesa attiva (busy waiting o polling): è in un ciclo e continua a leggere ripetutamente il registro di stato in attesa che il busy bit vada a 0.
@@ -2297,9 +2307,9 @@ L'hardware della CPU ha un filo chiamato \textbf{interrupt-request line} che la 
 
 In un moderno sistema operativo, sono neccesarie implementazioni sofisticate per gestire gli interrupt.
 \begin{itemize}
-   \item Serve l'abilità di rinviare l'handling dell'interrupt durante processi critici.
-   \item Serve un modo efficiente per selezionare il giusto device, senza fare un polling di tutti.
-   \item Servono interrupts multilivello, così che il sistema possa distinguere tra interrupt di alta e bassa priorità e soddisfare le richieste con la giusta urgenza.
+    \item Serve l'abilità di rinviare l'handling dell'interrupt durante processi critici.
+    \item Serve un modo efficiente per selezionare il giusto device, senza fare un polling di tutti.
+    \item Servono interrupts multilivello, così che il sistema possa distinguere tra interrupt di alta e bassa priorità e soddisfare le richieste con la giusta urgenza.
 \end{itemize}
 
 Queste feature sono fornite dalla CPU e dal \textbf{controllore di interrupt}.
@@ -2346,9 +2356,9 @@ Lo spooling viene utilizzato in processi non condivisibili. La stampante ne è u
 \section{Protezione e sicurezza dei sistemi operativi}
 Tutti i sistemi operativi basano la sicurezza su sistemi di autenticazione per identificare i diversi utenti, in modo tale da gestire le diverse risorse in maniera differente. Un altro argomento è relativo alla classificazione di software malware e il modo in cui loro operano sfruttando le vulnerabilità del sistema operativo. Le proprietà di una buona sicurezza sono tre:
 \begin{itemize}
-   \item \textbf{Integrità.} Le modifiche devono essere permesse solo in alcune zone di memoria.
-   \item \textbf{Confidenzialità.} Si vuole avere la garanzia che soltanto le persone autorizzate possano accedere ad un dato.
-   \item \textbf{Autenticità.} Si vuole avere la garanzia che il file sia effettivamente creato dal suo proprietario o che quindi l'utente che accede al sistema è chi effettivamente dice di essere.
+    \item \textbf{Integrità.} Le modifiche devono essere permesse solo in alcune zone di memoria.
+    \item \textbf{Confidenzialità.} Si vuole avere la garanzia che soltanto le persone autorizzate possano accedere ad un dato.
+    \item \textbf{Autenticità.} Si vuole avere la garanzia che il file sia effettivamente creato dal suo proprietario o che quindi l'utente che accede al sistema è chi effettivamente dice di essere.
 \end{itemize}
 
 Queste proprietà sono implementate dai sistemi operativi sfruttando alcune primitive.
@@ -2367,8 +2377,8 @@ L'unico oggetto segreto è la chiave che permette al possessore di decrittare il
 A differenza della crittografia a chiave simmetrica, la chiave per decifrare è diversa rispetto a quella che serve per cifrare. La chiave per decifrare è detta privata, cioè segreta. Non esiste una relazione tra chiave pubblica e chiave segreta, infatti non è possibile ricavare una avendo a disposizione l'altra. La chiave pubblica può essere nota a tutti. Si assume che ogni utente abbia la sua coppia di chiavi pubblica e privata e che ogni utente conosca tutte le chiavi pubbliche. Solo ciascun proprietario conosce la propria chiave segreta.
 
 \begin{figure}[htb]
-   \centering
-   \includegraphics[width=12cm]{img/crittas.JPG}
+    \centering
+    \includegraphics[width=12cm]{img/crittas.JPG}
 \end{figure}
 
 Gli algoritmi a chiave pubblica sono basati su esponenzializzazione modulari e sono molto più lenti da eseguire, data la loro complessità computazionale.
@@ -2379,8 +2389,8 @@ La firma digitale è un'equivalente della firma scritta. Una funzione permette d
 Per verificare l'autenticità della firma, si utilizza una funzione booleana che verifica l'autenticità tramite la chiave pubblica del firmatario. Se una firma non risulta autentica, significa che è stata soggetta ad un attacco.
 
 \begin{figure}[htb]
-   \centering
-   \includegraphics[width=12cm]{img/firma.JPG}
+    \centering
+    \includegraphics[width=12cm]{img/firma.JPG}
 \end{figure}
 
 La firma garantisce anche l'integrità del documento, in quanto per ogni modifica viene generata una nuova firma.
@@ -2394,8 +2404,8 @@ Un problema noto di un sistema operativo è quello di verificare che la versione
 Quando il PC viene acceso (boot), parte il BIOS che inizializza l'hardware. Il BIOS invoca il codice memorizzato nel master boot record (MBR) presente nel disco. Ogni partizione ha un bootsector che viene caricato dall'MBR. Questo carica il codice dal bootsector ed esegue il bootloader dal file system. Il master boot record ha l'hash del bootsector corretto e lo confronta con il valore di hash che è memorizzato. Questa operazione viene ripetuta per tutti gli step fino al caricamento del kernel.
 
 \begin{figure}[htb]
-   \centering
-   \includegraphics[width=12cm]{img/autso.JPG}
+    \centering
+    \includegraphics[width=12cm]{img/autso.JPG}
 \end{figure}
 
 Tutti i sistemi operativi implementano la cifratura del disco: quando viene spenta la macchina, il disco viene interamente cifrato per poi essere decifrato all'accensione successiva. La cifratura avviene tramite una chiave apposita, chiamata Storage Root Key (SRT), memorizzata nella TPM. La SRK viene utilizzata per cifrare la chiave di cifratura (FVEK -- Full Volume Encryption Key) dell'intero volume, la quale è memorizzata all'interno del disco.
