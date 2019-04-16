@@ -1,5 +1,4 @@
 % !TEX encoding = UTF-8
-% !TEX program = pdflatex
 
 \documentclass[a4paper]{article}
 \usepackage[T1]{fontenc}
@@ -26,7 +25,7 @@
 
 \tableofcontents
 
-\newpage
+
 
 \section{Introduzione}
 
@@ -128,7 +127,7 @@ Si distinguono le seguenti categorie di programmi di sistema:
 
 Accanto ai programmi di sistema troviamo gli application programs, utili per risolvere svariati problemi. Appartengono a questa categoria i browser web, gli editor di testi complessi, i gestori per fogli di calcolo, sistemi per databases, giochi, eccetera.
 
-\newpage
+
 \section{Architettura di un Sistema Operativo}
 Sistemi estesi e complessi come i moderni Sistemi Operativi devono essere progettati seguendo principi di progettazione tali darendere possibile il loro corretto ed efficiente funzionamento e la possibilità di introdurre modifiche nel tempo (ad esempio:aggiornamenti). Un principio molto importante è la separazione tra policy (cosa deve essere fatto?) e i meccanismi (come farlo?) la sua importanza risiede nella maggior flessibilità conferita al sistema, soprattutto se le policy tendono a variare nel tempo.
 Altri due principi rilevanti sono il KISS (Keep It Small and Simple) e il POLA (Principle of the Least Privileges), il qualeafferma che ogni componente deve avere solo i privilegi necessari ad eseguire la sua funzione e nulla più, che fra l'altro èalla base dell'affidabilità e della sicurezza di un Sistema Operativo.
@@ -172,7 +171,7 @@ Un tale sistema soffre però di problemi di prestazioni: in un qualsiasi sistema
 \subsection{Conclusioni: implementazione di un Sistema Operativo}
 Tradizionalmente i Sistemi Operativi erano scritti in linguaggio assembler. Ora, sono sviluppati in linguaggi di alto livello, quali C e C++, poiché l'implementazione risulta più rapida, il codice rimane molto più compatto, quindi più facile da capire e mantenere e sono più facilmente portabili.
 
-\newpage
+
 \section{Processi e Threads - Parte 1 (Processi)}
 
 I primi computer permettevano l'esecuzione di un solo programma alla volta. Questo programma aveva completo controllo del sistema e poteva accedere a tutte le risorse del sistema. Al contrario, i moderni computer permettono il caricamento il memoria e l'esecuzione concorrenziale di molti programmi. Questa evoluzione ha richiesto un controllo più serrato e una netta divisione tra i vari programmi. Da qui nasce il concetto di processo, che è un programma in esecuzione. Un sistema consiste dunque in una collezione di processi.
@@ -329,7 +328,7 @@ Nei sistemi UNIX, le pipe ordinarie si costruiscono con la funzione \texttt{pipe
 
 \paragraph{Pipe con nome} Le pipe ordinarie esistono solo mentre i processi comunicano tra loro. Le pipe con nome sono strumenti molto più potenti: la comunicazione può essere bidirezionale e non è richiesta nessuna relazione padre-figlio. Una volta che una pipe con nome viene creata, può essere usata da molti processi per comunicare. Nei sistemi UNIX sono chiamate FIFO. Una volta create, appaiono come file nel file system. Una FIFO è creata con la system call \texttt{mkfifo()} e viene manipolata con \texttt{open()}, \texttt{read()}, \texttt{write()} e \texttt{close()}.
 
-\newpage
+
 \section{Processi e Threads - Parte 2 (Threads)}
 
 Un processo unisce due concetti: il possesso delle risorse e l'utilizzo della CPU. Queste due caratteristiche sono indipendenti e posso essere considerate separatamente. \newline
@@ -378,7 +377,7 @@ Un thread può sospendersi, in attesa della terminazione id un altro thread, chi
 I thread di uno stesso processo condividono lo stesso spazio di indirizzamento, quindi vedono le stesse variabili: se uno modifica una variabile, tutti gli altri lo vedono. Nel caso di processi tradizionali, una cosa simile è possibile solo utilizzando esplicitamente un segmento di memoria condivisa. Un thread può anche avere variabili proprie, invisibili agli altri, se si utilizza la classe di variabili \texttt{thread\_specific\_data}. \newline
 Sono disponibili diversi strumenti per sincronizzare tra solo i thread di un processo, fra questi anche i semafori, i quali fanno parte della penultima versione dello standard POSIX. I pthreads mettono a disposizione anche dei meccanismi di sincronizzazione strutturati, quali le variabili condizionali.
 
-\newpage
+
 \section{Scheduling della CPU}
 Lo scheduling della CPU è alla base dei sistemi basati sulla multiprogrammazione. Scambiando la CPU tra i vari processi, il Sistema Operativo può rendere il computer molto più produttivo.
 \subsection{Concetti base}
@@ -509,7 +508,7 @@ Il seguente diagramma di Gantt rappresenta la situazione:
     \end{tabular}
 \end{table}
 
-\newpage
+
 
 La vera difficoltà, per questo algoritmo, è il calcolo del prossimo CPU-burst, è infatti possibile solo farne una stima basandosi sulle lunghezze dei burst precedenti. Si utilizza quindi una media esponenziale. La formula contiene tre variabili fondamentali:
 \begin{itemize}
@@ -574,7 +573,7 @@ Esempio di Priority Scheduling:
     \end{tabular}
 \end{table}
 
-\newpage
+
 \subsubsection{Higher Response Ratio Next (HRRN)}
 Un caso particolare dello scheduling a priorità e dello SJF è l'Higher Response Ratio Next. Questo algoritmo non-preemptive assegna la priorità a un processo basandosi sul tempo di attesa e sulla durata dei suoi CPU-burst. Sono quindi favoriti i processi che completano in poco tempo o che hanno atteso molto.
 
@@ -651,7 +650,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
         E                 & 8                        & 2                  \\ \hline
     \end{tabular}
 \end{table}
-\newpage
+
 \subsubsection{FCFS}
 \begin{table}[htb]
     \centering
@@ -702,7 +701,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
     \end{tabular}
 \end{table}
 
-\newpage
+
 \subsubsection{Round Robin, quanto=4}
 \begin{table}[htb]
     \centering
@@ -742,7 +741,7 @@ Sotto sono indicati i processi in ready queue
     \end{tabular}
 \end{table}
 
-\newpage
+
 \subsubsection{HRRN}
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
@@ -780,7 +779,7 @@ Sotto sono indicati i processi in ready queue
     \end{tabular}
 \end{table}
 
-\newpage
+
 \section{Sincronizzazione}
 Abbiamo già visto che i processi possono eseguire concorrenzialmente o in parallelo. Ora bisogna spiegare come l'esecuzione concorrente o parallela può contribuire a creare problemi per l'integrità dei dati condivisi dai tanti processi.
 
@@ -1016,7 +1015,8 @@ V(bool &s) {
 
 P(bool &s){                                            
     key = false;
-    do {                                                       Swap(s, key);
+    do {                                                       
+        Swap(s, key);
     } while (!key);
 }
 \end{verbatim}
@@ -1168,7 +1168,7 @@ Una soluzione corretta è quindi rappresentabile con le seguenti funzioni/classi
 \begin{figure}[htb]
     \includegraphics[width=\linewidth]{img/filosofi_ok.JPG}
 \end{figure}
-\newpage
+
 \paragraph{Problema dello Sleepy Barber}
 Un negozio ha una sala d'attesa con N sedie, ed una stanza con la sedia del barbiere. In assenza di clienti, il barbiere si addormenta.
 
@@ -1206,7 +1206,7 @@ Il monitor conterrà due variabili condizionali: full e empty, che rappresentera
 \paragraph{Limitazioni}
 Uno dei limiti del costrutto dei monitor è proprio la scarsa implementazione nei diversi linguaggi di programmazione. Tuttavia, si può tentare di implementarli tramite i semafori.
 
-\newpage
+
 \section{Deadlock}
 In un sistema a multiprogrammazione, diversi processi potrebbero competere per un numero finito di risorse. Se le risorse non sono disponibili, un processo attende. A volte, un processo in attesa non riesce a cambiare stato perché sta aspettando un evento causabile solo da un altro processo, anch'esso in attesa. Questa situazione è chiamata deadlock.
 
@@ -1297,47 +1297,51 @@ Sono necessarie diverse strutture di dati per implementare l'algoritmo del banch
 \end{itemize}
 
 \paragraph{Algoritmo di allocazione}
-Sia request[i][] il vettore delle richieste del processo $P_i$. Se request[i][j]==j, il processo $P_i$ vuole k istanze della risorsa $R_j$. \begin{Verbatim}[tabsize=4]
-    void request(int req_vec[]) {
+Sia \verb|request[i][]| il vettore delle richieste del processo $P_i$. Se \verb|request[i][j] == j|, il processo $P_i$ vuole k istanze della risorsa $R_j$. 
+
+I due algoritmi descritti di seguito sono parametrizzati per tutti gli elementi dei vettori (ovvero bisogna confrontare ogni singolo elemento per ogni indice i).
+\begin{Verbatim}[tabsize=4]
+void request(int req_vec[]) {
     if (req_vec[] > need[i][])
-    error(); //è stato superato il limite massimo preventivato
-    if(req_vec[] > available[])
-    wait //non ci sono abbastanza risorse disponibili, quindi aspetta
-    //SIMULO L'ASSEGNAZIONE
-    available[] = available[] - req_vec[];
+        error();  // è stato superato il limite massimo preventivato
+    if (req_vec[] > available[])
+        wait();  // non ci sono abbastanza risorse disponibili, quindi aspetta
+    available[] = available[] - req_vec[]; // simulo l'assegnazione
     alloc[i][] = alloc[i][] + req_vec[];
     need[i][] = need[i][] - req_vec[];
-    if(!state_safe()) { //Se non è safe, ripristino il vecchio stato
-    available[] = available[] + req_vec[];
-    alloc[i][] = alloc[i][] - req_vec[];
-    need[i][] = need[i][] + req_vec[];
-    wait();
+    if (!state_safe()) {  // Se non è safe, ripristino il vecchio stato
+        available[] = available[] + req_vec[];
+        alloc[i][] = alloc[i][] - req_vec[];
+        need[i][] = need[i][] + req_vec[];
+        wait();
     }
-    }
+}
 \end{Verbatim}
-\newpage
+
 \paragraph{Algoritmo di verifica dello stato}
+Questo algoritmo ritorna TRUE e FALSE, a un primo impatto invertiti, perché nell'algoritmo di allocazione controlla con la negazione.
+
 \begin{Verbatim}[tabsize=4]
-    boolean state_safe(){
-    int work[m] = available[]; // qui ho già sottratto le richieste di P_i
-    boolean finish[n] = (FALSE,. . .,FALSE);
+boolean state_safe() {
+    int work[m] = available[];  // qui ho già sottratto le richieste di P_i
+    boolean finish[n] = (FALSE, ..., FALSE);
     int i;
-    while(finish != (TRUE,...,TRUE) ) {
-    //cerca P_i che NON abbia terminato e che possa completare
-    // con le risorse disponibili in work
-    for(i=0; (i<n)&&(finish[i]||(need[i][]>work[])); i++);
-    if (i==n) //arriva in fondo senza trovare un processo
-    //che non abbia potenzialmente finito e un array
-    //di risorse necessarie minore di quello delle disponibili
-    return FALSE; //non c'è un arco che renda lo stato unsafe
-    else {
-    work[] = work[]+alloc[i][];
-    finish[i] = TRUE;
+    while (finish != (TRUE, ..., TRUE)) {
+        // cerca P_i che NON abbia terminato e che possa completare
+        // con le risorse disponibili in work
+        for (i = 0; (i < n) && (finish[i] || (need[i][] > work[])); i++);
+        if (i == n)  
+            // arriva in fondo senza trovare un processo
+            // che non abbia potenzialmente finito e un array
+            // di risorse necessarie minore di quello delle disponibili
+            return FALSE;  // non c'è un arco che renda lo stato unsafe
+        else {
+            work[] = work[] + alloc[i][];
+            finish[i] = TRUE;
+        }
     }
-    } return TRUE;
-    }
-    NOTA: ritorna TRUE e false, a un primo impatto invertiti, perché nell'algoritmo
-    di allocazione controlla con la negazione!
+    return TRUE;
+}
 \end{Verbatim}
 
 \paragraph{Esempio}
@@ -1364,18 +1368,18 @@ Al tempo $T_1$, $P_1$ richiede (1,0,2): Request\_1 $<=$ Available? (1,0,2) $<=$ 
 \begin{figure}[htb]
     \includegraphics[width=7cm]{img/bank1.JPG}
 \end{figure}
-\newpage
+
 Siamo ancora in uno stato safe?
 \begin{itemize}
     \item work = (2,3,0)
-    \item i=0 finish=FALSE, need[0] = (7,4,3) > work
-    \item i=1 finish=FALSE, need[1] = (0,2,0) < work
+    \item i = 0 finish = FALSE, need[0] = (7,4,3) > work
+    \item i = 1 finish = FALSE, need[1] = (0,2,0) < work
           \begin{itemize}
               \item work = work + (3,0,2) = (5,3,2)
               \item finish[1] = TRUE
           \end{itemize}
-    \item i=2 finish=FALSE, need[2] = (6,0,0) > work
-    \item i=3 finish=FALSE, need[3] = (0,1,1) < work
+    \item i = 2 finish = FALSE, need[2] = (6,0,0) > work
+    \item i = 3 finish = FALSE, need[3] = (0,1,1) < work
           \begin{itemize}
               \item work = work + (2,1,1) = (7,4,3)
               \item finish[3] = TRUE
@@ -1385,47 +1389,51 @@ Siamo ancora in uno stato safe?
 \end{itemize}
 
 Ad esempio, se si svolgesse l'algoritmo ipotizzando che al tempo $T_2$ P0 richiedesse (0,2,0), effettuando i dovuti cambiamenti (Allocation di P0: (0,3,0) e Available (2,1,0)), svolgendo l'algoritmo vedremmo che lo stato è unsafe.
-\begin{itemize}
-    \item work = (2,3,0)
-    \item i=0 finish=FALSE, need[0] = (7,2,3) > work
-    \item i=1 finish=FALSE, need[1] = (0,2,0) > work
-    \item i=2 finish=FALSE, need[2] = (6,0,0) > work
-    \item i=3 finish=FALSE, need[3] = (0,3,1) > work
-    \item i=4 finish=FALSE, need[4] = (4,3,1) > work
-    \item STATO UNSAFE!
-\end{itemize}
+\begin{Verbatim}
+work = (2,3,0)
+i=0 finish = FALSE, need[0] = (7,2,3) > work
+i=1 finish = FALSE, need[1] = (0,2,0) > work
+i=2 finish = FALSE, need[2] = (6,0,0) > work
+i=3 finish = FALSE, need[3] = (0,3,1) > work
+i=4 finish = FALSE, need[4] = (4,3,1) > work
+STATO UNSAFE!
+\end{Verbatim}
 
 \subsection{Rilevazione del deadlock e ripristino}
 Tanto la prevenzione statica quanto la dinamica sono conservative e riducono eccessivamente l'utilizzo delle risorse, quindi, al posto di algoritmi per la prevenzione o l'\textit{avoidance}, il sistema potrebbe fornire un algoritmo di rilevazione o un algoritmo di rilevazione e ripristino tramite RAG.
 
-\paragraph{Rilevazione e ripristino con RAG}Come succedeva nella prevenzione dinamica, l'algoritmo di rilevazione e ripristino con RAG funziona solo con una risorsa per tipo. Per questo algoritmo, il grafo di allocazione delle risorse viene collassato rimuovendo i nodi delle risorse: un arco da un processo Pi a Pj implica che Pi sta aspettando che la risorsa di cui ha bisogno sia liberata da Pj. Come nel precedente caso, esiste un deadlock solo se il grafo contiene un ciclo. Per rilevare il deadlock, il sistema deve mantenere un grafo delle attese e deve periodicamente invocare un algoritmo che cerchi un ciclo nel grafo.
+\paragraph{Rilevazione e ripristino con RAG}
+Come succedeva nella prevenzione dinamica, l'algoritmo di rilevazione e ripristino con RAG funziona solo con una risorsa per tipo. Per questo algoritmo, il grafo di allocazione delle risorse viene collassato rimuovendo i nodi delle risorse: un arco da un processo Pi a Pj implica che Pi sta aspettando che la risorsa di cui ha bisogno sia liberata da Pj. Come nel precedente caso, esiste un deadlock solo se il grafo contiene un ciclo. Per rilevare il deadlock, il sistema deve mantenere un grafo delle attese e deve periodicamente invocare un algoritmo che cerchi un ciclo nel grafo.
 
 \paragraph{Algoritmo di rilevazione} Il precedente algoritmo non è applicabile a sistemi con più istanze per ogni risorsa. Questo algoritmo è basato sull'esplorazione di ogni possibile sequenza di allocazione per i processi che non hanno ancora terminato. Se la sequenza va a buon fine (safe), non c'è deadlock.
 
 Le strutture dati utilizzate sono simili a quelle dell'algoritmo del banchiere:
 \begin{Verbatim}[tabsize=3]
-    int available[m]; //numero di istanze di R_i disponibili
-    int alloc[n][m]; //matrice di allocazione corrente
-    int req_vec[n][m]; // matrice delle richieste
+int available[m];   // numero di istanze di R_i disponibili
+int alloc[n][m];    // matrice di allocazione corrente
+int req_vec[n][m];  // matrice delle richieste
 
-    int worl[m] = available[m];
-    bool finish[] = (FALSE,...,FALSE), found = TRUE;
-    while(found) {
-    found=FALSE;
-    for(i=0; i<n && !found; i++){
-    //cerca un P_i con richiesta soddisfacibile
-    if(!finish[i] && req_vec[i][]<=work[]) {
+int work[m] = available[m];
+bool finish[] = (FALSE, ..., FALSE);
+found = TRUE;
+
+while (found) {
+    found = FALSE;
+    for (i = 0; i < n && !found; i++) {
+        //cerca un P_i con richiesta soddisfacibile
+        if (!finish[i] && req_vec[i][] <= work[]) {
             //assume ottimisticamente che P_i esegua fino
             // al termine e che quindi restituisca le risorse
             // Se non è così, il possibile deadlock verrà
             // evidenziato alla prossima esecuzione
             // dell'algoritmo
             work[] = work[] + alloc[i][];
-            finish[i]=TRUE;
-            found=TRUE;
+            finish[i] = TRUE;
+            found = TRUE;
         }
     }
-    } //se finish[i]=FALSE per un qualsiasi i, P_i è in deadlock
+} 
+// se finish[i] = FALSE per un qualsiasi i, P_i è in deadlock
 \end{Verbatim}
 
 \paragraph{Esempio}
@@ -1433,24 +1441,33 @@ Le strutture dati utilizzate sono simili a quelle dell'algoritmo del banchiere:
     \item 5 processi: P0, $P_1$, $P_2$, $P_3$, $P_4$
     \item 3 tipi di risorsa: A (7 istanze), B (2 istanze), C (6 istanze)
 \end{itemize}
-Fotografia al tempo $T_0$
+
 \begin{figure}[htb]
+    \caption{Fotografia al tempo $T_0$}
+    \centering
     \includegraphics[width=7cm]{img/ril1.JPG}
 \end{figure}
-\newpage
+
 Siamo in una situazione di deadlock?
 \begin{Verbatim}[tabsize=3]
-    - work = (0,0,0)
-    - i=0	req[0] = (0,0,0) <= work 		OK
-    work = work + (0,1,0) = (0,1,0)	finish[0] = TRUE	P_0!
-    - i=1	req[1] = (2,0,2) <= work		NO
-    - i=2	req[2] = (0,0,0) <= work 		OK
-    work = work + (3,0,3) = (3,1,3)	finish[2] = TRUE	P_2!
-    - i=3	req[3] = (1,0,0) <= work 		OK
-    work = work + (2,1,1) = (5,2,4)	finish[3] = TRUE	P_3!
-    - ecc...
-    - La sequenza <P0, $P_2$, $P_3$, $P_1$, $P_4$> dà finish[i] = TRUE per ogni i
+work = (0,0,0)
+i = 0; req[0] = (0,0,0) <= work; OK
+    work = work + (0,1,0) = (0,1,0)
+    finish[0] = TRUE   > P0
+
+i = 1; req[1] = (2,0,2) > work;  NO
+i = 2; req[2] = (0,0,0) <= work; OK
+    work = work + (3,0,3) = (3,1,3)
+    finish[2] = TRUE   > P2
+
+i = 3; req[3] = (1,0,0) <= work; OK
+work = work + (2,1,1) = (5,2,4)
+    finish[3] = TRUE   > P3
+
+etc..
 \end{Verbatim}
+
+La sequenza <$P_0$, $P_2$, $P_3$, $P_1$, $P_4$> dà \verb|finish[i] = TRUE| per ogni i.
 
 \subsection{Utilizzo dell'algoritmo di rilevazione-ripristino}
 Quanto spesso bisognerebbe chiamare l'algoritmo di rilevazione? La risposta dipende fondamentalmente dalla frequenza con cui si arriva al deadlock e quanti processi sono ogni volta coinvolti. Se i deadlock sono frequenti, l'algoritmo va invocato frequentemente.
@@ -1485,7 +1502,7 @@ Una volta prelazionata la risorsa, come ci si assicura di non andare incontro al
     \item Spazio di swap (blocchi su disco)
 \end{enumerate}
 
-\newpage
+
 \section{Gestione della memoria}
 La memoria ha un ruolo centrale nei moderni Sistemi Operativi. Essa consiste di un grande array di bytes, ognuno con il proprio indirizzo. La CPU recupera le istruzione dalla memoria in base al valore del program counter. Queste istruzioni possono causare caricamenti addizionali da e in memoria. La memoria principale e i registri del processore sono gli unici tipi di memoria accessibili direttamente dalla CPU, quindi ogni istruzione in esecuzione, ogni dato necessario, deve trovarsi lì. Se i dati non sono in quei tipi di memoria, devono esservi spostati, prima che la CPU possa utilizzarli.
 
@@ -1658,7 +1675,7 @@ Anche se questo schema diminuisce la quantità di memoria necessaria a mantenere
 
 I sistemi che utilizzano la tabella invertita hanno difficoltà ad implementare un sistema di condivisione delle pagine perché avrebbero bisogno di mappare uno stesso indirizzo fisico su più indirizzi logici (virtuali). Risulta quindi necessario un meccanismo per gestire le collisioni quando diversi indirizzi virtuali corrispondono allo stesso frame (per capire se è un frame condiviso o no).
 
-\newpage
+
 \section{Memoria Virtuale}
 Le tecniche viste finora prevedono che un processo, per essere eseguito, debba risiedere interamente in memoria. L'utilizzo della memoria virtuale permette l'esecuzione di processi che non sono completamente in memoria, permettendo quindi l'utilizzo di programmi più grandi della memoria fisica. Inoltre, la memoria virtuale astrae la memoria fisica in un array uniforme estremamente vasto, separando la memoria logica (vista dall'utente) da quella fisica.
 
@@ -1801,7 +1818,7 @@ si avranno solo 1024 page fault.
 
 Infine, bisogna anche considerare che potrebbero esserci alcuni frame bloccati, cioè frames che non devono mai essere rimpiazzati, quali quelli corrispondenti a pagine del kernel o a pagine utilizzate per trasferire dati da e verso l'I/O.
 
-\newpage
+
 \section{Gestione della memoria secondaria}
 
 \subsection{Tipologie del supporto}
@@ -1928,7 +1945,7 @@ Alternativamente, si può creare uno spazio di swap in una partizione apposita. 
 
 Lo spazio di swap viene poi allocato quando un processo viene creato o quando una pagina viene forzata fuori dalla memoria fisica. Nel primo caso, viene assegnato dello spazio per le pagine di istruzioni e dati e il kernel utilizza due mappe di swap per tracciare l'uso dello spazio di swap.
 
-\newpage
+
 \section{Livelli RAID}
 
 \begin{figure}[htb]
@@ -1963,7 +1980,7 @@ In somma, il mirroring fornisce alta affidabilità, ma è costoso (in tutti i se
           Il RAID 1+0 combina RAID 1 e RAID 0, risultando più robusto di RAID 0+1, infatti ogni disco di ogni stripe può guastarsi senza far perdere dati al sistema.
 \end{itemize}
 
-\newpage
+
 \section{File System}
 Il file system fornisce il meccanismo per la memorizzazione e l'accesso di dati e programmi. Consiste di due parti distinte: una collezione di file e una struttra di cartelle (directory).
 
@@ -2241,7 +2258,7 @@ Fondamentalmente, tutti i cambiamenti apportati ai metadati sono registrati su u
 
 Se il sistema va in crash, il log conterrà zero o più transazioni. Ogni transazione ivi contenuta non è stata completata dal sistema, quindi devono essere completate.
 
-\newpage
+
 \section{Sistema di I/O}
 
 I due lavori principali di un computer sono il processamento e l'I/O. Il ruolo del Sistema Operativo quando si parla di I/O è quello di gestire e controllare le operazioni e i device di I/O.
@@ -2352,7 +2369,7 @@ Nella parte software, esiste un \textbf{gestore di interrupt} (cui si è già am
 \subsubsection{Spooling}
 Lo spooling viene utilizzato in processi non condivisibili. La stampante ne è un esempio comune. Più processi possono voler scrivere sulla stampante contemporaneamente, ma le stampe non devono essere interfogliate. I dati da processare vengono ``parcheggiati'' in una directory di spooling. Un processo di sistema (spooler) è l'unico autorizzato ad accedere alla stampante e periodicamente si occupe di stampare i dati nella spooling directory.
 
-\newpage
+
 \section{Protezione e sicurezza dei sistemi operativi}
 Tutti i sistemi operativi basano la sicurezza su sistemi di autenticazione per identificare i diversi utenti, in modo tale da gestire le diverse risorse in maniera differente. Un altro argomento è relativo alla classificazione di software malware e il modo in cui loro operano sfruttando le vulnerabilità del sistema operativo. Le proprietà di una buona sicurezza sono tre:
 \begin{itemize}
@@ -2396,7 +2413,7 @@ Per verificare l'autenticità della firma, si utilizza una funzione booleana che
 La firma garantisce anche l'integrità del documento, in quanto per ogni modifica viene generata una nuova firma.
 
 Gli algoritmi a chiave pubblica famosi sono diversi, fra tutti si ricordano RSA e DSA.
-\newpage
+
 
 \subsection{Autenticità del Sistema Operativo}
 Un problema noto di un sistema operativo è quello di verificare che la versione del kernel sia originale e non modificata, magari con un malware all'interno. Per far ciò, esiste un chip ``sicuro'' integrato nella scheda madre, chiamato Trusted Platform Module (TPM). Questo chip fornisce la generazione e la memorizzazione sicura delle chiavi crittografiche. Dunque, si serve al software per l'implementazione di primitive crittografiche.
