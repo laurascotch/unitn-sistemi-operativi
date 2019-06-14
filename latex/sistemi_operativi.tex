@@ -419,7 +419,7 @@ Algoritmi di scheduling differenti rispondono a esigenze differenti. Di seguito 
 L'algoritmo più scheduling più semplice è senza dubbio il First Come, First Served. L'implementazione è quella di una coda FIFO, quindi il primo processo che richiede la CPU è anche il primo ad averla allocata per sé.\newline
 Ad esempio, in una situazione come questa:
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{lll}
@@ -432,7 +432,7 @@ Ad esempio, in una situazione come questa:
 
 otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{llll}
@@ -447,7 +447,7 @@ otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
 Questo algoritmo associa a ogni processo la lunghezza del prossimo CPU-Burst dello stesso. Quando la CPU è libera, è assegnata al processo con il minor prossimo CPU-burst. La denominazione giusta per questo algoritmo sarebbe shortest-next-CPU-burst in quanto si guarda solo alla lunghezza del prossimo burst e non all'intero processo. \newline
 Ad esempio, considerando il seguente set di processi:
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{ll}
@@ -468,7 +468,7 @@ Esistono due schemi di applicazione dell'algoritmo SJF:
 Si può dimostrare che SJF è ottimo poiché permette di ottenere il minimo tempo medio di attesa.
 Esempio di SJF preemptive:\newline
 Data la seguente situazione
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{lll}
@@ -482,7 +482,7 @@ Data la seguente situazione
 
 otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{llll}
@@ -496,7 +496,7 @@ otterremo i seguenti valori di tempo di risposta, di attesa e di completamento
 
 Il seguente diagramma di Gantt rappresenta la situazione:
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \begin{tabular}{ |c|rlrlrrlrlllr|l|l|l|l| }
         \hline
@@ -519,7 +519,7 @@ La vera difficoltà, per questo algoritmo, è il calcolo del prossimo CPU-burst,
 
 Si ottiene la formula: \newline
 $$
-    \tau_{n+1} = \alpha t_n + (1 - \alpha)t_n
+    \tau_{n+1} = \alpha t_n + (1 - \alpha)\tau_n
 $$
 
 Al variare del coefficiente $\alpha$, la stima tende ad avvicinarsi alle ultime misurazioni se $\alpha \approx 0$, oppure usa più la storia recente se $\alpha \approx 1$.
@@ -530,7 +530,7 @@ Esistono varie politiche di assegnamento delle priorità, interne al Sistema Ope
 Il maggior problema di questo algoritmo è il rischio della starvation dei processi: un processo a bassa priorità potrebbe infatti non essere mai eseguito. Per risolvere questa criticità, è stato introdotto il concetto di invecchiamento, per cui la priorità di un processo aumenta gradualmente man mano che questo invecchia. \newline
 Esempio di Priority Scheduling:
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|c|c|c|c|}
@@ -544,7 +544,7 @@ Esempio di Priority Scheduling:
     \end{tabular}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|c|c|c|c|}
@@ -558,9 +558,8 @@ Esempio di Priority Scheduling:
     \end{tabular}
 \end{table}
 
-\begin{table}[htb]
+\begin{table}[h]
     \centering
-    \caption{Priority scheduling}
     \label{my-label}
     \begin{tabular}{|c|ccccc|cccccccccc|ccc|c|}
         \hline
@@ -571,6 +570,7 @@ Esempio di Priority Scheduling:
                                                              & \multicolumn{5}{c|}{}                              & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              & \cellcolor[HTML]{656565}$P_4$                                                                       \\ \hline
                                                              & \multicolumn{5}{c|}{\cellcolor[HTML]{656565}$P_5$} & \multicolumn{10}{c|}{}                              & \multicolumn{3}{c|}{}                              &                                                                                                     \\ \hline
     \end{tabular}
+    \caption{Priority scheduling}
 \end{table}
 
 
@@ -637,7 +637,7 @@ Esistono vari modi di valutare la scelta di un algoritmo di scheduling su un alt
 \subsection{Esercitazione}
 Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF (con e senza prelazione), RR con quanto=4, RR con quanto=1 e HRRN.
 
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|c|c|c|}
@@ -652,7 +652,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
 \end{table}
 
 \subsubsection{FCFS}
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|ll}
@@ -667,7 +667,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
 \end{table}
 
 \subsubsection{SJF senza prelazione}
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|ll}
@@ -682,7 +682,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
 \end{table}
 
 \subsubsection{SJF con prelazione}
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -703,7 +703,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
 
 
 \subsubsection{Round Robin, quanto=4}
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -724,7 +724,7 @@ Dati i processi nella seguente tabella, schedularli con le politiche: FCFS, SJF 
 
 \subsubsection{Round Robin, quanto=1}
 Sotto sono indicati i processi in ready queue
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -746,7 +746,7 @@ Sotto sono indicati i processi in ready queue
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|lll|llllll|llll|ll|lllll|}
@@ -763,7 +763,7 @@ Sotto sono indicati i processi in ready queue
 % Please add the following required packages to your document preamble:
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \label{my-label}
     \begin{tabular}{|
@@ -1126,7 +1126,7 @@ semaphore full = 0;
 \end{verbatim}
 
 Si assume che il pool consista di \texttt n buffers, ognuno capace di tenere un elemento. Il semaforo mutex garantisce la mutua esclusione per l'accesso al pool di buffers ed è inizializzato al valore 1. I semafori empty e full contano il numero di buffer vuoti e pieni.
-\begin{figure}[htb]
+\begin{figure}[h!]
     \includegraphics{img/sem_prod_cons.JPG}
 \end{figure}
 
@@ -1165,7 +1165,7 @@ Basandoci sul secondo punto, si può implementare una versione deadlock-free. Pe
 Il filosofo \textit{i} può settare \texttt{state[i] = EATING} solo se entrambi i suoi vicini non stanno mangiando: (\texttt{state[(i+N-1) \% N] != EATING}) and (\texttt{state[(i+1) \% N] != EATING}).
 
 Una soluzione corretta è quindi rappresentabile con le seguenti funzioni/classi.
-\begin{figure}[htb]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{img/filosofi_ok.JPG}
 \end{figure}
 
@@ -1173,7 +1173,7 @@ Una soluzione corretta è quindi rappresentabile con le seguenti funzioni/classi
 Un negozio ha una sala d'attesa con N sedie, ed una stanza con la sedia del barbiere. In assenza di clienti, il barbiere si addormenta.
 
 Quando entra un cliente, se tutte le sedie sono occupate, se ne va. Se il barbiere è occupato o addormentato, il cliente, rispettivamente, si siede o lo sveglia.
-\begin{figure}[htb]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{img/barber.JPG}
 \end{figure}
 
@@ -1197,7 +1197,7 @@ Si supponga che, quando un processo P invoca \texttt{x.signal()}, ci sia un proc
 \paragraph{Produttore-consumatore con i monitor}
 Come esempio, sfruttiamo il problema del produttore e del consumatore già precedentemente discusso. Sfruttando il monitor, la funzione che conterrà la sezione critica sarà invocata chiamando l'opportuno metodo del monitor. Perciò, il processo Producer passerà l'oggetto prodotto alla procedura enter(), mentre il consumatore rimuoverà e consumerà gli oggetti prodotti.\newline
 Il monitor conterrà due variabili condizionali: full e empty, che rappresenteranno rispettivamente le code d'attesa dei processi che hanno tentato di sincronizzare le variabili condivise (gli oggetti prodotti, presenti nel buffer circolare) nel momento in cui il buffer è pieno e nel momento in cui il buffer è vuoto.
-\begin{figure}[htb]
+\begin{figure}[h!]
     \includegraphics[width=7cm]{img/prodconsm1.JPG}
     \includegraphics[width=7cm]{img/prodconsm2.JPG}
     \includegraphics[width=7cm]{img/prodconsm3.JPG}
@@ -1263,7 +1263,7 @@ Se non esiste una tale sequenza, si è in uno stato \textit{unsafe}: non tutti g
 
 \paragraph{Esempio}
 Si supponga di avere tre processi $P_0, P_1$ e $P_2$ e 12 istanze di una risorsa, di cui 3 libere. Le altre sono allocate nel seguente modo:
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \begin{tabular}{c|c|c}
               & Richieste & Possedute \\ \hline
@@ -1350,7 +1350,7 @@ boolean state_safe() {
     \item 3 risorse: A (10 istanze), B (5 istanze), C (7 istanze)
 \end{itemize}
 Fotografia al tempo $T_0$
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \begin{tabular}{c|ccc|ccc|ccc|ccc|}
         \cline{2-13}
@@ -1365,7 +1365,7 @@ Fotografia al tempo $T_0$
 \end{table}
 Al tempo $T_0$ il sistema è in uno stato safe e $<P_1, P_3, P_4, P_2, P_0>$ è una sequenza safe. \newline
 Al tempo $T_1$, $P_1$ richiede (1,0,2): Request\_1 $<=$ Available? (1,0,2) $<=$ (3,3,2) ==> OK. Abbiamo quindi una nuova situazione:
-\begin{figure}[htb]
+\begin{figure}[h!]
     \includegraphics[width=7cm]{img/bank1.JPG}
 \end{figure}
 
@@ -1442,10 +1442,10 @@ while (found) {
     \item 3 tipi di risorsa: A (7 istanze), B (2 istanze), C (6 istanze)
 \end{itemize}
 
-\begin{figure}[htb]
-    \caption{Fotografia al tempo $T_0$}
+\begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{img/ril1.JPG}
+    \caption{Fotografia al tempo $T_0$}
 \end{figure}
 
 Siamo in una situazione di deadlock?
@@ -1587,7 +1587,7 @@ Un programma è in genere visto come una collezione di segmenti, cioè unità lo
 Il mapping dall'indirizzo bidimensionale del programmatore a quello fisico viene fatto tramite una tabella dei segmenti (segment table). Ogni entry della tabella contiene una base, cioè l'indirizzo fisico di partenza del segmento in memoria e un limite, cioè la lunghezza del segmento. Un indirizzo logico consiste di due parti: un numero di segmento s e un offset d. Quando un offset è legale, cioè è minore del limite, viene aggiunto alla base del segmento per produrre l'indirizzo del byte desiderato nella memoria fisica.
 
 Ad esempio, si consideri la seguente situazione:
-\begin{figure}[htb]
+\begin{figure}[h!]
     \includegraphics[width=12cm]{img/segmem.JPG}
 \end{figure}
 
@@ -1645,7 +1645,7 @@ La soluzione più semplice sta nel dividere la tabella in pezzi più piccoli.
 \subsubsection{Paginazione multilivello}
 Questo metodo consiste nel ``paginare'' la tabella delle pagine. In pratica, solo alcune parti della tabella delle pagine sono memorizzate esplicitamente in memoria, mentre le altre sono su dischi. In generale, un indirizzo logico ha dei bit che indicato il numero di pagina e altri che indicano l'offset. Paginando la tabella delle pagine, la parte del numero di pagina verrà ulteriormente divisa in una parte che indicherà la tabella ``esterna'' e una che indica l'offset all'interno della tabella ``interna''.
 Ad esempio, dato un indirizzo: \newline
-\begin{table}[htb]
+\begin{table}[h!]
     \centering
     \begin{tabular}{ccc}
         $P_1$                            & $P_2$                           & offset                            \\ \hline
@@ -1947,7 +1947,7 @@ Lo spazio di swap viene poi allocato quando un processo viene creato o quando un
 
 \section{Livelli RAID}
 
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=8cm]{img/raid.JPG}
 \end{figure}
@@ -2121,7 +2121,7 @@ Si può quindi associare ogni categoria alle operazioni ad essa possibile. Ad es
 
 \subsection{Implementazione del file system}
 
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=8cm]{img/filesys.JPG}
 \end{figure}
@@ -2392,7 +2392,7 @@ L'unico oggetto segreto è la chiave che permette al possessore di decrittare il
 \subsection{Crittografia asimmetrica}
 A differenza della crittografia a chiave simmetrica, la chiave per decifrare è diversa rispetto a quella che serve per cifrare. La chiave per decifrare è detta privata, cioè segreta. Non esiste una relazione tra chiave pubblica e chiave segreta, infatti non è possibile ricavare una avendo a disposizione l'altra. La chiave pubblica può essere nota a tutti. Si assume che ogni utente abbia la sua coppia di chiavi pubblica e privata e che ogni utente conosca tutte le chiavi pubbliche. Solo ciascun proprietario conosce la propria chiave segreta.
 
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=12cm]{img/crittas.JPG}
 \end{figure}
@@ -2404,7 +2404,7 @@ La firma digitale è un'equivalente della firma scritta. Una funzione permette d
 
 Per verificare l'autenticità della firma, si utilizza una funzione booleana che verifica l'autenticità tramite la chiave pubblica del firmatario. Se una firma non risulta autentica, significa che è stata soggetta ad un attacco.
 
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=12cm]{img/firma.JPG}
 \end{figure}
@@ -2419,7 +2419,7 @@ Un problema noto di un sistema operativo è quello di verificare che la versione
 
 Quando il PC viene acceso (boot), parte il BIOS che inizializza l'hardware. Il BIOS invoca il codice memorizzato nel master boot record (MBR) presente nel disco. Ogni partizione ha un bootsector che viene caricato dall'MBR. Questo carica il codice dal bootsector ed esegue il bootloader dal file system. Il master boot record ha l'hash del bootsector corretto e lo confronta con il valore di hash che è memorizzato. Questa operazione viene ripetuta per tutti gli step fino al caricamento del kernel.
 
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=12cm]{img/autso.JPG}
 \end{figure}
