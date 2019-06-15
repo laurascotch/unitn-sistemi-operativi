@@ -5,13 +5,18 @@
 \usepackage[margin=1in]{geometry} 
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
-\usepackage{booktabs}
-\usepackage{caption}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs}
 \usepackage{wrapfig}
+\usepackage{caption}
 \usepackage{graphicx}
 \usepackage{fancyvrb}
 \usepackage{tikz}
+
+\makeatletter
+\newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
+\makeatother
 
 \title{
   Sistemi Operativi \\
@@ -24,8 +29,6 @@
 \maketitle
 
 \tableofcontents
-
-
 
 \section{Introduzione}
 
@@ -835,11 +838,11 @@ Attraverso del codice il programmatore può creare interazioni tra processi senz
 Il primo algoritmo che analizziamo è una soluzione proposta per la sincronizzazione di due soli processi (i e j). Il seguente codice di esempio è scritto per il processi i.
 \begin{verbatim}
 PROCESS i
-int turn; //se turn = i allora entra il processo i
+int turn; // se turn = i allora entra il processo i
 while (1) {
-    while (turn != i);   //sezione di entrata
+    while (turn != i);   // sezione di entrata
     // sezione critica
-    turn = j;                //sezione di uscita
+    turn = j;                // sezione di uscita
     // sezione non critica
 }
 \end{verbatim}
@@ -848,12 +851,12 @@ Questo primo algoritmo presenta due grossi problemi. Per prima cosa, richiede un
 Si può ampliare il precedente algoritmo aggiungendo un flag per verificare che un processo voglia effettivamente entrare nella propria sezione critica:
 \begin{verbatim}
 PROCESS i
-boolean flag[2]; //inizializzato a FALSE
+boolean flag[2]; // inizializzato a FALSE
 while (TRUE) {
-   flag[i] = TRUE; //vuole entrare in sezione critica
-   while(flag[j] == TRUE); //sezione di entrata
+   flag[i] = TRUE; // vuole entrare in sezione critica
+   while(flag[j] == TRUE); // sezione di entrata
    // sezione critica
-   flag[i] = false;
+   flag[i] = FALSE;
    // sezione non critica
 }
 \end{verbatim}
@@ -862,12 +865,12 @@ Ora a decidere chi entra nella sezione critica è chi vi si trova già, la regol
 Per risolvere il problema del deadlock si possono invertire le istruzioni della sezione di entrata:
 \begin{verbatim}
 PROCESS i
-boolean flag[2]; //inizializzato a FALSE
+boolean flag[2]; // inizializzato a FALSE
 while (TRUE) {
-   while(flag[j] == TRUE); //sezione di entrata
-   flag[i] = TRUE; //vuole entrare in sezione critica
+   while(flag[j] == TRUE); // sezione di entrata
+   flag[i] = TRUE; // vuole entrare in sezione critica
    // sezione critica
-   flag[i] = false;
+   flag[i] = FALSE;
    // sezione non critica
 }
 \end{verbatim}
@@ -883,11 +886,11 @@ while (TRUE) {
    turn = j // se vuoi, tocca a te
    while(flag[j] == TRUE); // sezione di entrata
    // sezione critica
-   flag[i] = false;
+   flag[i] = FALSE;
    // sezione non critica
 }
 \end{verbatim}
-Viene espressa la volontà di prendere il turno, ma lo si offre all'altro processo. Il processo i si ferma alla barriera se il turno che vuole il processo j viene ottenuto. Una volta finita la sezione critica, il processo setta il flag a false, permettendo all'altro di entrare. Questo algoritmo rispetta, finalmente tutte e tre le regole: il turno garantisce la mutua esclusione e il settaggio a false del flag garantisce il progresso e l'attesa limitata.
+Viene espressa la volontà di prendere il turno, ma lo si offre all'altro processo. Il processo i si ferma alla barriera se il turno che vuole il processo j viene ottenuto. Una volta finita la sezione critica, il processo setta il flag a FALSE, permettendo all'altro di entrare. Questo algoritmo rispetta, finalmente tutte e tre le regole: il turno garantisce la mutua esclusione e il settaggio a FALSE del flag garantisce il progresso e l'attesa limitata.
 
 \paragraph{Algoritmo del fornaio}
 La soluzione trovata, tuttavia, risolve il problema solo in presenza di due processi sincronizzati. In generale si avranno N processi sincronizzati tra loro. Per risolvere il problema generale di usa un algoritmo che prende il nome di algoritmo del fornaio, per via dell'analogia con la coda di quel negozio. Ogni processo sceglie un numero (\texttt{choosing[i]=1}). Il numero più basso verrà servito per primo e situazioni con numeri identici verranno risolte con un confronto a due livelli.
@@ -916,24 +919,24 @@ Le soluzioni software costituiscono generalmente uno spreco di risorse di calcol
 \paragraph{Test and Set}
 L'istruzione \texttt{test\_and\_set()} può essere definita così:
 \begin{verbatim}
-boolean test_and_set(boolean *target) { //il valore di target viene modificato
+boolean test_and_set(boolean *target) { // il valore di target viene modificato
     boolean rv = *target;
     *target = TRUE;
     return rv;
 }
 \end{verbatim}
-L'istruzione è atomica, quindi se due test\_and\_set() vengono eseguite contemporaneamente, la reale esecuzione sarà sequenziale in qualche ordine arbitrario. Se la macchina supporta questo tipo di istruzione, si può implementare la mutua esclusione dichiarando una variabile lock, inizializzata a false: passa solo il primo processo che arriva e trova lock=false.
+L'istruzione è atomica, quindi se due test\_and\_set() vengono eseguite contemporaneamente, la reale esecuzione sarà sequenziale in qualche ordine arbitrario. Se la macchina supporta questo tipo di istruzione, si può implementare la mutua esclusione dichiarando una variabile lock, inizializzata a FALSE: passa solo il primo processo che arriva e trova lock=FALSE.
 \begin{verbatim}
 do {
     while(test_and_set(&lock)); // non fare nulla
     // sezione critica
-    lock = false;
+    lock = FALSE;
     // sezione non critica
 } while(TRUE)
 \end{verbatim}
 
 \paragraph{Swap}
-Questa operazione atomica prevede lo scambio di due valori booleani. Il primo processo che riesce a fare la swap setta a false la variabile dummy, locale al processo, e riesce ad entrare nella sezione critica.
+Questa operazione atomica prevede lo scambio di due valori booleani. Il primo processo che riesce a fare la swap setta a FALSE la variabile dummy, locale al processo, e riesce ad entrare nella sezione critica.
 \begin{verbatim}
 void Swap (boolean &a, boolean &b) {
     boolean temp = a;
@@ -950,7 +953,7 @@ while (TRUE) {
         Swap(dummy, lock);
     } while (dummy);
     // sezione critica
-    lock = false;
+    lock = FALSE;
     // sezione non critica
 }
 \end{verbatim}
@@ -989,7 +992,7 @@ Un semaforo S è una variabile intera cui si accede solo mediante l'utilizzo di 
     \item L'operazione \texttt{wait()}, nota come P (dall'olandese Proberen, testare) tenta di decrementare il valore di S di 1, ma se il valore è già 0 non si può decrementare ed è necessario attendere.
           \begin{verbatim}
 wait(S) {
-   while(S <= 0); //busy wait
+   while(S <= 0); // busy wait
    S--;
 }
 \end{verbatim}
@@ -1001,7 +1004,7 @@ signal(S) {
 \end{verbatim}
 \end{itemize}
 
-Esistono due tipi di semafori: binari (S = 0 oppure 1) e generici (S assume valori interi maggiori di 0). Un'implementazione ``concettuale'' di un semaforo binario prevede che nella wait si aspetti che il semaforo diventi \texttt{TRUE}, per poi settarlo a \texttt{false}, mentre nella signal lo si imposta a \texttt{TRUE}. L'implementazione concettuale dei semafori a valori interi è invece ben espressa dal codice citato sopra. \newline
+Esistono due tipi di semafori: binari (S = 0 oppure 1) e generici (S assume valori interi maggiori di 0). Un'implementazione ``concettuale'' di un semaforo binario prevede che nella wait si aspetti che il semaforo diventi \texttt{TRUE}, per poi settarlo a \texttt{FALSE}, mentre nella signal lo si imposta a \texttt{TRUE}. L'implementazione concettuale dei semafori a valori interi è invece ben espressa dal codice citato sopra. \newline
 Il problema ora risiede nel garantire l'atomicità e nell'implementare il tutto.
 
 \subsubsection{Implementazione}
@@ -1014,7 +1017,7 @@ V(bool &s) {
 } 
 
 P(bool &s){                                            
-    key = false;
+    key = FALSE;
     do {                                                       
         Swap(s, key);
     } while (!key);
@@ -1024,8 +1027,8 @@ Il primo processo otterrà l'accesso alla sezione critica in quanto supererà il
 
 Semafori interi:
 \begin{verbatim}
-bool mutex; //semaforo binario iniz. a TRUE
-bool delay; // semaforo binario iniz. a false
+bool mutex; // semaforo binario iniz. a TRUE
+bool delay; // semaforo binario iniz. a FALSE
 
 P(int &s) {
     P(mutex);
@@ -1072,7 +1075,7 @@ P(Sem &s) {
     if(s.value < 0) {
         V(mutex);
         append(process i, s.List);
-        sleep() //mette il processo in attesa
+        sleep() // mette il processo in attesa
     } else {
         V(mutex);
     }
@@ -1297,7 +1300,7 @@ Sono necessarie diverse strutture di dati per implementare l'algoritmo del banch
 \end{itemize}
 
 \paragraph{Algoritmo di allocazione}
-Sia \verb|request[i][]| il vettore delle richieste del processo $P_i$. Se \verb|request[i][j] == j|, il processo $P_i$ vuole k istanze della risorsa $R_j$. 
+Sia \verb|request[i][]| il vettore delle richieste del processo $P_i$. Se \verb|request[i][j] == k|, il processo $P_i$ vuole k istanze della risorsa $R_j$. 
 
 I due algoritmi descritti di seguito sono parametrizzati per tutti gli elementi dei vettori (ovvero bisogna confrontare ogni singolo elemento per ogni indice i).
 \begin{Verbatim}[tabsize=4]
@@ -1420,9 +1423,9 @@ found = TRUE;
 while (found) {
     found = FALSE;
     for (i = 0; i < n && !found; i++) {
-        //cerca un P_i con richiesta soddisfacibile
+        // cerca un P_i con richiesta soddisfacibile
         if (!finish[i] && req_vec[i][] <= work[]) {
-            //assume ottimisticamente che P_i esegua fino
+            // assume ottimisticamente che P_i esegua fino
             // al termine e che quindi restituisca le risorse
             // Se non è così, il possibile deadlock verrà
             // evidenziato alla prossima esecuzione
@@ -1494,7 +1497,7 @@ Una volta tolta la risorsa al processo, si passa alla fase di \textbf{rollback}:
 
 Una volta prelazionata la risorsa, come ci si assicura di non andare incontro alla starvation? Bisogna assicurarsi che un processo possa essere scelto come vittima solo un numero finito (e piccolo) di volte.
 
-\paragraph{In conclusione}, ognuno degli approcci visti ha vantaggi e svantaggi e nessuno dei tre è superiore all'altro. L'approccio basico può però essere combinato, permettendo di applicare il giusto metodo per ogni classe di risorse del sistema. Una possibile partizione in classi potrebbe essere:
+\paragraph{In conclusione} Ognuno degli approcci visti ha vantaggi e svantaggi e nessuno dei tre è superiore all'altro. L'approccio basico può però essere combinato, permettendo di applicare il giusto metodo per ogni classe di risorse del sistema. Una possibile partizione in classi potrebbe essere:
 \begin{enumerate}
     \item Risorse interne (usate dal sistema, es: I/O)
     \item Memoria
@@ -1535,9 +1538,9 @@ Il \textit{mapping} dall'indirizzo logico al fisico a run-time è fatto tramite 
 Il programma utente non vede mai il vero indirizzo fisico: può creare un puntatore alla locazione 346, salvarlo in memoria, manipolarlo, compararlo con altri indirizzi -- tutto con il numero 346. Solo quando è utilizzato come un indirizzo di memoria viene rilocato relativamente al registro base. In sostanza, il programma utente ha a che fare con l'indirizzo logico, mentre l'hardware di mapping della memoria lo converte nell'indirizzo fisico.
 
 \subsection{Caricamento}
-Tradizionalmente, tutto il codice deve essere caricato in memoria al tempo di esecuzione. In questo scenario, chiamato caricamento \textbf{statico}, la dimensione del processo è limitata dalla dimensione della memoria fisica.
+Tradizionalmente, tutto il codice veniva caricato in memoria al tempo di esecuzione. In questo scenario, chiamato caricamento \textbf{statico}, la dimensione del processo veniva limitata dalla dimensione della memoria fisica.
 
-Per meglio utilizzare lo spazio di memoria, si ricorre al caricamento \textbf{dinamico}. In questo caso, il codice delle routines viene caricato solo quando queste vengono eseguite per la prima volta, quindi se una non dovesse mai servire, non verrebbe mai caricata in memoria, bensì resterebbe nel disco in una modalità tale da poter essere caricata appena necessaria.
+Per meglio utilizzare lo spazio di memoria, si ricorre ora al caricamento \textbf{dinamico}. In questo caso, il codice delle routines viene caricato solo quando queste vengono eseguite per la prima volta, quindi se una non dovesse mai servire, non verrebbe mai caricata in memoria, bensì resterebbe nel disco in una modalità tale da poter essere caricata appena necessaria.
 
 \subsection{Collegamento}
 Alcuno sistemi operativi supportano solo il collegamento statico, in cui le librerie di sistema e in generale tutti i riferimenti necessari al programma sono definiti prima dell'esecuzione. In particolare, l'immagine del processo, nel momento in cui andrà ad eseguire, conterrà già una copia di tutte le librerie usate.
@@ -1609,27 +1612,30 @@ Ogni sistema operativo ha il proprio metodo per mantenere le tabelle delle pagin
 
 L'uso dei registri è soddisfacente se la tabella è sufficientemente piccola, dato il limitato numero di tali dispositivi, ma al giorno d'oggi i computer supportano tabelle molto vaste. Per venire incontro a questa esigenza, è preferibile tenere la tabella delle pagine in memoria e usare uno o al più due registri: il page-table base register (PTBR), che contiene un puntatore alla tabella, e il page-table lenght register (PTLR), che è opzionale e contiene la dimensione della tabella. In questo modo, il context switch è molto più breve perché richiede solo la modifica del PTBR e, al massimo, del PTLR.
 
-\begin{wrapfigure}{r}{5.5cm}
+\begin{figure}[h!]
+    \centering
     \includegraphics[width=7cm]{img/tlb.JPG}
-\end{wrapfigure}
+\end{figure}
+
 Il problema con questo approccio è che richiede due accessi in memoria: uno per andare a leggere la tabella e uno per andare alla voce indicata, quindi il tempo di accesso alla memoria è moltiplicato da un fattore 2. Per risolvere tale problema, si può utilizzare una piccola cache veloce detta translation look-aside buffer (TLB). Ogni entry nel TLB consiste di due parti: una chiave e un valore.  Quando gli viene presentato un oggetto, questo viene comparato con tutte le chiavi simultaneamente. Se viene trovato, viene ritornato il valore corrispondente.
 Il meccanismo del TLB è molto costoso, per questo al suo interno viene memorizzato solo un piccolo sottoinsieme delle entry nella tabella delle pagine e ad ogni context switch viene ripulito per evitare il mapping di indirizzi errati.
 
 Durante un accesso alla memoria, se la pagina cercata è nel TLB, questo restituisce il numero di frame con un singolo accesso. In caso contrario, è necessario accedere alla tabella delle pagine in memoria.
 
-La percentuale di volte in cui una pagina di interesse si trova nel TLB è detta hit ratio. Se non si trova la pagina in TLB, bisogna accedere alla memoria per andare alla tabella delle pagine e recuperare il numero di frame, quindi bisogna riaccedere in memoria al frame appena indicato. Ipotizzando che l'hit ratio sia dell'80\% e ogni accesso in memoria richieda 100ns, il \textbf{tempo di accesso effettivo} sarà calcolato come: \newline
-$ effective\_access\_time = \alpha * (T_{TLB}+T_{mem}) + (1-\alpha) * (T_{TLB}+T_{mem} + T_{mem}) $\newline
-cioè, nel nostro caso, supponendo $T_{TLB} = 10ns$, si ha:\newline
-$ eat = 0.80 * 110ns + 0.20 * 210ns = 130ns $\newline
+La percentuale di volte in cui una pagina di interesse si trova nel TLB è detta hit ratio. Se non si trova la pagina in TLB, bisogna accedere alla memoria per andare alla tabella delle pagine e recuperare il numero di frame, quindi bisogna riaccedere in memoria al frame appena indicato. Ipotizzando che l'hit ratio sia dell'80\% e ogni accesso in memoria richieda 100ns, il \textbf{tempo di accesso effettivo} sarà calcolato come:
+$$ effective\_access\_time = \alpha * (T_{TLB}+T_{mem}) + (1-\alpha) * (T_{TLB}+T_{mem} + T_{mem}) $$
+cioè, nel nostro caso, supponendo $T_{TLB} = 10ns$, si ha:
+$$ eat = 0.80 * 110ns + 0.20 * 210ns = 130ns $$
 
 \subsubsection{Protezione}
 La protezione è realizzata associando un bit di protezione ad ogni frame. Normalmente, questi bit sono mantenuti nella tabella delle pagine.
 \paragraph{Bit di accesso} Un bit può essere utilizzato per definire se una pagina è di lettura-scrittura o di sola-lettura. Questo bit può essere controllato ogni volta che si accede alla pagina per controllare che non si scriva su una pagina in cui la scrittura non è abilitata (causando una trap).
 \paragraph{Bit di validità} Un bit aggiuntivo è allegato a ogni entry della tabella delle pagine. Quando questo bit è settato a \textit{valid}, la pagina associata è nello spazio di indirizzamento logico del processo, mentre se è settato a \textit{invalid}, la pagina non si trova nello spazio di indirizzamento logico del processo. Un tentativo di accesso a una tale pagina causa una trap del sistema. Il bit di validità potrebbe non bastare, soprattutto nel caso in cui una pagina non fosse interamente utilizzata. Ad esempio, in un processo che occupa 3 pagine e mezza, la quarta sarà segnata come valida. Il precedentemente citato PTLR serve come ulteriore sicurezza per evitare che il processo possa accedere alla metà della quarta pagina fuori dal suo range.
 
-\begin{wrapfigure}{r}{5.5cm}
+\begin{figure}[h!]
+    \centering
     \includegraphics[width=9cm]{img/pag_cond.JPG}
-\end{wrapfigure}
+\end{figure}
 
 \subsubsection{Pagine condivise}
 Uno dei vantaggi dell'uso della paginazione è la possibilità di condividere codice (a patto che non cambi durante la sua esecuzione). Così facendo, una sola copia del codice deve essere tenuta in memoria fisica, mentre poi ogni processo avrà la propria copia logica, con i propri dati. Il vantaggio è che se 40 utenti vogliono utilizzare contemporaneamente un editor, il cui ``peso'' è di 150KB, più 50KB per lo spazio dati di ogni utente, non ci sarà bisogno di fare 40 copie di editor e spazio dati (totale 40 * 200KB), bensì serviranno solo 40 copie dello spazio dati, mentre il codice dell'editor sarà accessibile da tutti (150 + 40*50).
@@ -1639,9 +1645,11 @@ Nelle architetture moderne con 32 o 64 bit di indirizzo, lo spazio di indirizzam
 
 La soluzione più semplice sta nel dividere la tabella in pezzi più piccoli.
 
-\begin{wrapfigure}{r}{5.5cm}
+\begin{figure}[h!]
+    \centering
     \includegraphics[width=7cm]{img/pagpag.JPG}
-\end{wrapfigure}
+\end{figure}
+
 \subsubsection{Paginazione multilivello}
 Questo metodo consiste nel ``paginare'' la tabella delle pagine. In pratica, solo alcune parti della tabella delle pagine sono memorizzate esplicitamente in memoria, mentre le altre sono su dischi. In generale, un indirizzo logico ha dei bit che indicato il numero di pagina e altri che indicano l'offset. Paginando la tabella delle pagine, la parte del numero di pagina verrà ulteriormente divisa in una parte che indicherà la tabella ``esterna'' e una che indica l'offset all'interno della tabella ``interna''.
 Ad esempio, dato un indirizzo: \newline
@@ -1670,7 +1678,7 @@ Per risolvere questo problema si può utilizzare una tabella delle pagine invert
 
 Ogni indirizzo logico generato dalla CPU è una tripla <process-id, page-number, offset>. Quando viene fatto un riferimento a una zona di memoria, le prime due parti dell'indirizzo richiesto sono presentate al ``sottosistema'' si memoria. Se si ha una corrispondenza, viene generato l'indirizzo fisico <entry-i, offset>. Se l'indirizzo non viene trovato, si ha un trap del sistema.
 
-Anche se questo schema diminuisce la quantità di memoria necessaria a mantenere ogni tabella delle pagine, aumenta il tempo necessario per cercare un riferimento a una pagina. Infatti, poiché la tabella delle pagine invertita è ordinata secondo gli indirizzi fisici, ma il lookup viene fatto secondo quelli virtuali, potrebbe essere necessario scorrerla tutta ogni volta. Per risolvere questo problema, si può usare l'equivalente di una hashtable, così che il tempo di ricerca si riduca da O(n) a O(1). Ovviamente, ogni accesso alla hashtable aggiunge un riferimento alla memoria, quindi per mappare un indirizzo logico servono almeno due letture in memoria, una per la hash table e una per la page table.
+Anche se questo schema diminuisce la quantità di memoria necessaria a mantenere ogni tabella delle pagine, aumenta il tempo necessario per cercare un riferimento a una pagina. Infatti, poiché la tabella delle pagine invertita è ordinata secondo gli indirizzi fisici, ma il lookup viene fatto secondo quelli virtuali, potrebbe essere necessario scorrerla tutta ogni volta. Per risolvere questo problema, si può usare l'equivalente di una hashtable, così che il tempo di ricerca si riduca da $O(n)$ a $O(1)$. Ovviamente, ogni accesso alla hashtable aggiunge un riferimento alla memoria, quindi per mappare un indirizzo logico servono almeno due letture in memoria, una per la hash table e una per la page table.
 
 I sistemi che utilizzano la tabella invertita hanno difficoltà ad implementare un sistema di condivisione delle pagine perché avrebbero bisogno di mappare uno stesso indirizzo fisico su più indirizzi logici (virtuali). Risulta quindi necessario un meccanismo per gestire le collisioni quando diversi indirizzi virtuali corrispondono allo stesso frame (per capire se è un frame condiviso o no).
 
@@ -1682,9 +1690,11 @@ La memoria virtuale facilita inoltre la condivisione di files e di memoria tra i
 
 Tuttavia, la memoria virtuale non è di facile implementazione e può danneggiare le prestazioni se utilizzata in maniera inappropriata.
 
-\begin{wrapfigure}{r}{5.5cm}
+\begin{figure}[h!]
+    \centering    
     \includegraphics[width=7cm]{img/virtmem.jpeg}
-\end{wrapfigure}
+\end{figure}
+
 Il concetto chiave è nella possibilità di swappare pagine -- e non l'intero processo -- da e verso la memoria. La memoria virtuale è quindi composta dalla memoria fisica e dal disco.
 
 Lo spazio di indirizzamento virtuale di un processo si riferisce alla vista logica (o virtuale) di come un processo è mantenuto in memoria.
@@ -1694,9 +1704,10 @@ Esistono due metodi principali per l'implementazione della memoria virtuale: la 
 \subsection{Paginazione su domanda}
 Si consideri come un programma eseguibile può essere caricato dal disco alla memoria. Un'opzione è quella di caricare tutto il programma nella memoria fisica a tempo di esecuzione. Tuttavia, si potrebbe non aver bisogno dell'intero programma in memoria fin da subito; la cosa risulterebbe in uno spreco di spazio. Una strategia alternativa è quella di caricare le pagine solo se necessarie.
 
-\begin{wrapfigure}{r}{5.5cm}
+\begin{figure}[h!]
+    \centering    
     \includegraphics[width=7cm]{img/pagefault.JPG}
-\end{wrapfigure}
+\end{figure}
 
 Con la memoria virtuale implementata tramite paginazione su domanda, le pagine sono caricate solo quando sono richieste durante l'esecuzione. Delle pagine che non sono mai richieste, magari con codice per casi particolari, non vengono mai caricate in memoria.
 
@@ -1829,16 +1840,19 @@ Non sono altro che una sottile striscia in materiale plastico, rivestita di un m
 \paragraph{Dischi magnetici}
 I dischi magnetici sono il cuore (per ora) della memoria secondaria di un computer. Concettualmente, sono piuttosto semplici: ogni \textit{piatto} del disco ha una forma circolare, come un CD, e un diametro che può variare tra i 3.5 e gli 1.8 pollici. Le superfici del piatto, che generalmente è fatto di alluminio, sono ricoperte con un materiale magnetizzabile.
 
-\begin{wrapfigure}{r}{5.5cm}
+\begin{figure}[h!]
+    \centering
     \includegraphics[width=7cm]{img/disk.JPG}
-\end{wrapfigure}
+\end{figure}
+
 Le operazioni di lettura e scrittura sono rese possibili da una testina sospesa sulla superficie magnetica. Per scrivere, viene fatta passare corrente attraverso la testina per magnetizzare la superficie. Per la lettura, il passaggio sopra un'area magnetizzata induce una corrente positiva o negativa nella testina.
 
 La testina è attaccata a un \textit{braccio}. La superficie di un piatto è logicamente divisa in tracce circolari, a loro volta divise in settori. L'insieme di tracce che si trovano alla stessa posizione del braccio formano un cilindro. Potrebbero esserci migliaia di cilindri concentrici in un disco magnetico e ogni traccia potrebbe contenere centinaia di settori.
 
-Quando un disco è in uso, un motore lo fa girare ad alta velocità, la quale viene calcolata in rotazioni al minuto. Quando si parla di velocità, tuttavia, bisogna considerare anche altri (più importanti) parametri. La \textbf{velocità di trasferimento (transfer rate)} è la velocità con cui i dati sono trasferiti dal disco al computer e viceversa. Il \textbf{tempo di posizionamento}, o random access time, consiste di due parti: il tempo necessario a spostare fisicamente il braccio sul cilindro desiderato, chiamato \textbf{seek time}, e il tempo impiegato dal settore per ruotare fino ad arrivare sotto alla testina, detto \textbf{rotational latency}.\newline
-Il tempo di accesso è dato quindi dalla seguente formula: \newline
-$ T_{accesso} = T_{seek} + T_{latency} + T_{transfer} $
+Quando un disco è in uso, un motore lo fa girare ad alta velocità, la quale viene calcolata in rotazioni al minuto. Quando si parla di velocità, tuttavia, bisogna considerare anche altri (più importanti) parametri. La \textbf{velocità di trasferimento (transfer rate)} è la velocità con cui i dati sono trasferiti dal disco al computer e viceversa. Il \textbf{tempo di posizionamento}, o random access time, consiste di due parti: il tempo necessario a spostare fisicamente il braccio sul cilindro desiderato, chiamato \textbf{seek time}, e il tempo impiegato dal settore per ruotare fino ad arrivare sotto alla testina, detto \textbf{rotational latency}.
+Il tempo di accesso è dato quindi dalla seguente formula:
+
+$$ T_{accesso} = T_{seek} + T_{latency} + T_{transfer} $$
 
 \paragraph{Esempio}
 \begin{itemize}
@@ -1871,9 +1885,10 @@ Quando un processo richiede un'operazione di I/O da o verso il disco, effettua u
     \item Il numero di settori da trasferire
 \end{itemize}
 
-Per i seguenti algoritmi si considerano i seguenti accessi (espressi come numero di cilindro/traccia): \newline
-\centerline{98, 183, 37, 122, 14, 124, 65, 67}
-\newline
+Per i seguenti algoritmi si considerano i seguenti accessi (espressi come numero di cilindro/traccia):
+
+$$98, 183, 37, 122, 14, 124, 65, 67$$
+
 Con l'intervallo [0, 199] di valori ammissibili e la testina inizialmente posizionata sulla traccia 53.
 
 \subsubsection{First Come, First Served (FCFS)}
@@ -1888,12 +1903,13 @@ In questo algoritmo, la testina parte da un'estremità del disco e si sposta ver
 \paragraph{C-SCAN} Come variante dell'algoritmo SCAN, nello SCAN Circolare (C-SCAN) la testina, una volta arrivata alla seconda estremità, si sposta direttamente alla prima e ricomincia, trattando quindi il disco come una lista circolare.
 
 \paragraph{LOOK e C-LOOK} Gli algoritmi LOOK e C-LOOK sono varianti, rispettivamente, di SCAN e C-SCAN, in cui la testina non arriva all'estremità del disco, ma cambia direzione (LOOK) o riparte dalla prima traccia (C-LOOK) non appena non ci sono più richieste in quella direzione.
-\newline
 
-Alla pagina seguente si trovano gli schemi di funzionamento degli algoritmi appena esposti.
+Dalla figura \ref{fig:iofcfs} alla \ref{fig:ioclook} si trovano gli schemi di funzionamento degli algoritmi appena esposti.
+
 \begin{figure}
     \centering
     \includegraphics[width=5cm]{img/fcfs.JPG}
+    \label{fig:iofcfs}
     \caption{Scheduling FCFS}
     \includegraphics[width=5cm]{img/sstf.JPG}
     \caption{Scheduling SSTF}
@@ -1903,8 +1919,8 @@ Alla pagina seguente si trovano gli schemi di funzionamento degli algoritmi appe
     \caption{Scheduling C-SCAN}
     \includegraphics[width=5cm]{img/clook.JPG}
     \caption{Scheduling C-LOOK}
+    \label{fig:ioclook}
 \end{figure}
-\newline
 
 Esistono altre varianti dello SCAN in cui, per evitare che la testina rimanga sempre nella stessa zone, la coda delle richieste viene partizionata in più code di dimensione massima N. Quando una coda viene processata per il servizio (scan in una direzione), gli accessi in arrivo riempiono altre code. Le code ``sature'' vengono servite nello san successivo, considerando che con N grande degenera in SCAN e con N=1 si ha un esempio di FCFS. Questo algoritmo prende il nome di \textbf{N-step SCAN}. Se si utilizzano solo due code, si parla invece di \textbf{FSCAN}.
 
@@ -2139,7 +2155,6 @@ Il file-organization module conosce i files e i loro blocchi logici e fisici. Pu
 Il logical file system gestisce i metadati, cioè file descriptors, file control block. Gestisce anche la struttura delle directories.
 
 Una struttura a livelli come quella appena descritta permette di minimizzare la duplicazione di codice.
-\newline
 
 Per gestire un file system si utilizzano diverse strutture dati, sia su disco che in memoria. Le loro caratteristiche sono fortemente dipendenti dal sistema operativo e dal file system stesso, tutta via ne esistono alcune comuni a tutte le tipologie.
 
@@ -2187,10 +2202,10 @@ Un'importante variazione dell'allocazione a lista è l'utilizzo di una \textbf{t
 L'allocazione con FAT ha come effetto collaterale l'elevato numero di seek, a meno che la FAT non sia messa in cache: per ogni blocco, la testina dovrebbe spostarsi da esso all'inizio della partizione, dove si trova la FAT. Il tempo di accesso casuale è invece molto migliorato.
 
 \paragraph{Allocazione indicizzata}
-\begin{wrapfigure}{r}{5,5cm}
+\begin{figure}[h!]
     \centering
     \includegraphics[width=7cm]{img/allocind.JPG}
-\end{wrapfigure}
+\end{figure}
 In questo tipo di allocazione, ogni file ha un blocco indice (index block) contenente la tabella degli indirizzi (index table) dei blocchi fisici. Ogni file ha il proprio blocco indice, contenuto come entry nella directory.
 
 Supporta l'accesso dinamico e casuale, senza soffrire di frammentazione esterna poiché ogni blocco libero del disco può soddisfare una richiesta per dello spazio aggiuntivo.
@@ -2205,7 +2220,7 @@ La dimensione del blocco indice limita la dimensione del file: se il blocco può
 \subsubsection{Implementazione delle directory}
 Lo stesso meccanismo utilizzato per memorizzare i files, viene applicato alle directories. Le directory non contengono dati, bensì la lista dei file e delle directories contenute. Come viene memorizzato il contenuto e come vi si accede?
 \begin{itemize}
-    \item \textbf{Lista lineare} di nomi con puntatori ai blocchi di dati. L'implementazione è facile, ma la soluzione è poco efficiente: per intervenire su un file bisogna ricercarlo scansionando la lista (O(n) se non è ordinata, O(log n) se è ordinata).
+    \item \textbf{Lista lineare} di nomi con puntatori ai blocchi di dati. L'implementazione è facile, ma la soluzione è poco efficiente: per intervenire su un file bisogna ricercarlo scansionando la lista ($O(n)$ se non è ordinata, $O(log n)$ se è ordinata).
     \item \textbf{Tabella hash}. Il tempo di ricerca è migliore ma possono esserci collisioni.
 \end{itemize}
 
