@@ -132,21 +132,21 @@ Accanto ai programmi di sistema troviamo gli application programs, utili per ris
 
 
 \section{Architettura di un Sistema Operativo}
-Sistemi estesi e complessi come i moderni Sistemi Operativi devono essere progettati seguendo principi di progettazione tali darendere possibile il loro corretto ed efficiente funzionamento e la possibilità di introdurre modifiche nel tempo (ad esempio:aggiornamenti). Un principio molto importante è la separazione tra policy (cosa deve essere fatto?) e i meccanismi (come farlo?) la sua importanza risiede nella maggior flessibilità conferita al sistema, soprattutto se le policy tendono a variare nel tempo.
-Altri due principi rilevanti sono il KISS (Keep It Small and Simple) e il POLA (Principle of the Least Privileges), il qualeafferma che ogni componente deve avere solo i privilegi necessari ad eseguire la sua funzione e nulla più, che fra l'altro èalla base dell'affidabilità e della sicurezza di un Sistema Operativo.
+Sistemi estesi e complessi come i moderni Sistemi Operativi devono essere progettati seguendo principi di progettazione tali da rendere possibile il loro corretto ed efficiente funzionamento e la possibilità di introdurre modifiche nel tempo (ad esempio:aggiornamenti). Un principio molto importante è la separazione tra policy (cosa deve essere fatto?) e i meccanismi (come farlo?) la sua importanza risiede nella maggior flessibilità conferita al sistema, soprattutto se le policy tendono a variare nel tempo.
+Altri due principi rilevanti sono il KISS (Keep It Small and Simple) e il POLA (Principle of the Least Privileges), il quale afferma che ogni componente deve avere solo i privilegi necessari ad eseguire la sua funzione e nulla più, che fra l'altro è alla base dell'affidabilità e della sicurezza di un Sistema Operativo.
 
 \subsection{Struttura di un Sistema Operativo}
-Le componenti di un sistema possono essere interconnesse tra loro e combinate nel kernel secondo strutture diverse. Passiamo orain rassegna le diverse possibilità.
+Le componenti di un sistema possono essere interconnesse tra loro e combinate nel kernel secondo strutture diverse. Passiamo ora in rassegna le diverse possibilità.
 
 \subsubsection{Sistemi a struttura semplice}
-Molti Sistemi Operativi non hanno una struttura ben definita. Spesso questi sistemi sono nati per essere ``piccoli'', semplici elimitati e poi sono stati evoluti oltre il loro scopo originario (MS-DOS ne è un esempio), ma all'inizio di era badato solo aridurre i costi di sviluppo e manutenzione.
+Molti Sistemi Operativi non hanno una struttura ben definita. Spesso questi sistemi sono nati per essere ``piccoli'', semplici e limitati e poi sono stati evoluti oltre il loro scopo originario (MS-DOS ne è un esempio), ma all'inizio di era badato solo a ridurre i costi di sviluppo e manutenzione.
 
-Sistemi come MS-DOS erano stati scritti per fornire la maggior funzionalità nel minor spazio possibile, quindi non si era troppobadato alla divisione in moduli o alla creazione secondo una ben determinata struttura, con una conseguente poco chiaradefinizione dei livelli di funzionalità e delle interfacce. Ovviamente, MS-DOS era anche limitato dall'hardware disponibileall'epoca della sua nascita. Poiché l'Intel 8088 per cui era stato scritto non prevedeva una dual mode, né tantomeno unaprotezione dell'hardware, gli sviluppatori di MS-DOS non ebbero altra scelta che lasciare che fosse possibile accedereall'hardware di base.
+Sistemi come MS-DOS erano stati scritti per fornire la maggior funzionalità nel minor spazio possibile, quindi non si era troppo badato alla divisione in moduli o alla creazione secondo una ben determinata struttura, con una conseguente poco chiara definizione dei livelli di funzionalità e delle interfacce. Ovviamente, MS-DOS era anche limitato dall'hardware disponibile all'epoca della sua nascita. Poiché l'Intel 8088 per cui era stato scritto non prevedeva una dual mode, né tanto meno una protezione dell'hardware, gli sviluppatori di MS-DOS non ebbero altra scelta che lasciare che fosse possibile accedere all'hardware di base.
 
-Anche UNIX rappresenta un esempio di sistema a struttura semplice, ancora una volta per via delle limitate funzionalitàhardware. Consisteva però di due parti separate: il kernel e i programmi di sistema. Il kernel è poi ulteriormente separato inuna serie di interfacce e driver di device, aggiunti e sviluppati durante gli anni durante l'evoluzione di UNIX.Tradizionalmente, il kernel forniva il file system, la scheduling della CPU, la gestione della memoria e altre funzioni disistema tramite system calls. In sostanza, un enorme quantità di funzionalità combinata in un unico livello. Una tale strutturamonolitica era difficile da implementare e mantenere.
+Anche UNIX rappresenta un esempio di sistema a struttura semplice, ancora una volta per via delle limitate funzionalità hardware. Consisteva però di due parti separate: il kernel e i programmi di sistema. Il kernel è poi ulteriormente separato inuna serie di interfacce e driver di device, aggiunti e sviluppati durante gli anni durante l'evoluzione di UNIX.Tradizionalmente, il kernel forniva il file system, la scheduling della CPU, la gestione della memoria e altre funzioni di sistema tramite system calls. In sostanza, un enorme quantità di funzionalità combinata in un unico livello. Una tale struttura monolitica era difficile da implementare e mantenere.
 
 \subsubsection{Sistema a livelli}
-Con un appropriato supporto hardware, un Sistema Operativo può essere spezzato in pezzi più piccoli e più appropriati di quellipermessi da MS-DOS e dai primi sistemi UNIX. Esistono vari metodi per modularizzare un sistema.
+Con un appropriato supporto hardware, un Sistema Operativo può essere spezzato in pezzi più piccoli e più appropriati di quelli permessi da MS-DOS e dai primi sistemi UNIX. Esistono vari metodi per modularizzare un sistema.
 
 In questa categoria, il Sistema Operativo è visto a livelli: il più basso (livello 0) è l'hardware, mentre il più alto (livello N) è l'interfaccia utente.
 Il vantaggio principale risiede nella semplicità di costruzione e debugging. Ogni livello è implementato in modo da poter usare solo funzioni fornite dai livelli inferiori, mentre definisce precisamente il tipo di servizio e l'interfaccia verso il livello superiore nascondendone l'implementazione. Tale struttura semplifica il debugging poiché il primo livello può essere debuggato senza troppe preoccupazioni sul resto del sistema, essendo subito al di sopra dell'hardware. Passando al livello superiore, si può assumere che tutti i servizi forniti dal livello precedente siano corretti, quindi eventuali errori possono trovarsi solo nel livello attuale, e così via per ogni livello.
@@ -215,7 +215,7 @@ Quando un processo entra nel sistema, è inserito nella job queue, che contiene 
 Un processo inizialmente è inserito nella ready queue. Esso aspetta qui finché non viene selezionato dallo short-term scheduler e il dispatcher non gli assegna il controllo della CPU. Le operazioni compiute dal dispatcher sono:
 \begin{enumerate}
     \item Cambio di contesto: viene salvato il Process Control Block (serie di informazioni sul processo) del processo che esce e viene caricato il PCB del processo entrante
-    \item Passaggio alla modalità utente: all'inizio della fase di dispatch il processo si troca in modalità kernel
+    \item Passaggio alla modalità utente: all'inizio della fase di dispatch il processo si trova in modalità kernel
     \item Salto all'istruzione da eseguire del processo appena arrivato nella CPU
 \end{enumerate}
 
@@ -235,7 +235,7 @@ Quando un processo crea un nuovo processo, esistono due possibilità per l'esecu
 In un sistema UNIX, la creazione di un processo è svolta secondo le seguenti operazioni:
 
 \paragraph{System call fork()} Il nuovo processo consiste in una copia dell'address-space del padre. Questo permette al padre di comunicare facilmente con il figlio.Entrambi i processi continuano l'esecuzione all'istruzione dopo la \texttt{fork()}, con una differenza: il codice di ritorno della \texttt{fork()} è zero (\texttt{0}) per il figlio, mentre un pid \texttt{nonzero} (il pid del figlio) è ritornato al padre.
-\paragraph{System call exec()} Dopo la \texttt{fork()}, uno dei due processi tipicamente usa la chiamata di sistema \texttt{exec()} per inserire un nuovo programma nello spazio di memoria del processo. La chiamata \texttt{exec()} carica un file binario in memria e inizia la sua esecuzione. Così, i due processi sono in grado di comunicare e poi andare per le proprie strade.
+\paragraph{System call exec()} Dopo la \texttt{fork()}, uno dei due processi tipicamente usa la chiamata di sistema \texttt{exec()} per inserire un nuovo programma nello spazio di memoria del processo. La chiamata \texttt{exec()} carica un file binario in memoria e inizia la sua esecuzione. Così, i due processi sono in grado di comunicare e poi andare per le proprie strade.
 \paragraph{System call wait()} Il padre potrebbe a questo punto creare altri figli o eseguire sincronamente con il figlio, quindi aspettare la sua terminazione con una chiamata \texttt{wait()}. \newline
 Poiché la chiamata \texttt exec() sovrascrive l'address space di un processo con un nuovo programma, la chiamata non ritorna il controllo a meno che non si verifichi un errore.
 
@@ -327,7 +327,7 @@ Una pipe agisce come un condotto che permette a due processi di comunicare. Nell
     \item Possono comunicare attraverso una rete?
 \end{itemize}
 \paragraph{Pipe ordinarie} Permettono la comunicazione in uno stile standard produttore-consumatore: il produttore scrive a un capo della pipe (write-end) e il consumatore legge dall'altro capo (read-end). Se è richiesta una comunicazione bidirezionale, devono essere utilizzate due pipe, poiché le pipe ordinarie sono unidirezionali (e richiedono una relazione padre-figlio tra i processi). \newline
-Nei sistemi UNIX, le pipe ordinarie si costruiscono con la funzione \texttt{pipe(int fd[])}. Questa funzione crea una pipe cui si accede atttraverso il file descriptor \texttt{fd[]}: \texttt{fd[0]} è la read-end, mentre \texttt{fd[1]} è la write-end. Si può quindi accedere alla pipe utilizzando le chiamate di sistema \texttt{read()} e \texttt{write()}. Non è possibile accedere a una pipe se si è al di fuori del processo che l'ha creata. Dato che una pipe è un tipo ``speciale'' di file, i processi figli la ereditano dal padre. In generale, il processo padre crea una pipe, poi manda una \texttt{fork()} che crea il figlio. Cosa succede dopo dipende da come i dati fluiscono nella pipe.
+Nei sistemi UNIX, le pipe ordinarie si costruiscono con la funzione \texttt{pipe(int fd[])}. Questa funzione crea una pipe cui si accede attraverso il file descriptor \texttt{fd[]}: \texttt{fd[0]} è la read-end, mentre \texttt{fd[1]} è la write-end. Si può quindi accedere alla pipe utilizzando le chiamate di sistema \texttt{read()} e \texttt{write()}. Non è possibile accedere a una pipe se si è al di fuori del processo che l'ha creata. Dato che una pipe è un tipo ``speciale'' di file, i processi figli la ereditano dal padre. In generale, il processo padre crea una pipe, poi manda una \texttt{fork()} che crea il figlio. Cosa succede dopo dipende da come i dati fluiscono nella pipe.
 
 \paragraph{Pipe con nome} Le pipe ordinarie esistono solo mentre i processi comunicano tra loro. Le pipe con nome sono strumenti molto più potenti: la comunicazione può essere bidirezionale e non è richiesta nessuna relazione padre-figlio. Una volta che una pipe con nome viene creata, può essere usata da molti processi per comunicare. Nei sistemi UNIX sono chiamate FIFO. Una volta create, appaiono come file nel file system. Una FIFO è creata con la system call \texttt{mkfifo()} e viene manipolata con \texttt{open()}, \texttt{read()}, \texttt{write()} e \texttt{close()}.
 
@@ -338,7 +338,7 @@ Un processo unisce due concetti: il possesso delle risorse e l'utilizzo della CP
 Un processo è l'unità minima di possesso delle risorse, mentre un thread è l'unità minima di utilizzo della CPU. Un thread possiede: un thread ID, un contatore di programma (program counter), un inseme di registri (della CPU) e uno stack. I threads condividono lo spazio di indirizzamento e le risorse e lo stato del processo.
 
 \subsection{Multithreading}
-La maggior parte dei software eseguiti sui moderni computer sono multithreaded. Un'applicazione è tipicamente implementata come un processo separaato con molti thread di controllo. In alcune situazioni, una singola applicazione potrebbe essere richiesta per compiere tanti task simili. La creazione di processi richiede tempo e risorse e se il nuovo processo serve a completare un compito simile o addirittura uguale a quelli dei processi già esistenti, che senso ha? Generalmente è quindi più efficiente utilizzare un solo processo composto da molti threads. Quando arriva una richiesta, anziché creare un nuovo processo, viene creato un nuovo thread. In generale, l'utilizzo del multithreading permette la separazione tra flusso di esecuzione e spazio di indirizzamento: se si ha un processo con thread singolo, un flusso di esecuzione è associato ad uno spazio di indirizzamento, mentre se si usano thread multipli, più flussi vengono associati a un singolo spazio di indirizzamento.
+La maggior parte dei software eseguiti sui moderni computer sono multithreaded. Un'applicazione è tipicamente implementata come un processo separato con molti thread di controllo. In alcune situazioni, una singola applicazione potrebbe essere richiesta per compiere tanti task simili. La creazione di processi richiede tempo e risorse e se il nuovo processo serve a completare un compito simile o addirittura uguale a quelli dei processi già esistenti, che senso ha? Generalmente è quindi più efficiente utilizzare un solo processo composto da molti threads. Quando arriva una richiesta, anziché creare un nuovo processo, viene creato un nuovo thread. In generale, l'utilizzo del multithreading permette la separazione tra flusso di esecuzione e spazio di indirizzamento: se si ha un processo con thread singolo, un flusso di esecuzione è associato ad uno spazio di indirizzamento, mentre se si usano thread multipli, più flussi vengono associati a un singolo spazio di indirizzamento.
 
 \subsection{Vantaggi}
 \begin{enumerate}
@@ -591,7 +591,7 @@ Questa priorità viene ricalcolata alla fine di ogni processo.
 \subsubsection{Round Robin (RR)}
 Il Round Robin è un algoritmo di scheduling basato sul time-out. Viene definita una piccola unità di tempo, chiamata \textit{quanto}, di durata generalmente compresa tra i 10 e i 100 millisecondi. A ogni processo viene assegnata un quanto del tempo di CPU e al termine dell'unità di tempo, il processo è prelazionato e messo nella ready queue, che viene gestita come una coda circolare. Se un processo ha un tempo di burst minore del quanto, rilascerà la CPU volontariamente. Il Round Robin è praticamente un FCFS con prelazione.
 L'approccio RR può risultare in un gran numero di context switches, in base alla grandezza del quanto in relazione alle durate dei CPU-bursts dei processi. Per questo motivo è molto importante scegliere una dimensione ragionevole del quanto: infatti, quanti troppo piccoli rendono gli overhead dei context switch esagerati, quanti troppo grandi la rendono essenzialmente una FCFS senza prelazioni. La scelta migliore è far sì che l' 80\% dei burst di CPU siano minori del quanto, e che il quanto stesso sia $\gg$ del tempo del context switch.\newline
-In quanto a prestazioni, il tempo di turnaround è maggiore o almeno uguale a quello di SJF, mentre il tempo di risposta è minore o al più ugale a quello di SJF.
+In quanto a prestazioni, il tempo di turnaround è maggiore o almeno uguale a quello di SJF, mentre il tempo di risposta è minore o al più uguale a quello di SJF.
 
 \begin{center}
     \begin{tabular}{ ccc }
@@ -985,8 +985,8 @@ while (1) {
 \end{verbatim}
 
 \subsection{Semafori}
-Le soluzioni precendemente presentate sono complesse da aggiungere ai programmi e si basano sul busy waiting (spreco di CPU). I semafori costituiscono una valida alternativa.
-
+Le soluzioni precedentemente presentate sono complesse da aggiungere ai programmi e si basano sul busy waiting (spreco di CPU). I semafori costituiscono una valida alternativa.
+%Mi sono fermato qua a controllare, sotto ci potrebbero essere altri errori!
 Un semaforo S è una variabile intera cui si accede solo mediante l'utilizzo di due primitive atomiche: \texttt{wait()} e \texttt{signal()}.
 \begin{itemize}
     \item L'operazione \texttt{wait()}, nota come P (dall'olandese Proberen, testare) tenta di decrementare il valore di S di 1, ma se il valore è già 0 non si può decrementare ed è necessario attendere.
