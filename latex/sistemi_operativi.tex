@@ -1,7 +1,7 @@
 % !TEX encoding = UTF-8
 
-\documentclass[a4paper]{article}
-\usepackage[T1]{fontenc}
+\documentclass[a4]{article}
+%\usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry} 
 \usepackage[utf8]{inputenc}
 \usepackage[italian]{babel}
@@ -29,6 +29,8 @@
 \maketitle
 
 \tableofcontents
+
+\newpage 
 
 \section{Introduzione}
 
@@ -744,11 +746,9 @@ Sotto sono indicati i processi in ready queue
     \end{tabular}
 \end{table}
 
-
 \subsubsection{HRRN}
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+
+La seconda tabella indica i calcoli effettuati tramite la formula indicata in precedenza.
 \begin{table}[h!]
     \centering
     \label{my-label}
@@ -763,9 +763,6 @@ Sotto sono indicati i processi in ready queue
     \end{tabular}
 \end{table}
 
-% Please add the following required packages to your document preamble:
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[h!]
     \centering
     \label{my-label}
@@ -781,7 +778,6 @@ Sotto sono indicati i processi in ready queue
         \textbf{E}        & -                                    & -                                    & 1+1/2                                & \cellcolor[HTML]{FCFF2F}1+5/2         \\ \hline
     \end{tabular}
 \end{table}
-
 
 \section{Sincronizzazione}
 Abbiamo già visto che i processi possono eseguire concorrenzialmente o in parallelo. Ora bisogna spiegare come l'esecuzione concorrente o parallela può contribuire a creare problemi per l'integrità dei dati condivisi dai tanti processi.
@@ -1623,7 +1619,7 @@ Il meccanismo del TLB è molto costoso, per questo al suo interno viene memorizz
 Durante un accesso alla memoria, se la pagina cercata è nel TLB, questo restituisce il numero di frame con un singolo accesso. In caso contrario, è necessario accedere alla tabella delle pagine in memoria.
 
 La percentuale di volte in cui una pagina di interesse si trova nel TLB è detta hit ratio. Se non si trova la pagina in TLB, bisogna accedere alla memoria per andare alla tabella delle pagine e recuperare il numero di frame, quindi bisogna riaccedere in memoria al frame appena indicato. Ipotizzando che l'hit ratio sia dell'80\% e ogni accesso in memoria richieda 100ns, il \textbf{tempo di accesso effettivo} sarà calcolato come:
-$$ effective\_access\_time = \alpha * (T_{TLB}+T_{mem}) + (1-\alpha) * (T_{TLB}+T_{mem} + T_{mem}) $$
+$$ eat = \alpha * (T_{TLB}+T_{mem}) + (1-\alpha) * (T_{TLB}+T_{mem} + T_{mem}) $$
 cioè, nel nostro caso, supponendo $T_{TLB} = 10ns$, si ha:
 $$ eat = 0.80 * 110ns + 0.20 * 210ns = 130ns $$
 
@@ -1641,7 +1637,7 @@ La protezione è realizzata associando un bit di protezione ad ogni frame. Norma
 Uno dei vantaggi dell'uso della paginazione è la possibilità di condividere codice (a patto che non cambi durante la sua esecuzione). Così facendo, una sola copia del codice deve essere tenuta in memoria fisica, mentre poi ogni processo avrà la propria copia logica, con i propri dati. Il vantaggio è che se 40 utenti vogliono utilizzare contemporaneamente un editor, il cui ``peso'' è di 150KB, più 50KB per lo spazio dati di ogni utente, non ci sarà bisogno di fare 40 copie di editor e spazio dati (totale 40 * 200KB), bensì serviranno solo 40 copie dello spazio dati, mentre il codice dell'editor sarà accessibile da tutti (150 + 40*50).
 
 \subsection{Struttura della Tabella delle Pagine}
-Nelle architetture moderne con 32 o 64 bit di indirizzo, lo spazio di indirizzamento virtuale è pari a $2^32$ o $2^64$, ovvero molto maggiore dello spazio fisico. In un tale ambiente, la tabella delle pagine diventa eccessivamente grande. Si consideri, ad esempio, un sistema a 32 bit. Se in tale sistema una pagina è da 4KB ($2^12$), una tabella delle pagine potrebbe avere un milione di entry ($2^32 / 2^12$) per ogni processo. Se si considera che ogni entry abbia una dimensione di 4 bytes, ogni processo avrà bisogno di 4MB di spazio solo per la page table. Chiaramente, non si vuole allocare una tale tabella in maniera contigua in memoria.
+Nelle architetture moderne con 32 o 64 bit di indirizzo, lo spazio di indirizzamento virtuale è pari a $2^{32}$ o $2^{64}$, ovvero molto maggiore dello spazio fisico. In un tale ambiente, la tabella delle pagine diventa eccessivamente grande. Si consideri, ad esempio, un sistema a 32 bit. Se in tale sistema una pagina è da 4KB ($2^{12}$), una tabella delle pagine potrebbe avere un milione di entry ($2^{32} / 2^{12}$) per ogni processo. Se si considera che ogni entry abbia una dimensione di 4 bytes, ogni processo avrà bisogno di 4MB di spazio solo per la page table. Chiaramente, non si vuole allocare una tale tabella in maniera contigua in memoria.
 
 La soluzione più semplice sta nel dividere la tabella in pezzi più piccoli.
 
